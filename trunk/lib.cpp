@@ -38,29 +38,34 @@ void separateComponents( IplImage * YUV )
             cvSet2D( V, ligne, colonne, px1Comp );
         }
 
+    IplImage *a, *b, *c;
+    a = DCT3(Y, 4, "DCTY");
+    b = DCT3(U, 4, "DCTU");
+    c = DCT3(V, 4, "DCTV");
+
     cvShowAnyImage( Y, "Y" );
     cvShowAnyImage( U, "U" );
     cvShowAnyImage( V, "V" );
 
-    /*cvNamedWindow("Y", CV_WINDOW_AUTOSIZE);
-	cvShowImage("Y", Y);
-	cvWaitKey(0);
-    cvNamedWindow("U", CV_WINDOW_AUTOSIZE);
-	cvShowImage("U", U);
-	cvWaitKey(0);
-	cvNamedWindow("V", CV_WINDOW_AUTOSIZE);
-	cvShowImage("V", V);
-	cvWaitKey(0);*/
+    cvShowAnyImage(a, "DCTY");
+    cvShowAnyImage(b, "DCTU");
+    cvShowAnyImage(c, "DCTV");
 
 	cvDestroyWindow("Y");
+	cvDestroyWindow("U");
+	cvDestroyWindow("V");
 
-    DCT3(Y, 4, "DCTY");
-    DCT3(U, 4, "DCTU");
-    DCT3(V, 4, "DCTV");
+    cvDestroyWindow("DCTY");
+	cvDestroyWindow("DCTU");
+	cvDestroyWindow("DCTV");
 
-    cvReleaseImage( &Y );
+	cvReleaseImage( &Y );
     cvReleaseImage( &U );
     cvReleaseImage( &V );
+
+	cvReleaseImage( &a );
+    cvReleaseImage( &b );
+    cvReleaseImage( &c );
 }
 
 IplImage * cvYUV2BGR( IplImage * YUV )
