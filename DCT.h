@@ -8,6 +8,11 @@
 #include "lib.h"
 #include "MyImage.hpp"
 
-IplImage* DCT3(IplImage *I, int taille, std::string id);
+/**
+ *@param I : l'image référence : travail sur une copie de l'image et retourne cette copie
+ *@param taille : la taille du bloc sur lequel on veut appliquer la DCT
+ *@return IplImage* l'image qui a subit la DCT par bloc
+ */
+IplImage* DCT3(IplImage *I, int taille);
 
 #endif // DCT_H_INCLUDED

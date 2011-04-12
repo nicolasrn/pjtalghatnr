@@ -19,14 +19,15 @@ IplImage * cvBGR2YUV( IplImage * BGR )
     return YUV;
 }
 
-void separateComponents( IplImage * YUV )
+void separateComponents( IplImage * YUV, IplImage *&Y, IplImage *&U, IplImage *&V )
 {
-    IplImage * Y = cvCreateImage(cvGetSize(YUV), YUV->depth, 1 );
-    IplImage * U = cvCreateImage(cvGetSize(YUV), YUV->depth, 1 );
-    IplImage * V = cvCreateImage(cvGetSize(YUV), YUV->depth, 1 );
+    Y = cvCreateImage(cvGetSize(YUV), YUV->depth, 1 );
+    U = cvCreateImage(cvGetSize(YUV), YUV->depth, 1 );
+    V = cvCreateImage(cvGetSize(YUV), YUV->depth, 1 );
     CvScalar pxYUV, px1Comp;
 
     for( int ligne=0; ligne<Y->height; ligne ++ )
+    {
         for( int colonne=0; colonne<Y->width; colonne++ )
         {
             pxYUV = cvGet2D( YUV, ligne, colonne );
@@ -37,35 +38,7 @@ void separateComponents( IplImage * YUV )
             px1Comp.val[0] = pxYUV.val[2];
             cvSet2D( V, ligne, colonne, px1Comp );
         }
-
-    IplImage *a, *b, *c;
-    a = DCT3(Y, 4, "DCTY");
-    b = DCT3(U, 4, "DCTU");
-    c = DCT3(V, 4, "DCTV");
-
-    cvShowAnyImage( Y, "Y" );
-    cvShowAnyImage( U, "U" );
-    cvShowAnyImage( V, "V" );
-
-    cvShowAnyImage(a, "DCTY");
-    cvShowAnyImage(b, "DCTU");
-    cvShowAnyImage(c, "DCTV");
-
-	cvDestroyWindow("Y");
-	cvDestroyWindow("U");
-	cvDestroyWindow("V");
-
-    cvDestroyWindow("DCTY");
-	cvDestroyWindow("DCTU");
-	cvDestroyWindow("DCTV");
-
-	cvReleaseImage( &Y );
-    cvReleaseImage( &U );
-    cvReleaseImage( &V );
-
-	cvReleaseImage( &a );
-    cvReleaseImage( &b );
-    cvReleaseImage( &c );
+    }
 }
 
 IplImage * cvYUV2BGR( IplImage * YUV )
