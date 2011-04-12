@@ -8,7 +8,7 @@
 	<opencv/highgui.h>
 	"lib.h"
 
-1302613208 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
+1302620630 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<iostream>
@@ -21,10 +21,10 @@
 	"DCT.h"
 	"MyImage.hpp"
 
-1302614406 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+1302620919 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
 	"lib.h"
 
-1302614371 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
+1302621071 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
 	"DCT.h"
 
 1302613136 source:c:\users\nicolas\documents\projetmultimedia\projet\myimage.cpp

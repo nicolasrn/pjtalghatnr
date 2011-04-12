@@ -20,31 +20,29 @@ void razFrequence(IplImage *I, int x, int y, int taille)
 	}
 }
 
-int DCT3(IplImage *I, int taille)
+int DCT3(IplImage *I, int taille, std::string id)
 {
     //penser a copier l'image I
     IplImage *A = cvCreateImage(cvSize(I->width, I->height), IPL_DEPTH_64F, 1);
-    //cvCvtGray(I, I);
+    cvCopy(I, A);
+    //cvCvtGray(A, A);
 
     for(int i = 0; i < A->width; i += taille)
 	{
 		for(int j = 0; j < A->height; j += taille)
 		{
-			cout << "(i, j) : (" << i << ", " << j << ") => (" << taille << ", " << taille << ")" << endl;
-			cvSetImageROI(I, cvRect(i, j, taille, taille));
-			cvDCT(I, I, CV_DXT_FORWARD);
+			//cout << "(i, j) : (" << i << ", " << j << ") => (" << taille << ", " << taille << ")" << endl;
+			cvSetImageROI(A, cvRect(i, j, taille, taille));
+			cvDCT(A, A, CV_DXT_FORWARD);
 			//razFrequence(A, i, j, taille);
-			cvResetImageROI(I);
+			cvResetImageROI(A);
 		}
 	}
 
-	cvNamedWindow("DCTA", CV_WINDOW_AUTOSIZE);
-	cvShowImage("DCTA", I);
+	cvShowAnyImage(A, id.c_str());
 
-	cvWaitKey(0);
-
-	cvDestroyWindow("DCTA");
-	cvReleaseImage(&I);
+	cvDestroyWindow(id.c_str());
+	cvReleaseImage(&A);
 
 	return EXIT_SUCCESS;
 }
