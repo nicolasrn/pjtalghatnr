@@ -2,3 +2,44 @@
 1302600615 source:c:\users\alex\desktop\projet\main.cpp
 	<iostream>
 
+1302612711 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
+	<iostream>
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	"lib.h"
+
+1302613208 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	<iostream>
+	"lib.h"
+	"MyImage.hpp"
+
+1302613250 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	"DCT.h"
+	"MyImage.hpp"
+
+1302613255 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+	"lib.h"
+
+1302613364 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
+	"DCT.h"
+
+1302613136 source:c:\users\nicolas\documents\projetmultimedia\projet\myimage.cpp
+	<cstdio>
+	<iostream>
+	<sstream>
+	<string>
+	<OpenCV/cv.h>
+	<OpenCV/highgui.h>
+	"MyImage.hpp"
+
+1299659918 c:\users\nicolas\documents\projetmultimedia\projet\myimage.hpp
+	<iostream>
+	<sstream>
+	<string>
+	<OpenCV/cv.h>
+	<OpenCV/highgui.h>
+

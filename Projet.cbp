@@ -32,6 +32,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="DCT.cpp" />
+		<Unit filename="DCT.h" />
+		<Unit filename="MyImage.cpp" />
+		<Unit filename="MyImage.hpp" />
+		<Unit filename="lib.cpp" />
+		<Unit filename="lib.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
