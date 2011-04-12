@@ -42,9 +42,21 @@ void separateComponents( IplImage * YUV )
     cvShowAnyImage( U, "U" );
     cvShowAnyImage( V, "V" );
 
-    DCT3(Y, 4);
-    //DCT3(U, U->width);
-    //DCT3(V, V->width);
+    /*cvNamedWindow("Y", CV_WINDOW_AUTOSIZE);
+	cvShowImage("Y", Y);
+	cvWaitKey(0);
+    cvNamedWindow("U", CV_WINDOW_AUTOSIZE);
+	cvShowImage("U", U);
+	cvWaitKey(0);
+	cvNamedWindow("V", CV_WINDOW_AUTOSIZE);
+	cvShowImage("V", V);
+	cvWaitKey(0);*/
+
+	cvDestroyWindow("Y");
+
+    DCT3(Y, 4, "DCTY");
+    DCT3(U, 4, "DCTU");
+    DCT3(V, 4, "DCTV");
 
     cvReleaseImage( &Y );
     cvReleaseImage( &U );
