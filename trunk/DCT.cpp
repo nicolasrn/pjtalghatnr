@@ -23,7 +23,6 @@ void razFrequence(IplImage *I, int x, int y, int taille)
 int DCT3(IplImage *I, int taille)
 {
     IplImage *A = cvCreateImage(cvSize(I->width, I->height), IPL_DEPTH_64F, 1);
-    //I = cvCvtGray(I, I);
 
     for(int i = 0; i < I->width; i += taille)
 	{

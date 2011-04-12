@@ -22,5 +22,4 @@ int main()
     cvShowAnyImage( BGR_back, "BGR reconstruite" );
 
     return 0;
-
 }
