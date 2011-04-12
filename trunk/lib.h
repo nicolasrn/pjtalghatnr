@@ -9,7 +9,7 @@
 
 IplImage * cvBGR2YUV( IplImage * BGR );
 
-void separateComponents( IplImage * YUV );
+void separateComponents( IplImage * YUV, IplImage *&Y, IplImage *&U, IplImage *&V );
 
 IplImage * cvYUV2BGR( IplImage * YUV );
 
