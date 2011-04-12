@@ -47,6 +47,7 @@ IplImage * cvYUV2BGR( IplImage * YUV )
     CvScalar pxYUV, pxBGR;
 
     for( int ligne=0; ligne<BGR->height; ligne++ )
+    {
         for( int colonne=0; colonne<BGR->width; colonne++ )
         {
             pxYUV = cvGet2D( YUV, ligne, colonne );
@@ -55,6 +56,7 @@ IplImage * cvYUV2BGR( IplImage * YUV )
             pxBGR.val[0] = pxYUV.val[2] + pxBGR.val[2];
             cvSet2D( BGR, ligne, colonne, pxBGR );
         }
+    }
     return BGR;
 }
 
