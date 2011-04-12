@@ -42,9 +42,9 @@ void separateComponents( IplImage * YUV )
     cvShowAnyImage( U, "U" );
     cvShowAnyImage( V, "V" );
 
-    DCT3(Y, Y->width);
-    DCT3(U, U->width);
-    DCT3(V, V->width);
+    DCT3(Y, 4);
+    //DCT3(U, U->width);
+    //DCT3(V, V->width);
 
     cvReleaseImage( &Y );
     cvReleaseImage( &U );
