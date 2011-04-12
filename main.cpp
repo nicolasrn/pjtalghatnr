@@ -19,9 +19,9 @@ int main()
     separateComponents( YUV, Y, U, V );
 
     IplImage *a, *b, *c;
-    a = DCT3(Y, 16);
-    b = DCT3(U, 32);
-    c = DCT3(V, 64);
+    a = DCT3(Y, 4);
+    b = DCT3(U, 4);
+    c = DCT3(V, 4);
 
     IplImage * BGR_back = cvYUV2BGR( YUV );
 
@@ -35,21 +35,21 @@ int main()
 
     cvShowAnyImage( BGR_back, "BGR reconstruite" );
 
-	cvDestroyWindow("Y");
-	cvDestroyWindow("U");
-	cvDestroyWindow("V");
+    cvDestroyWindow("Y");
+    cvDestroyWindow("U");
+    cvDestroyWindow("V");
 
     cvDestroyWindow("DCTY");
-	cvDestroyWindow("DCTU");
-	cvDestroyWindow("DCTV");
+    cvDestroyWindow("DCTU");
+    cvDestroyWindow("DCTV");
 
-	cvDestroyWindow("BGR reconstruite");
+    cvDestroyWindow("BGR reconstruite");
 
-	cvReleaseImage( &Y );
+    cvReleaseImage( &Y );
     cvReleaseImage( &U );
     cvReleaseImage( &V );
 
-	cvReleaseImage( &a );
+    cvReleaseImage( &a );
     cvReleaseImage( &b );
     cvReleaseImage( &c );
 

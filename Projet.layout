@@ -2,10 +2,10 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="DCT.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="197" topLine="0" />
+		<Cursor position="276" topLine="0" />
 	</File>
-	<File name="DCT.h" open="1" top="0" tabpos="5">
-		<Cursor position="394" topLine="0" />
+	<File name="DCT.h" open="1" top="1" tabpos="5">
+		<Cursor position="168" topLine="0" />
 	</File>
 	<File name="MyImage.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="7746" topLine="302" />
@@ -14,12 +14,12 @@
 		<Cursor position="2784" topLine="84" />
 	</File>
 	<File name="lib.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="2107" topLine="0" />
+		<Cursor position="1960" topLine="42" />
 	</File>
 	<File name="lib.h" open="1" top="0" tabpos="2">
-		<Cursor position="145" topLine="0" />
+		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="265" topLine="0" />
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>
