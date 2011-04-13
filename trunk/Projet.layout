@@ -1,77 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-<<<<<<< .mine
-	<File name="DCT.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="1606" topLine="21" />
-=======
 	<File name="DCT.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1167" topLine="0" />
->>>>>>> .r17
 	</File>
-<<<<<<< .mine
-<<<<<<< .mine
-	<File name="DCT.h" open="1" top="0" tabpos="5">
+	<File name="DCT.h" open="1" top="0" tabpos="2">
 		<Cursor position="168" topLine="0" />
-=======
-	<File name="DCT.h" open="1" top="0" tabpos="4">
-		<Cursor position="168" topLine="1" />
-=======
-<<<<<<< .mine
-	<File name="DCT.h" open="1" top="0" tabpos="5">
-		<Cursor position="514" topLine="0" />
-=======
-	<File name="DCT.h" open="0" top="0" tabpos="4">
-		<Cursor position="495" topLine="9" />
->>>>>>> .r17
->>>>>>> .r18
->>>>>>> .r16
 	</File>
-<<<<<<< .mine
-	<File name="MyImage.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="6084" topLine="242" />
-=======
-	<File name="MyImage.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="7081" topLine="280" />
->>>>>>> .r17
+	<File name="lib.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="3227" topLine="265" />
 	</File>
-	<File name="MyImage.hpp" open="0" top="0" tabpos="7">
-		<Cursor position="2130" topLine="0" />
-	</File>
-<<<<<<< .mine
-	<File name="lib.cpp" open="1" top="0" tabpos="3">
-<<<<<<< .mine
-		<Cursor position="1960" topLine="37" />
-=======
-		<Cursor position="1960" topLine="9" />
-=======
-	<File name="lib.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="18" topLine="0" />
->>>>>>> .r17
->>>>>>> .r18
-	</File>
-<<<<<<< .mine
-	<File name="lib.h" open="1" top="0" tabpos="2">
-		<Cursor position="101" topLine="0" />
-=======
 	<File name="lib.h" open="0" top="0" tabpos="2">
 		<Cursor position="163" topLine="0" />
->>>>>>> .r17
 	</File>
-<<<<<<< .mine
-	<File name="main.cpp" open="1" top="1" tabpos="1">
-<<<<<<< .mine
-		<Cursor position="0" topLine="0" />
-=======
-	<File name="main.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="139" topLine="9" />
-=======
-		<Cursor position="539" topLine="40" />
-=======
-	<File name="main.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="414" topLine="66" />
->>>>>>> .r17
->>>>>>> .r18
->>>>>>> .r16
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1298" topLine="103" />
 	</File>
 </CodeBlocks_layout_file>

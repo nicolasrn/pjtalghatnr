@@ -1,4 +1,5 @@
 #include "lib.h"
+#include "math.h"
 
 void cvShowAnyImageYUV(string s, IplImage * I, int x, int y)
 {
@@ -100,6 +101,94 @@ IplImage * cvYUV2BGR( IplImage * YUV )
     }
     return BGR;
 }
+
+
+int* quantification(IplImage * I, int QP, int* R,int i){
+
+int * x = (int *) malloc (sizeof(int*)* I->width * I->height);
+int * q = (int *) malloc (sizeof(int*)* I->width * I->height);
+
+CvScalar px;
+
+//Remplissage manuel de x en triant selon le modèle
+px = cvGet2D( I, 0, 0);
+x[0] = px.val[0];
+
+px = cvGet2D( I, 0, 1);
+x[1] = px.val[0];
+
+px = cvGet2D( I, 1, 0);
+x[2] = px.val[0];
+
+px = cvGet2D( I, 0, 2);
+x[3] = px.val[0];
+
+px = cvGet2D( I, 2, 0);
+x[4] = px.val[0];
+
+px = cvGet2D( I, 0, 3);
+x[5] = px.val[0];
+
+px = cvGet2D( I, 3, 0);
+x[6] = px.val[0];
+
+px = cvGet2D( I, 1, 1);
+x[7] = px.val[0];
+
+px = cvGet2D( I, 1, 2);
+x[8] = px.val[0];
+
+px = cvGet2D( I, 2, 1);
+x[9] = px.val[0];
+
+px = cvGet2D( I, 3, 1);
+x[10]= px.val[0];
+
+px = cvGet2D( I, 2, 2);
+x[11]= px.val[0];
+
+px = cvGet2D( I, 1, 3);
+x[12]= px.val[0];
+
+px = cvGet2D( I, 2, 3);
+x[13]= px.val[0];
+
+px = cvGet2D( I, 2, 3);
+x[14]= px.val[0];
+
+px = cvGet2D( I, 3, 3);
+x[15]= px.val[0];
+
+for(int nb = 0; nb < 16; nb++ ){
+    q[nb] = floor(x[nb]/(pow(2, QP+R[i])));
+}
+
+return q;
+
+}
+
+
+int **applyQuantification( IplImage *I, int QP, int* R, int i){
+
+    int **tab = (int **)malloc (sizeof(int*)* I->width * I->height);
+
+    //penser a copier l'image I
+    IplImage *A = cvCreateImage(cvSize(I->width, I->height), IPL_DEPTH_64F, 1);
+    cvCopy(I, A);
+
+    for(int l = 0; l < A->width; l += 4)
+    {
+        for(int j = 0; j < A->height; j += 4)
+        {
+            cvSetImageROI(A, cvRect(l, j, 4, 4));
+            tab[l/4] = quantification(A, QP, R, i);
+            cvResetImageROI(A);
+        }
+    }
+
+    return tab;
+}
+
 
  IplImage * predictImage(IplImage * I, int taille){
 
