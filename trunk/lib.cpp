@@ -101,6 +101,71 @@ IplImage * cvYUV2BGR( IplImage * YUV )
     return BGR;
 }
 
+ IplImage * predictImage(IplImage * I, int taille){
+
+    //On copie l'image à prédire dans l'image prédite
+    IplImage * Ipred = cvCreateImage(cvSize(I->width, I->height), IPL_DEPTH_64F, 1);
+    cvCopy(I, Ipred);
+
+    //On parcourt les zones de 4x4
+    for(int i = 0; i < Ipred->height; i += taille)
+    {
+        for(int j = 0; j < Ipred->width; j += taille)
+        {
+            predictZone(i, j, I, Ipred, taille);
+        }
+    }
+
+    return Ipred;
+ }
+
+void predictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille){
+
+    //prediction du pixel DC de l'image
+    predictPixel(ligne, colonne, I, Ipred, taille);
+
+    //On fait la prédiction sur la ligne haute des AD
+    for(int k = 1; k < taille; k++)
+    {
+        predictPixel(ligne, colonne + k, I, Ipred, taille);
+    }
+
+    //On fait la prédiction sur la ligne gauche des AD
+    for(int k = 1; k < taille; k++)
+    {
+        predictPixel(ligne + k, colonne, I, Ipred, taille);
+    }
+}
+
+void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille){
+    //Pixel pour l'image a prédire, et pour l'image prédite
+    CvScalar pxITop, pxILeft, pxI, pxIpred, pxBest;
+
+    //On récupère la valeur du pixel à prédire
+    pxI = cvGet2D( I, ligne, colonne );
+
+    //On vérifie qu'on n'est pas sur une zone de bord haut
+    if(ligne == 0)
+        pxITop = cvGet2D( I, ligne - taille, colonne);
+
+    else
+        pxITop.val[0] = pxI.val[0];
+
+    //On vérifie qu'on n'est pas sur une zone de bord gauche
+    if(colonne == 0)
+        pxILeft = cvGet2D( I, ligne, colonne - taille);
+
+    else
+        pxILeft.val[0] = pxI.val[0];
+
+    //On recherche la meilleur stratégie pour le pixel
+    pxBest.val[0] = (pxI.val[0] - pxITop.val[0] < pxI.val[0] - pxILeft.val[0]) ? pxI.val[0] - pxITop.val[0] : pxI.val[0] - pxILeft.val[0];
+
+    //On affecte le résultat de la stratégie
+    pxIpred.val[0] = pxI.val[0] - pxBest.val[0];
+    cvSet2D( Ipred, ligne, colonne, pxIpred);
+}
+
 int getMultiple16(int nb)
 {
     int mul = 0;
