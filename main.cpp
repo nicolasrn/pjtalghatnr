@@ -24,7 +24,6 @@ int main()
     b = DCT3(U, 4);
     c = DCT3(V, 4);
 
-<<<<<<< .mine
     Ba = DCTDC(Y,4);
     Bb = DCTDC(U,4);
     Bc = DCTDC(V,4);
@@ -32,17 +31,16 @@ int main()
 
 
     IplImage * BGR_back = cvYUV2BGR( YUV );
-=======
+
     IplImage *ia, *ib, *ic;
     ia = InverseDCT(a, 4);
     ib = InverseDCT(b, 4);
     ic = InverseDCT(c, 4);
->>>>>>> .r17
 
     IplImage *reconst = unifiateComponents(ia, ib, ic);
     IplImage *reconstBGR = cvYUV2BGR(reconst);
 
-<<<<<<< .mine
+
     cvShowImage("DCTY",a);
     cvShowImage("DCTU",b);
     cvShowImage("DCTV",c);
@@ -52,20 +50,17 @@ int main()
     cvShowImage("DCTYmodif",a);
     cvShowImage("DCTUmodif",b);
     cvShowImage("DCTVmodif",c);
-=======
+
     cvShowAnyImageYUV("Y", Y );
     cvShowAnyImageYUV("U", U );
     cvShowAnyImageYUV("V", V );
->>>>>>> .r17
 
-<<<<<<< .mine
 
     cvShowAnyImage( BGR_back, "BGR reconstruite" );
-=======
+
     cvShowAnyImageYUV("DCTY", a);
     cvShowAnyImageYUV("DCTU", b);
     cvShowAnyImageYUV("DCTV", c);
->>>>>>> .r17
 
     cvShowAnyImageYUV("IA", ia);
     cvShowAnyImageYUV("IB", ib);

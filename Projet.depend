@@ -47,6 +47,46 @@
 	<OpenCV/highgui.h>
 
 <<<<<<< .mine
+1302614014 source:c:\users\lavahine\documents\projet_multimedia\myimage.cpp
+	<cstdio>
+	<iostream>
+	<sstream>
+	<string>
+	<OpenCV/cv.h>
+	<OpenCV/highgui.h>
+	"MyImage.hpp"
+
+1302614014 c:\users\lavahine\documents\projet_multimedia\myimage.hpp
+	<iostream>
+	<sstream>
+	<string>
+	<OpenCV/cv.h>
+	<OpenCV/highgui.h>
+
+1302677332 source:c:\users\lavahine\documents\projet_multimedia\main.cpp
+	<iostream>
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	"lib.h"
+
+1302677332 c:\users\lavahine\documents\projet_multimedia\lib.h
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	"DCT.h"
+	"MyImage.hpp"
+
+1302677327 c:\users\lavahine\documents\projet_multimedia\dct.h
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	<iostream>
+	"lib.h"
+	"MyImage.hpp"
+
+1302677332 source:c:\users\lavahine\documents\projet_multimedia\dct.cpp
+	"DCT.h"
+
+=======
+<<<<<<< .mine
 1302676743 source:c:\users\gabriel\documents\projet programmation\projet multimédia\myimage.cpp
 	<cstdio>
 	<iostream>
@@ -125,3 +165,4 @@
 	"DCT.h"
 
 >>>>>>> .r18
+>>>>>>> .r19
