@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    IplImage * BGR = cvOpenImage( "C:\\Users\\Nicolas\\Desktop\\Test\\bin\\Debug\\mandril.jpg" );
+    IplImage * BGR = cvOpenImage( "mandril.jpg" );
     cvShowAnyImage( BGR, "BGR" );
 
     IplImage * YUV = cvBGR2YUV( BGR );
