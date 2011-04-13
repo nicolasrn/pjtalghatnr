@@ -15,7 +15,7 @@
  *@return IplImage* l'image qui a subit la DCT par bloc
  */
 IplImage* DCT3(IplImage *I, int taille);
-
+IplImage* DCTDC (IplImage *I,int taille);
 /**
  *execute la dect inverse
  *@param I : l'image référence : travail sur une copie de l'image et retourne cette copie

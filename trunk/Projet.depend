@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1302600615 source:c:\users\alex\desktop\projet\main.cpp
+1302685818 source:c:\users\alex\desktop\projet\main.cpp
 	<iostream>
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	"lib.h"
 
 1302682839 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
@@ -42,4 +45,39 @@
 	<string>
 	<OpenCV/cv.h>
 	<OpenCV/highgui.h>
+
+1302613987 source:c:\users\alex\desktop\projet\myimage.cpp
+	<cstdio>
+	<iostream>
+	<sstream>
+	<string>
+	<OpenCV/cv.h>
+	<OpenCV/highgui.h>
+	"MyImage.hpp"
+
+1302613987 c:\users\alex\desktop\projet\myimage.hpp
+	<iostream>
+	<sstream>
+	<string>
+	<OpenCV/cv.h>
+	<OpenCV/highgui.h>
+
+1302676852 source:c:\users\alex\desktop\projet\lib.cpp
+	"lib.h"
+
+1302677281 c:\users\alex\desktop\projet\lib.h
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	"DCT.h"
+	"MyImage.hpp"
+
+1302685818 c:\users\alex\desktop\projet\dct.h
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	<iostream>
+	"lib.h"
+	"MyImage.hpp"
+
+1302685818 source:c:\users\alex\desktop\projet\dct.cpp
+	"DCT.h"
 
