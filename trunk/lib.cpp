@@ -102,6 +102,42 @@ IplImage * cvYUV2BGR( IplImage * YUV )
     return BGR;
 }
 
+int getMultiple16(int nb)
+{
+    int mul = 0;
+
+    while((nb+mul)%16 != 0)
+          mul++;
+
+    return mul + nb;
+}
+
+IplImage * ajustementImage(IplImage *image)
+{
+    int widthAjuste = 0, heightAjuste = 0;
+
+    if (image->width % 16 != 0) //ajustement de la width
+        widthAjuste = getMultiple16(image->width);
+
+    if (image->height % 16 != 0) //ajustement de la height
+        heightAjuste = getMultiple16(image->height);
+
+    //creation de l'image ajustée
+    IplImage *A = cvCreateImage(cvSize(widthAjuste, heightAjuste), IPL_DEPTH_64F, image->nChannels);
+    CvScalar px;
+
+    //remplissage avec du noir de l'image
+    for(int i = 0; i < image->height; i++)
+    {
+        for(int j = 0; j < image->width; j++)
+        {
+            px = cvGet2D(image, i, j);
+            cvSet2D(A, i, j, px);
+        }
+    }
+
+    return A;
+}
 
 int* quantification(IplImage * I, int QP, int* R,int i){
 
@@ -167,7 +203,6 @@ return q;
 
 }
 
-
 int **applyQuantification( IplImage *I, int QP, int* R, int i){
 
     int **tab = (int **)malloc (sizeof(int*)* I->width * I->height);
@@ -188,7 +223,6 @@ int **applyQuantification( IplImage *I, int QP, int* R, int i){
 
     return tab;
 }
-
 
  IplImage * predictImage(IplImage * I, int taille){
 
@@ -255,39 +289,3 @@ void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int ta
     cvSet2D( Ipred, ligne, colonne, pxIpred);
 }
 
-int getMultiple16(int nb)
-{
-    int mul = 0;
-
-    while((nb+mul)%16 != 0)
-          mul++;
-
-    return mul + nb;
-}
-
-IplImage * ajustementImage(IplImage *image)
-{
-    int widthAjuste = 0, heightAjuste = 0;
-
-    if (image->width % 16 != 0) //ajustement de la width
-        widthAjuste = getMultiple16(image->width);
-
-    if (image->height % 16 != 0) //ajustement de la height
-        heightAjuste = getMultiple16(image->height);
-
-    //creation de l'image ajustée
-    IplImage *A = cvCreateImage(cvSize(widthAjuste, heightAjuste), IPL_DEPTH_64F, image->nChannels);
-    CvScalar px;
-
-    //remplissage avec du noir de l'image
-    for(int i = 0; i < image->height; i++)
-    {
-        for(int j = 0; j < image->width; j++)
-        {
-            px = cvGet2D(image, i, j);
-            cvSet2D(A, i, j, px);
-        }
-    }
-
-    return A;
-}

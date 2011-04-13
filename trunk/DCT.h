@@ -15,7 +15,7 @@
  *@return IplImage* l'image qui a subit la DCT par bloc
  */
 IplImage* DCT3(IplImage *I, int taille);
-IplImage* DCTDC (IplImage *I,int taille);
+
 /**
  *execute la dect inverse
  *@param I : l'image référence : travail sur une copie de l'image et retourne cette copie
@@ -23,5 +23,13 @@ IplImage* DCTDC (IplImage *I,int taille);
  *@return IplImage* l'image qui a subit la DCT par bloc
  */
 IplImage* InverseDCT(IplImage *I, int taille);
+
+/**
+ *execute la dct sur les DC de chaque bloc de taille taille
+ *@param I : l'image référence : travail sur une copie de l'image et retourne cette copie
+ *@param taille : la taille du bloc sur lequel on veut appliquer la DCT
+ *@return IplImage* l'image qui a subit la DCT par bloc
+ */
+IplImage* DCTDC (IplImage *I,int taille);
 
 #endif // DCT_H_INCLUDED
