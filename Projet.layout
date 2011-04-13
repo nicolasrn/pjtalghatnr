@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="DCT.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="223" topLine="0" />
+	<File name="DCT.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="1167" topLine="0" />
 	</File>
-	<File name="DCT.h" open="1" top="0" tabpos="4">
-		<Cursor position="168" topLine="1" />
+	<File name="DCT.h" open="0" top="0" tabpos="4">
+		<Cursor position="495" topLine="9" />
 	</File>
 	<File name="MyImage.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="7746" topLine="302" />
+		<Cursor position="7081" topLine="280" />
 	</File>
 	<File name="MyImage.hpp" open="0" top="0" tabpos="7">
-		<Cursor position="2784" topLine="84" />
+		<Cursor position="2130" topLine="0" />
 	</File>
-	<File name="lib.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="1960" topLine="42" />
+	<File name="lib.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="18" topLine="0" />
 	</File>
-	<File name="lib.h" open="1" top="0" tabpos="2">
-		<Cursor position="526" topLine="0" />
+	<File name="lib.h" open="0" top="0" tabpos="2">
+		<Cursor position="163" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="139" topLine="9" />
+	<File name="main.cpp" open="1" top="1" tabpos="0">
+		<Cursor position="414" topLine="66" />
 	</File>
 </CodeBlocks_layout_file>

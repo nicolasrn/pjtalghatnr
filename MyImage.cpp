@@ -279,7 +279,7 @@ IplImage* cvOpenImage( const char* filename )
 	}
 }
 
-void cvShowAnyImage( IplImage* I, string s, int x, int y )
+void cvShowAnyImage(IplImage* I, string s, int x, int y )
 {
 	IplImage * J ;
 
@@ -287,7 +287,7 @@ void cvShowAnyImage( IplImage* I, string s, int x, int y )
         J = I;
     else if( I->depth == IPL_DEPTH_64F )
     {
-        int nCh = I->nChannels, pos;
+        int nCh = I->nChannels;//, pos;
         CvScalar pxI, pxJ;
 
         double * minPix, * maxPix;

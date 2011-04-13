@@ -92,7 +92,7 @@ IplImage*	cvOpenImage( const char * filename );
  * @param s : striing as title fo the window
  * @param x, y : position coordonate of the window
  */
-void cvShowAnyImage( IplImage * I, string s = "Nimp!!!", int x = 800, int y = 200 );
+void cvShowAnyImage(IplImage * I, string s = "Nimp !!!!" , int x = 800, int y = 200 );
 
 void minmax( IplImage * X );
 

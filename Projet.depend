@@ -2,32 +2,32 @@
 1302600615 source:c:\users\alex\desktop\projet\main.cpp
 	<iostream>
 
-1302617127 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
+1302682839 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"lib.h"
 
-1302625958 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
+1302682147 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<iostream>
 	"lib.h"
 	"MyImage.hpp"
 
-1302639330 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
+1302681838 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
 	"MyImage.hpp"
 
-1302625937 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+1302682979 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
 	"lib.h"
 
-1302625950 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
+1302679444 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
 	"DCT.h"
 
-1302613136 source:c:\users\nicolas\documents\projetmultimedia\projet\myimage.cpp
+1302682886 source:c:\users\nicolas\documents\projetmultimedia\projet\myimage.cpp
 	<cstdio>
 	<iostream>
 	<sstream>
@@ -36,7 +36,7 @@
 	<OpenCV/highgui.h>
 	"MyImage.hpp"
 
-1299659918 c:\users\nicolas\documents\projetmultimedia\projet\myimage.hpp
+1302681555 c:\users\nicolas\documents\projetmultimedia\projet\myimage.hpp
 	<iostream>
 	<sstream>
 	<string>
