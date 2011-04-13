@@ -5,29 +5,30 @@
 	<opencv/highgui.h>
 	"lib.h"
 
-1302682839 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
+1302684199 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"lib.h"
 
-1302682147 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
+1302684372 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<iostream>
 	"lib.h"
 	"MyImage.hpp"
 
-1302681838 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
+1302684266 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
 	"MyImage.hpp"
 
-1302682979 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+1302684322 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
 	"lib.h"
+	"math.h"
 
-1302679444 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
+1302684406 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
 	"DCT.h"
 
 1302682886 source:c:\users\nicolas\documents\projetmultimedia\projet\myimage.cpp
@@ -46,7 +47,8 @@
 	<OpenCV/cv.h>
 	<OpenCV/highgui.h>
 
-<<<<<<< .mine
+1302677332 ne
+
 1302614014 source:c:\users\lavahine\documents\projet_multimedia\myimage.cpp
 	<cstdio>
 	<iostream>
@@ -85,8 +87,6 @@
 1302677332 source:c:\users\lavahine\documents\projet_multimedia\dct.cpp
 	"DCT.h"
 
-=======
-<<<<<<< .mine
 1302676743 source:c:\users\gabriel\documents\projet programmation\projet multimédia\myimage.cpp
 	<cstdio>
 	<iostream>
@@ -128,7 +128,8 @@
 	<opencv/highgui.h>
 	"lib.h"
 
-=======
+1302677233 ghgui.h>
+
 1302613987 source:c:\users\alex\desktop\projet\myimage.cpp
 	<cstdio>
 	<iostream>
@@ -164,5 +165,7 @@
 1302685818 source:c:\users\alex\desktop\projet\dct.cpp
 	"DCT.h"
 
->>>>>>> .r18
->>>>>>> .r19
+1302685818 8
+
+1302685818 9
+
