@@ -44,6 +44,31 @@ void separateComponents( IplImage * YUV, IplImage *&Y, IplImage *&U, IplImage *&
 IplImage * cvYUV2BGR( IplImage * YUV );
 
 /**
+ *@param I : l'image sur laquelle se portera la prédiction
+ *@param taille : taille des zone des prédictions
+ *@return IplImage : l'image en prédite
+ */
+ IplImage * predictImage(IplImage * I, int taille);
+
+/**
+ *@param ligne : indice de la ligne de la zone à prédire
+ *@param colonne : indice de la colonne de la zone à prédire
+ *@param I : image de référence pour la prédiction
+ *@param Ipred : l'image sur laquelle se portera la prédiction
+ *@param taille : taille des zones des prédictions
+ */
+void predictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille);
+
+/**
+ *@param ligne : indice de la ligne du pixel à prédire
+ *@param colonne : indice de la colonne du pixel à prédire
+ *@param I : image de référence pour la prédiction
+ *@param Ipred : l'image sur laquelle se portera la prédiction
+ *@param taille : taille des zones des prédictions
+ */
+void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille);
+
+/**
  *renvoie le multiple de 16 le plus proche de nb
  *@param nb : le nombre qu'il faut ajuster
  */
