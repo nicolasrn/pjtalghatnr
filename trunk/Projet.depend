@@ -87,7 +87,7 @@
 1302677332 source:c:\users\lavahine\documents\projet_multimedia\dct.cpp
 	"DCT.h"
 
-1302676743 source:c:\users\gabriel\documents\projet programmation\projet multimédia\myimage.cpp
+1302687096 source:c:\users\gabriel\documents\projet programmation\projet multimédia\myimage.cpp
 	<cstdio>
 	<iostream>
 	<sstream>
@@ -96,33 +96,34 @@
 	<OpenCV/highgui.h>
 	"MyImage.hpp"
 
-1302676743 c:\users\gabriel\documents\projet programmation\projet multimédia\myimage.hpp
+1302687096 c:\users\gabriel\documents\projet programmation\projet multimédia\myimage.hpp
 	<iostream>
 	<sstream>
 	<string>
 	<OpenCV/cv.h>
 	<OpenCV/highgui.h>
 
-1302676743 source:c:\users\gabriel\documents\projet programmation\projet multimédia\lib.cpp
+1303223234 source:c:\users\gabriel\documents\projet programmation\projet multimédia\lib.cpp
 	"lib.h"
+	"math.h"
 
-1302686142 c:\users\gabriel\documents\projet programmation\projet multimédia\lib.h
+1303223234 c:\users\gabriel\documents\projet programmation\projet multimédia\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
 	"MyImage.hpp"
 
-1302676743 c:\users\gabriel\documents\projet programmation\projet multimédia\dct.h
+1303223234 c:\users\gabriel\documents\projet programmation\projet multimédia\dct.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<iostream>
 	"lib.h"
 	"MyImage.hpp"
 
-1302676743 source:c:\users\gabriel\documents\projet programmation\projet multimédia\dct.cpp
+1303223234 source:c:\users\gabriel\documents\projet programmation\projet multimédia\dct.cpp
 	"DCT.h"
 
-1302677233 source:c:\users\gabriel\documents\projet programmation\projet multimédia\main.cpp
+1303223234 source:c:\users\gabriel\documents\projet programmation\projet multimédia\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
