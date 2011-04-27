@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    IplImage * BGR, *image = cvLoadImage( "mandril.jpg" );
+    IplImage * BGR, *image = cvLoadImage( "fraise.jpg" );
     BGR = ajustementImage(image);
 
     IplImage * YUV = cvBGR2YUV( BGR );
@@ -23,13 +23,18 @@ int main()
     for(int i = 0; i < dct->width; i++)
         strategie[i] = new int[dct->height];
 
-    predictImage(dct, 4, strategie);
+    IplImage *pred = predictImage(dct, 4, strategie);
+    cvShowAnyImageYUV("pred", pred);
 
-    for(int i = 4; i < 8; i++)
-        for(int j = 0; j < 4; j++)
-            std::cout << "(" << i << ", " << j << ") : " << strategie[i][j] << std::endl;
+    int R[2] = {0, 1};
+    applyQuantification(pred, 1, R, 1);
+    /*for(int i = 0; i < dct->width; i++)
+        for(int j = 0; j < dct->height; j++)
+            std::cout << "(" << i << ", " << j << ") : " << strategie[i][j] << std::endl;*/
+
 
     cvDestroyWindow("DCT Y");
+    cvDestroyWindow("pred");
 
     cvReleaseImage(&BGR);
     cvReleaseImage(&image);
@@ -38,6 +43,7 @@ int main()
     cvReleaseImage(&U);
     cvReleaseImage(&V);
     cvReleaseImage(&dct);
+    cvReleaseImage(&pred);
 
     return EXIT_SUCCESS;
 }
