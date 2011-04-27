@@ -28,8 +28,6 @@ int main()
     Bb = DCTDC(U,4);
     Bc = DCTDC(V,4);
 
-
-
     IplImage * BGR_back = cvYUV2BGR( YUV );
 
     IplImage *ia, *ib, *ic;
@@ -125,7 +123,7 @@ int main()
 	cvDestroyWindow("bis");
 
 	cvReleaseImage(&image);
-	cvReleaseImage(&bis);*/
+	cvReleaseImage(&bis);
 
-    return EXIT_SUCCESS;
+    return EXIT_SUCCESS;*/
 }
