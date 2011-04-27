@@ -9,7 +9,7 @@
 /**
  *@param Original_Y: image de référence pour la Y
  *@param Original_U: image de référence pour la
- *@param Original_V :
+ *@param Original_V : image de référence pour la
  *@param Ipred : l'image sur laquelle se portera la prédiction
  *@param taille : taille des zones des prédictions
  *@param strategie : tableau à deux dimensions représentant la stratégie à adapter

@@ -126,14 +126,14 @@ void ReverseQuantification (IplImage * I, int QB, int* R, int i, int ** q, int c
  *@param width : largeur du tableau
  *@return height : hauteur en prédite
  */
-void intializeStrategie(int** strategie, int width, int height);
+void intializeStrategie(int** &strategie, int width, int height);
 
 /**
  *@param I : l'image sur laquelle se portera la prédiction
  *@param taille : taille des zone des prédictions
  *@return IplImage : l'image en prédite
  */
- IplImage * predictImage(IplImage * I, int taille, int** strategie);
+ IplImage * predictImage(IplImage * I, int taille, int** &strategie);
 
 /**
  *@param ligne : indice de la ligne de la zone à prédire
@@ -142,7 +142,7 @@ void intializeStrategie(int** strategie, int width, int height);
  *@param Ipred : l'image sur laquelle se portera la prédiction
  *@param taille : taille des zones des prédictions
  */
-void predictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int** strategie);
+void predictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int** &strategie);
 
 /**
  *@param ligne : indice de la ligne du pixel à prédire
@@ -151,6 +151,6 @@ void predictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int tai
  *@param Ipred : l'image sur laquelle se portera la prédiction
  *@param taille : taille des zones des prédictions
  */
-void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int** strategie);
+void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int** &strategie);
 
 #endif // LIB_H_INCLUDED

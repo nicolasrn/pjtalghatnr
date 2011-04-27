@@ -107,7 +107,7 @@
 	"lib.h"
 	"math.h"
 
-1303223234 c:\users\gabriel\documents\projet programmation\projet multimédia\lib.h
+1303910330 c:\users\gabriel\documents\projet programmation\projet multimédia\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
@@ -169,4 +169,37 @@
 1302685818 8
 
 1302685818 9
+
+1269292596 source:c:\users\gabriel\documents\projet programmation\projet multimédia\tinystr.cpp
+	"tinystr.h"
+
+1269292596 c:\users\gabriel\documents\projet programmation\projet multimédia\tinystr.h
+	<assert.h>
+	<string.h>
+
+1269292596 source:c:\users\gabriel\documents\projet programmation\projet multimédia\tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1269292596 c:\users\gabriel\documents\projet programmation\projet multimédia\tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1269292596 source:c:\users\gabriel\documents\projet programmation\projet multimédia\tinyxmlerror.cpp
+	"tinyxml.h"
+
+1269292596 source:c:\users\gabriel\documents\projet programmation\projet multimédia\tinyxmlparser.cpp
+	<ctype.h>
+	<stddef.h>
+	"tinyxml.h"
+	<windows.h>
 

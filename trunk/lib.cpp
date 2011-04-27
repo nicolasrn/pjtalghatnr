@@ -310,7 +310,7 @@ q[l+3][c+3] = floor(px.val[0]/(pow(2, QP+R[i])));
 void intializeStrategie(int **&strategie, int width, int height){
     for(int i = 0; i < height; i++)
         for(int j = 0; j < width; j++)
-            strategie[j,i] = 0;
+            strategie[j][i] = 0;
 }
 
 IplImage * predictImage(IplImage * I, int taille, int **&strategie){
@@ -338,7 +338,7 @@ void predictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int tai
 {
 
     //prediction du pixel DC de l'image
-    predictPixel(ligne, colonne, I, Ipred, taille);
+    predictPixel(ligne, colonne, I, Ipred, taille, strategie);
 
     //On fait la prédiction sur la ligne haute des AD
     for(int k = 1; k < taille; k++)
@@ -379,11 +379,11 @@ void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int ta
     //On recherche la meilleur stratégie pour le pixel
     if(pxI.val[0] - pxITop.val[0] < pxI.val[0] - pxILeft.val[0]){
         pxBest.val[0] = pxI.val[0] - pxITop.val[0];
-        strategie[ligne,colonne]= 1;
+        strategie[ligne][colonne] = 1;
     }
     else{
         pxBest.val[0] = pxI.val[0] - pxILeft.val[0];
-        strategie[ligne,colonne]= 2;
+        strategie[ligne][colonne] = 2;
     }
 
     pxIpred.val[0] = pxI.val[0] - pxBest.val[0];
