@@ -11,6 +11,41 @@ int main()
 {
     IplImage * BGR, *image = cvLoadImage( "mandril.jpg" );
     BGR = ajustementImage(image);
+
+    IplImage * YUV = cvBGR2YUV( BGR );
+    IplImage *Y, *U, *V;
+    separateComponents(YUV, Y, U, V);
+
+    IplImage * dct = DCT3(Y, 4);
+    cvShowAnyImageYUV("DCT Y", dct);
+
+    int **strategie = new int*[dct->width];
+    for(int i = 0; i < dct->width; i++)
+        strategie[i] = new int[dct->height];
+
+    predictImage(dct, 4, strategie);
+
+    for(int i = 4; i < 8; i++)
+        for(int j = 0; j < 4; j++)
+            std::cout << "(" << i << ", " << j << ") : " << strategie[i][j] << std::endl;
+
+    cvDestroyWindow("DCT Y");
+
+    cvReleaseImage(&BGR);
+    cvReleaseImage(&image);
+    cvReleaseImage(&YUV);
+    cvReleaseImage(&Y);
+    cvReleaseImage(&U);
+    cvReleaseImage(&V);
+    cvReleaseImage(&dct);
+
+    return EXIT_SUCCESS;
+}
+
+/*int main()
+{
+    IplImage * BGR, *image = cvLoadImage( "fraise.jpg" );
+    BGR = ajustementImage(image);
     cvShowAnyImageYUV("BGR", BGR);
 
     IplImage *imgRecouvert = recouvrement(BGR, 4);
@@ -116,7 +151,8 @@ int main()
 
     return EXIT_SUCCESS;
 
-    /*IplImage *image = cvOpenImage( "fraise.jpg" );
+    //commentaire
+    *IplImage *image = cvOpenImage( "fraise.jpg" );
     IplImage *bis = ajustementImage(image);
 
     cvNamedWindow("image", CV_WINDOW_AUTOSIZE);
@@ -133,5 +169,6 @@ int main()
 	cvReleaseImage(&image);
 	cvReleaseImage(&bis);
 
-    return EXIT_SUCCESS;*/
+    return EXIT_SUCCESS;
 }
+*/

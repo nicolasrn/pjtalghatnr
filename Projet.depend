@@ -5,7 +5,7 @@
 	<opencv/highgui.h>
 	"lib.h"
 
-1303901507 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
+1303905794 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
@@ -18,13 +18,13 @@
 	"lib.h"
 	"MyImage.hpp"
 
-1303900973 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
+1303903530 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
 	"MyImage.hpp"
 
-1303901491 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+1303906098 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
 	"lib.h"
 	"math.h"
 
@@ -198,6 +198,39 @@
 	"tinyxml.h"
 
 1269292596 source:c:\users\gabriel\documents\projet programmation\projet multimédia\tinyxmlparser.cpp
+	<ctype.h>
+	<stddef.h>
+	"tinyxml.h"
+	<windows.h>
+
+1303290193 source:c:\users\nicolas\documents\projetmultimedia\projet\tinystr.cpp
+	"tinystr.h"
+
+1303290193 c:\users\nicolas\documents\projetmultimedia\projet\tinystr.h
+	<assert.h>
+	<string.h>
+
+1303290193 source:c:\users\nicolas\documents\projetmultimedia\projet\tinyxml.cpp
+	<ctype.h>
+	<sstream>
+	<iostream>
+	"tinyxml.h"
+
+1303290193 c:\users\nicolas\documents\projetmultimedia\projet\tinyxml.h
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<string>
+	<iostream>
+	<sstream>
+	"tinystr.h"
+
+1303290193 source:c:\users\nicolas\documents\projetmultimedia\projet\tinyxmlerror.cpp
+	"tinyxml.h"
+
+1303290193 source:c:\users\nicolas\documents\projetmultimedia\projet\tinyxmlparser.cpp
 	<ctype.h>
 	<stddef.h>
 	"tinyxml.h"

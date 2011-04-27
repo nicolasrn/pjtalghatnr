@@ -122,7 +122,7 @@ IplImage* ajustementImage(IplImage *image)
     if (image->height % 16 != 0) //ajustement de la height
         heightAjuste = getMultiple16(image->height);
 
-    std::cout << widthAjuste << ", " << heightAjuste << std::endl;
+    //std::cout << widthAjuste << ", " << heightAjuste << std::endl;
     //creation de l'image ajustée
     IplImage *A = cvCreateImage(cvSize(widthAjuste, heightAjuste), IPL_DEPTH_64F, image->nChannels);
     CvScalar px;
@@ -363,14 +363,14 @@ void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int ta
     pxI = cvGet2D( I, ligne, colonne );
 
     //On vérifie qu'on n'est pas sur une zone de bord haut
-    if(ligne == 0){
+    if(ligne - taille <= 0){
         pxITop.val[0] = pxI.val[0];
     }
     else
         pxITop = cvGet2D( I, ligne - taille, colonne);
 
     //On vérifie qu'on n'est pas sur une zone de bord gauche
-    if(colonne == 0){
+    if(colonne - taille <= 0){
         pxILeft.val[0] = pxI.val[0];
     }
     else
@@ -381,7 +381,7 @@ void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int ta
         pxBest.val[0] = pxI.val[0] - pxITop.val[0];
         strategie[ligne][colonne] = 1;
     }
-    else{
+    else if (pxI.val[0] - pxITop.val[0] > pxI.val[0] - pxILeft.val[0]){
         pxBest.val[0] = pxI.val[0] - pxILeft.val[0];
         strategie[ligne][colonne] = 2;
     }
