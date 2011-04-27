@@ -39,6 +39,12 @@
 		<Unit filename="lib.cpp" />
 		<Unit filename="lib.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="tinystr.cpp" />
+		<Unit filename="tinystr.h" />
+		<Unit filename="tinyxml.cpp" />
+		<Unit filename="tinyxml.h" />
+		<Unit filename="tinyxmlerror.cpp" />
+		<Unit filename="tinyxmlparser.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
