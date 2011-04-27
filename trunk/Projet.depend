@@ -5,7 +5,7 @@
 	<opencv/highgui.h>
 	"lib.h"
 
-1303900057 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
+1303901507 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
@@ -24,7 +24,7 @@
 	"DCT.h"
 	"MyImage.hpp"
 
-1303900014 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+1303901491 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
 	"lib.h"
 	"math.h"
 

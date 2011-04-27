@@ -114,7 +114,7 @@ int getMultiple16(int nb)
 
 IplImage* ajustementImage(IplImage *image)
 {
-    int widthAjuste = 0, heightAjuste = 0;
+    int widthAjuste = image->width, heightAjuste = image->height;
 
     if (image->width % 16 != 0) //ajustement de la width
         widthAjuste = getMultiple16(image->width);
@@ -122,6 +122,7 @@ IplImage* ajustementImage(IplImage *image)
     if (image->height % 16 != 0) //ajustement de la height
         heightAjuste = getMultiple16(image->height);
 
+    std::cout << widthAjuste << ", " << heightAjuste << std::endl;
     //creation de l'image ajustée
     IplImage *A = cvCreateImage(cvSize(widthAjuste, heightAjuste), IPL_DEPTH_64F, image->nChannels);
     CvScalar px;
@@ -141,15 +142,15 @@ IplImage* ajustementImage(IplImage *image)
 
 IplImage* recouvrement(IplImage *image, int taille)
 {
-    IplImage *A = cvCreateImage(cvSize(image->width - taille/2, image->height - taille/2), IPL_DEPTH_64F, image->nChannels);
+    IplImage *A = cvCreateImage(cvSize(image->width - taille, image->height - taille), IPL_DEPTH_64F, image->nChannels);
     CvScalar px;
 
-    for(int i = taille/2; i < A->height - taille/2; i++)
+    for(int i = taille/2; i < image->height - taille/2; i++)
     {
-        for(int j = taille/2; j < A->width - taille/2; j++)
+        for(int j = taille/2; j < image->width - taille/2; j++)
         {
             px = cvGet2D(image, i, j);
-            cvSet2D(A, i - 2, j - 2, px);
+            cvSet2D(A, i - taille/2, j - taille/2, px);
         }
     }
 
