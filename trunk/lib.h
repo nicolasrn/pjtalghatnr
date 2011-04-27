@@ -3,7 +3,7 @@
 
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
-#include <
+
 
 #include "DCT.h"
 #include "MyImage.hpp"
@@ -70,7 +70,15 @@ int getMultiple16(int nb);
  *@param image : l'image à ajuster
  *@return IplImage : l'image dont les dimensions sont multiples de 16
  */
-IplImage * ajustementImage(IplImage *image);
+IplImage* ajustementImage(IplImage *image);
+
+/**
+ *recouvre l'image
+ *@param image : l'image d'origine
+ *@param taile : represente la taille a rogner sur les cotés. taille/2 pixels sont rogné à gauche, à droite, en haut, en bas
+ *@return IplImage : le resultat recouvert
+ */
+IplImage* recouvrement(IplImage *image, int taille);
 
 /**
  *Applique la quatification sur l'image
@@ -101,6 +109,7 @@ int **applyQuantification( IplImage *I, int QP, int* R, int i);
  *@param heigh : hauteur du tableau
  */
  IplImage * ReverseApplyQuantification(int ** q, int QP, int* R, int i, int width, int heigh);
+
 /**
  *applique la quatification inverse sur une zone de l'image
  *@param I : l'image sur laquelle porte la quantification inverse
@@ -111,7 +120,6 @@ int **applyQuantification( IplImage *I, int QP, int* R, int i);
  *@param ligne : numéro de la ligne pour la zone de l'image à traiter
  */
 void ReverseQuantification (IplImage * I, int QB, int* R, int i, int ** q, int col, int ligne);
-
 
 /**
  *@param I : l'image sur laquelle se portera la prédiction

@@ -13,6 +13,9 @@ int main()
     BGR = ajustementImage(image);
     cvShowAnyImageYUV("BGR", BGR);
 
+    IplImage *imgRecouvert = recouvrement(BGR, 4);
+    cvShowAnyImageYUV("Recouvrement", imgRecouvert);
+
     IplImage * YUV = cvBGR2YUV( BGR );
     cvShowAnyImageYUV("YUV", YUV);
 
@@ -37,7 +40,6 @@ int main()
 
     IplImage *reconst = unifiateComponents(ia, ib, ic);
     IplImage *reconstBGR = cvYUV2BGR(reconst);
-
 
     cvShowImage("DCTY",a);
     cvShowImage("DCTU",b);
@@ -72,6 +74,7 @@ int main()
 
     cvShowAnyImageYUV("sub", res);
 
+    cvDestroyWindow("Recouvrement");
     cvDestroyWindow("Y");
     cvDestroyWindow("U");
     cvDestroyWindow("V");
@@ -88,6 +91,11 @@ int main()
     cvDestroyWindow("IC");
 
     cvDestroyWindow("sub");
+
+    cvReleaseImage( &BGR );
+    cvReleaseImage( &YUV );
+
+    cvReleaseImage( &imgRecouvert );
 
     cvReleaseImage( &Y );
     cvReleaseImage( &U );

@@ -112,7 +112,7 @@ int getMultiple16(int nb)
     return mul + nb;
 }
 
-IplImage * ajustementImage(IplImage *image)
+IplImage* ajustementImage(IplImage *image)
 {
     int widthAjuste = 0, heightAjuste = 0;
 
@@ -139,67 +139,81 @@ IplImage * ajustementImage(IplImage *image)
     return A;
 }
 
-
-void quantification(IplImage * I, int QP, int* R,int i,int ** q,int c,int l){
-
+IplImage* recouvrement(IplImage *image, int taille)
+{
+    IplImage *A = cvCreateImage(cvSize(image->width - taille/2, image->height - taille/2), IPL_DEPTH_64F, image->nChannels);
     CvScalar px;
 
-//Remplissage manuel de x en triant selon le modèle
-px = cvGet2D( I, 0, 0);
-q[l][c] = floor(px.val[0]/(pow(2, QP+R[i])));
+    for(int i = taille/2; i < A->height - taille/2; i++)
+    {
+        for(int j = taille/2; j < A->width - taille/2; j++)
+        {
+            px = cvGet2D(image, i, j);
+            cvSet2D(A, i - 2, j - 2, px);
+        }
+    }
 
-px = cvGet2D( I, 0, 1);
-q[l][c+1] = floor(px.val[0]/(pow(2, QP+R[i])));
+    return A;
+}
 
-px = cvGet2D( I, 1, 0);
-q[l+1][c] = floor(px.val[0]/(pow(2, QP+R[i])));
+void quantification(IplImage * I, int QP, int* R,int i,int ** q,int c,int l)
+{
+    CvScalar px;
 
-px = cvGet2D( I, 0, 2);
-q[l][c+2] = floor(px.val[0]/(pow(2, QP+R[i])));
+	//Remplissage manuel de x en triant selon le modèle
+	px = cvGet2D( I, 0, 0);
+	q[l][c] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 2, 0);
-q[l+2][c] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 0, 1);
+	q[l][c+1] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 0, 3);
-q[l][c+3] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 1, 0);
+	q[l+1][c] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 3, 0);
-q[l+3][c] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 0, 2);
+	q[l][c+2] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 1, 1);
-q[l+1][c+1] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 2, 0);
+	q[l+2][c] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 1, 2);
-q[l+1][c+2] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 0, 3);
+	q[l][c+3] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 2, 1);
-q[l+2][c+1] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 3, 0);
+	q[l+3][c] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 3, 1);
-q[l+3][c+1] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 1, 1);
+	q[l+1][c+1] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 2, 2);
-q[l+2][c+2] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 1, 2);
+	q[l+1][c+2] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 1, 3);
-q[l+1][c+3] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 2, 1);
+	q[l+2][c+1] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 2, 3);
-q[l+2][c+3] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 3, 1);
+	q[l+3][c+1] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 3, 2);
-q[l+3][c+2] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 2, 2);
+	q[l+2][c+2] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-px = cvGet2D( I, 3, 3);
-q[l+3][c+3] = floor(px.val[0]/(pow(2, QP+R[i])));
+	px = cvGet2D( I, 1, 3);
+	q[l+1][c+3] = floor(px.val[0]/(pow(2, QP+R[i])));
 
-    return q;
+	px = cvGet2D( I, 2, 3);
+	q[l+2][c+3] = floor(px.val[0]/(pow(2, QP+R[i])));
+
+	px = cvGet2D( I, 3, 2);
+	q[l+3][c+2] = floor(px.val[0]/(pow(2, QP+R[i])));
+
+	px = cvGet2D( I, 3, 3);
+	q[l+3][c+3] = floor(px.val[0]/(pow(2, QP+R[i])));
+
 }
 
 
-int **applyQuantification( IplImage *I, int QP, int* R, int i){
-
-
+int **applyQuantification( IplImage *I, int QP, int* R, int i)
+{
     int **tab = (int **)malloc (sizeof(int*)* I->width * I->height);
 
     //penser a copier l'image I
@@ -219,24 +233,23 @@ int **applyQuantification( IplImage *I, int QP, int* R, int i){
     return tab;
 }
 
-
-IplImage * ReverseApplyQuantification(int ** q, int QP, int* R, int i, int width, int heigh)
+IplImage * ReverseApplyQuantification(int ** q, int QP, int* R, int i, int width, int height)
 {
-    IplImage * I = cvCreateImage(cvGetSize(YUV), YUV->depth, 1 );
+    IplImage * I = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1 );
 
     for(int l = 0; l < I->width; l += 4)
     {
         for(int j = 0; j < I->height; j += 4)
         {
-         cvSetImageROI(I, cvRect(l, j, 4, 4));
-            ReverseQuantification (I,QB,R,i,q,l,j);
-         cvResetImageROI(I) ;
+            cvSetImageROI(I, cvRect(l, j, 4, 4));
+            ReverseQuantification (I,QP,R,i,q,l,j);
+            cvResetImageROI(I) ;
         }
     }
-
+    return I;
 }
 
-void ReverseQuantification (IplImage * I, int QB, int* R, int i, int ** q, int col, int ligne){
+void ReverseQuantification (IplImage * I, int QP, int* R, int i, int ** q, int c, int l){
     CvScalar px;
 
 //Remplissage manuel de x en triant selon le modèle
