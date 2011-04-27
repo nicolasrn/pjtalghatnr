@@ -3,11 +3,27 @@
 
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
+#include <
 
 #include "DCT.h"
 #include "MyImage.hpp"
 
+/**
+ *Affiche une image en YUV ( fonction de Mr Paris )
+ *@param s : nom de la fênetre
+ *@param I : Image a afficher
+ *@param x : position d'affichage en x de la fenêtre
+ *@param y : position d'affichage en y de la fenêtre
+ */
 void cvShowAnyImageYUV(string s, IplImage * I, int x = 800, int y = 200 );
+
+/**
+ *Affiche une image en BGR ( fonction de Mr Paris )
+ *@param s : nom de la fênetre
+ *@param I : Image a afficher
+ *@param x : position d'affichage en x de la fenêtre
+ *@param y : position d'affichage en y de la fenêtre
+ */
 
 void cvShowAnyImage(string s, IplImage *I, int x = 800, int y = 200);
 
@@ -55,6 +71,47 @@ int getMultiple16(int nb);
  *@return IplImage : l'image dont les dimensions sont multiples de 16
  */
 IplImage * ajustementImage(IplImage *image);
+
+/**
+ *Applique la quatification sur l'image
+ *@param I : L'image
+ *@param QB : parametre de qualité
+ *@param R : pas de quatification
+ *@param q : tableau des valeurs quantifiées
+ *@param c : nombre de colonnes du tableau
+ *@param l : nombre de lignes du tableau
+ */
+void quantification(IplImage * I, int QP, int* R,int i,int ** q,int c,int l);
+
+/**
+ *Applique la quatification sur l'image
+ *@param I : L'image
+ *@param QB : parametre de qualité
+ *@param R : pas de quatification
+ *@return int** : retourne un tableau des valeurs quatifiées
+ */
+int **applyQuantification( IplImage *I, int QP, int* R, int i);
+
+/**
+ *Déquantifie les valeurs pour reconstruire l'image
+ *@param q : tableau des valeurs a déquantifier
+ *@param QB : parametre de qualité
+ *@param R : pas de quatification
+ *@param width : largeur du tableau
+ *@param heigh : hauteur du tableau
+ */
+ IplImage * ReverseApplyQuantification(int ** q, int QP, int* R, int i, int width, int heigh);
+/**
+ *applique la quatification inverse sur une zone de l'image
+ *@param I : l'image sur laquelle porte la quantification inverse
+ *@param QB : parametre de qualité
+ *@param R : pas de quatification
+ *@param q : suite de valeur a déquatifier
+ *@param col : numéro de la colone pour la zone de l'image à traiter
+ *@param ligne : numéro de la ligne pour la zone de l'image à traiter
+ */
+void ReverseQuantification (IplImage * I, int QB, int* R, int i, int ** q, int col, int ligne);
+
 
 /**
  *@param I : l'image sur laquelle se portera la prédiction
