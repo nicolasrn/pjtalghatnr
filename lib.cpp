@@ -215,7 +215,17 @@ void quantification(IplImage * I, int QP, int* R,int i,int ** q,int c,int l)
 
 int **applyQuantification( IplImage *I, int QP, int* R, int i)
 {
-    int **tab = (int **)malloc (sizeof(int*)* I->width * I->height);
+    //int **tab = (int **)malloc (sizeof(int*)* I->width * I->height);
+
+    //declaration mode c
+    int **tab = (int **)malloc (sizeof(int*)* I->width);
+    for(int k = 0; k < I->width; k++)
+        tab[k] = (int*)malloc(sizeof(int)*I->height);
+
+    //déclaration mode c++
+    //int **tab = new int*[I->width];
+    //for(int k = 0; k < I->width; k++)
+    //    tab[k] = new int[I->height];
 
     //penser a copier l'image I
     IplImage *A = cvCreateImage(cvSize(I->width, I->height), IPL_DEPTH_64F, 1);

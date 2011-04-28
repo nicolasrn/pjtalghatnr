@@ -4,8 +4,8 @@
 	<File name="DCT.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1859" topLine="46" />
 	</File>
-	<File name="DCT.h" open="0" top="0" tabpos="3">
-		<Cursor position="1067" topLine="18" />
+	<File name="DCT.h" open="1" top="0" tabpos="4">
+		<Cursor position="773" topLine="3" />
 	</File>
 	<File name="MyImage.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="7081" topLine="280" />
@@ -13,13 +13,19 @@
 	<File name="MyImage.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="2784" topLine="84" />
 	</File>
-	<File name="lib.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="3703" topLine="114" />
+	<File name="lib.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="6567" topLine="215" />
 	</File>
-	<File name="lib.h" open="0" top="0" tabpos="4">
-		<Cursor position="2205" topLine="73" />
+	<File name="lib.h" open="1" top="0" tabpos="3">
+		<Cursor position="2564" topLine="82" />
 	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="186" topLine="9" />
+	<File name="main.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="699" topLine="20" />
+	</File>
+	<File name="tinystr.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1134" topLine="72" />
+	</File>
+	<File name="tinyxml.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1253" topLine="30" />
 	</File>
 </CodeBlocks_layout_file>
