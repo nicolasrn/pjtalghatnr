@@ -26,7 +26,9 @@ int main()
     IplImage *pred = predictImage(dct, 4, strategie);
     cvShowAnyImageYUV("pred", pred);
 
-    int R[2] = {0, 1};
+    int *R = new int[2];
+    R[0] = 0;
+    R[1] = 1;
     applyQuantification(pred, 1, R, 1);
     /*for(int i = 0; i < dct->width; i++)
         for(int j = 0; j < dct->height; j++)
