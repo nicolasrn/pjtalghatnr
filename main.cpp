@@ -7,14 +7,28 @@
 
 using namespace std;
 
+//enum QP {faible = 1, moyen = 2, haut = 3, eleve = 4};
+struct valQP
+{
+    static const int faible = 4, moyen = 3, haut = 2, eleve = 1;
+};
+
+struct valR
+{
+    static const int grandeImage = 1, petiteImage = 0;
+};
+
+int Resolution[2] = {2, 0};
+
 int main()
 {
-    IplImage * BGR, *image = cvLoadImage( "fraise.jpg" );
+    IplImage * BGR, *image = cvLoadImage( "mandril.jpg" );
     BGR = ajustementImage(image);
 
     IplImage * YUV = cvBGR2YUV( BGR );
     IplImage *Y, *U, *V;
     separateComponents(YUV, Y, U, V);
+    cvShowAnyImageYUV("Y", Y);
 
     IplImage * dct = DCT3(Y, 4);
     cvShowAnyImageYUV("DCT Y", dct);
@@ -26,17 +40,28 @@ int main()
     IplImage *pred = predictImage(dct, 4, strategie);
     cvShowAnyImageYUV("pred", pred);
 
-    int *R = new int[2];
-    R[0] = 0;
-    R[1] = 1;
-    applyQuantification(pred, 1, R, 1);
-    /*for(int i = 0; i < dct->width; i++)
-        for(int j = 0; j < dct->height; j++)
-            std::cout << "(" << i << ", " << j << ") : " << strategie[i][j] << std::endl;*/
+    int ** q = applyQuantification(pred, valQP::faible, Resolution, valR::grandeImage);
+    //for(int i = 0; i < pred->width; i++)
+    //    for(int j = 0; j < pred->height; j++)
+    //        std::cout << "(" << i << ", " << j << ") : " << q[i][j] << std::endl;
 
+    IplImage *reverse = ReverseApplyQuantification(q, valQP::faible, Resolution, valR::grandeImage, pred->width, pred->height);
+    /*CvScalar a, b;
+    for(int i = 0; i < pred->height; i++)
+    {
+        for(int j = 0; j < pred->width; j++)
+        {
+            a = cvGet2D(pred, i, j);
+            b = cvGet2D(reverse, i, j);
+            cout << "res : (" << j << ", " << j << ") : " << a.val[0] << " ? " << b.val[0] << endl;
+        }
+    }*/
+    reverse = InverseDCT(reverse , 4);
+    cvShowAnyImageYUV("reverse", reverse);
 
     cvDestroyWindow("DCT Y");
     cvDestroyWindow("pred");
+    cvDestroyWindow("reverse");
 
     cvReleaseImage(&BGR);
     cvReleaseImage(&image);
@@ -46,6 +71,7 @@ int main()
     cvReleaseImage(&V);
     cvReleaseImage(&dct);
     cvReleaseImage(&pred);
+    cvReleaseImage(&reverse);
 
     return EXIT_SUCCESS;
 }

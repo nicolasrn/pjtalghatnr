@@ -5,30 +5,30 @@
 	<opencv/highgui.h>
 	"lib.h"
 
-1303982454 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
+1304372149 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"lib.h"
 
-1302684372 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
+1304374812 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<iostream>
 	"lib.h"
 	"MyImage.hpp"
 
-1303903530 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
+1304359943 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
 	"MyImage.hpp"
 
-1303982882 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+1304374101 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
 	"lib.h"
 	"math.h"
 
-1302684406 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
+1304371095 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
 	"DCT.h"
 
 1302682886 source:c:\users\nicolas\documents\projetmultimedia\projet\myimage.cpp

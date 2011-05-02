@@ -9,7 +9,7 @@
 #include "MyImage.hpp"
 
 /**
- *Affiche une image en YUV ( fonction de Mr Paris )
+ *Affiche une image en YUV ( fonction de Mr Paris v2)
  *@param s : nom de la fênetre
  *@param I : Image a afficher
  *@param x : position d'affichage en x de la fenêtre
@@ -18,7 +18,7 @@
 void cvShowAnyImageYUV(string s, IplImage * I, int x = 800, int y = 200 );
 
 /**
- *Affiche une image en BGR ( fonction de Mr Paris )
+ *Affiche une image en BGR ( fonction de Mr Paris v1)
  *@param s : nom de la fênetre
  *@param I : Image a afficher
  *@param x : position d'affichage en x de la fenêtre
