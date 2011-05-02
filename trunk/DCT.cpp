@@ -73,6 +73,4 @@ IplImage* DCTDC (IplImage *I,int taille)
     }
 
      return DCTbloc;
-
-
 }
