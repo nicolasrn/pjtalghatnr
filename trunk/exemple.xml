@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<OriginalImage>
+	<BigOne width="3" height="3">
+		<Ligne>
+			<Colonne Y="200" U="50" V="200" StratY="0" StratU="1" StartV="2" />
+			<Colonne Y="100" U="25" V="100" StratY="0" StratU="1" StartV="2" />
+		</Ligne>
+		<Ligne>
+			<Colonne Y="100" U="25" V="100" StratY="1" StratU="2" StartV="0" />
+			<Colonne Y="200" U="50" V="200" StratY="1" StratU="2" StartV="0" />
+		</Ligne>
+		<Ligne>
+			<Colonne Y="50" U="200" V="100" StratY="2" StratU="1" StartV="0" />
+			<Colonne Y="25" U="200" V="100" StratY="2" StratU="1" StartV="0" />
+		</Ligne>
+	</BigOne  width="2" height="2">
+	<LittleOne>
+		<Ligne>
+			<Colonne Y="100" U="25" V="100" StratY="1" StratU="2" StartV="0" />
+			<Colonne Y="200" U="50" V="200" StratY="1" StratU="2" StartV="0" />
+		</Ligne>
+		<Ligne>
+			<Colonne Y="50" U="200" V="100" StratY="2" StratU="1" StartV="0" />
+			<Colonne Y="25" U="200" V="100" StratY="2" StratU="1" StartV="0" />
+		</Ligne>
+	</LittleOne>
+</OriginalImage>
+<RecoveryImage>
+	<BigOne width="3" height="3">
+		<Ligne>
+			<Colonne Y="200" U="50" V="200" StratY="0" StratU="1" StartV="2" />
+			<Colonne Y="100" U="25" V="100" StratY="0" StratU="1" StartV="2" />
+		</Ligne>
+		<Ligne>
+			<Colonne Y="100" U="25" V="100" StratY="1" StratU="2" StartV="0" />
+			<Colonne Y="200" U="50" V="200" StratY="1" StratU="2" StartV="0" />
+		</Ligne>
+		<Ligne>
+			<Colonne Y="50" U="200" V="100" StratY="2" StratU="1" StartV="0" />
+			<Colonne Y="25" U="200" V="100" StratY="2" StratU="1" StartV="0" />
+		</Ligne>
+	</BigOne  width="2" height="2">
+	<LittleOne>
+		<Ligne>
+			<Colonne Y="100" U="25" V="100" StratY="1" StratU="2" StartV="0" />
+			<Colonne Y="200" U="50" V="200" StratY="1" StratU="2" StartV="0" />
+		</Ligne>
+		<Ligne>
+			<Colonne Y="50" U="200" V="100" StratY="2" StratU="1" StartV="0" />
+			<Colonne Y="25" U="200" V="100" StratY="2" StratU="1" StartV="0" />
+		</Ligne>
+	</LittleOne>
+</RecoveryImage>
