@@ -44,7 +44,7 @@ IplImage* InverseDCT(IplImage *I, int taille)
     return A;
 }
 
-IplImage* DCTDC (IplImage *I,int taille)
+IplImage* ExplodeDCT (IplImage *I,int taille)
 {
     // création de l'image qui contiendra les best DC
     IplImage * DCTbloc  = cvCreateImage(cvSize(I->width/taille,I->height/taille),IPL_DEPTH_64F,1);
@@ -60,17 +60,19 @@ IplImage* DCTDC (IplImage *I,int taille)
                 dataI[i*I->width+j] = 0;
             }
 
-    //on applique la dct sur des blocs de BC de 4*4
-    for(int i = 0; i < DCTbloc->width; i += taille)
-    {
-        for(int j = 0; j < DCTbloc->height; j += taille)
-        {
-
-            cvSetImageROI(DCTbloc, cvRect(i, j, taille,taille));
-            cvDCT(DCTbloc,DCTbloc,CV_DXT_FORWARD);
-            cvResetImageROI(DCTbloc);
-        }
-    }
 
      return DCTbloc;
+}
+IplImage * MergeDCT(IplImage * LowDC, IplImage * BestDC,int taille){
+
+    double* dataLowDC= (double*) LowDC->imageData;
+    double* dataBestDC = (double*) BestDC->imageData;
+
+    for( int i = 0; i< LowDC->height; i+=taille)
+        for( int j = 0 ; j < LowDC->width; j+=taille)
+            {
+
+                dataLowDC[i*LowDC->width+j] = dataBestDC[i/taille*LowDC->width/taille+j/taille];
+            }
+    return LowDC;
 }
