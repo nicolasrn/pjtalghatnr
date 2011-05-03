@@ -38,6 +38,8 @@
 		<Unit filename="MyImage.hpp" />
 		<Unit filename="lib.cpp" />
 		<Unit filename="lib.h" />
+		<Unit filename="libXML.cpp" />
+		<Unit filename="libXML.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="tinystr.cpp" />
 		<Unit filename="tinystr.h" />

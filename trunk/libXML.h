@@ -8,6 +8,7 @@
 #include "MyImage.hpp"
 #include "tinyxml.h"
 
+using namespace std;
 /**
  *@param name: Nom du Fichier qu'on enregistre
  *@param Y: image quantifié pour Y
@@ -18,5 +19,7 @@
  *@param stratV : stratégie pour V
  */
 void saveXML(const char * name, std::vector<IplImage *> Y, std::vector<IplImage *> U, std::vector<IplImage *> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV);
+
+void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<IplImage *> &U, std::vector<IplImage *> &V , std::vector<int **> &stratY, std::vector<int **> &stratU, std::vector<int **> &stratV);
 
 #endif // LIBXML_H_INCLUDED
