@@ -1,6 +1,6 @@
 #include "DCT.h"
 
-IplImage* DCT3(IplImage *I, int taille)
+IplImage* DCT(IplImage *I, int taille)
 {
     //penser a copier l'image I
     IplImage *A = cvCreateImage(cvSize(I->width, I->height), IPL_DEPTH_64F, 1);
