@@ -32,4 +32,6 @@ IplImage* InverseDCT(IplImage *I, int taille);
  */
 IplImage* DCTDC (IplImage *I,int taille);
 
+
+
 #endif // DCT_H_INCLUDED
