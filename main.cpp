@@ -4,10 +4,12 @@
 #include <opencv/highgui.h>
 
 #include "lib.h"
+#include "libXML.h"
 
 using namespace std;
 
-//enum QP {faible = 1, moyen = 2, haut = 3, eleve = 4};
+static int R[2] = {2, 0};
+
 struct valQP
 {
     static const int faible = 4, moyen = 3, haut = 2, eleve = 1;
@@ -18,7 +20,56 @@ struct valR
     static const int grandeImage = 1, petiteImage = 0;
 };
 
-int R[2] = {2, 0};
+void codage(const std::string &filename, int QP);
+
+void codageComposante(IplImage *Y, int QP);
+
+void decodage();
+
+int main()
+{
+    codage("fraise.jpg", valQP::eleve);
+    return EXIT_SUCCESS;
+}
+
+void codage(const std::string &filename, int QP)
+{
+    IplImage * BGR, *image = cvLoadImage(filename.c_str());
+    //ajustement de l'image
+    BGR = ajustementImage(image);
+    //conversion en YUV
+    IplImage * YUV = cvBGR2YUV( BGR );
+
+    //separation des composantes
+    IplImage *Y, *U, *V;
+    separateComponents(YUV, Y, U, V);
+
+    codageComposante(Y, QP);
+    //codageComposante(U, QP);
+    //codageComposante(V, QP);
+}
+
+void codageComposante(IplImage *Y, int QP)
+{
+    IplImage *image, *miniature;
+
+    image = DCT(Y, 4);
+    miniature = ExplodeDCT(image, 4);
+    miniature = DCT(miniature, 4);
+
+    int **stratImage, **stratMiniature;
+    image = predictImage(image, 4, stratImage);
+    miniature = predictImage(miniature, 4, stratMiniature);
+
+    int **qImage, **qMiniature;
+    qImage = applyQuantification(image, QP, R, valR::grandeImage);
+    qMiniature = applyQuantification(miniature, QP, R, valR::petiteImage);
+}
+
+void decodage()
+{
+
+}
 
 void sample()
 {
@@ -144,47 +195,3 @@ void sample()
     }
 }
 
-int main()
-{
-    IplImage * BGR, *image = cvLoadImage( "mandril.jpg" );
-    BGR = ajustementImage(image);
-
-    IplImage * YUV = cvBGR2YUV( BGR );
-    IplImage *Y, *U, *V, *composantATraiter;
-    separateComponents(YUV, Y, U, V);
-    composantATraiter = Y;
-    cvShowAnyImageYUV("Y", composantATraiter);
-
-    IplImage * dct = DCT(composantATraiter, 4);
-    //cvShowAnyImageYUV("DCT Y", dct);
-
-    int **strategie;
-    IplImage *pred = predictImage(dct, 4, strategie);
-    //cvShowAnyImageYUV("pred", pred);
-
-    int **q = applyQuantification(pred, valQP::eleve, R, valR::grandeImage);
-
-    // IplImage * ReverseApplyQuantification(int ** q, int QP, int* R, int i, int width, int heigh);
-    IplImage *reverse = ReverseApplyQuantification(q, valQP::eleve, R, valR::grandeImage, pred->width, pred->height);
-
-    reverse = ReversepredictImage(reverse, 4, strategie);
-    reverse = InverseDCT(reverse, 4);
-    cvShowAnyImageYUV("reverse", reverse);
-
-    cvDestroyWindow("Y");
-    //cvDestroyWindow("DCT Y");
-    //cvDestroyWindow("pred");
-    cvDestroyWindow("reverse");
-
-    cvReleaseImage(&BGR);
-    cvReleaseImage(&image);
-    cvReleaseImage(&YUV);
-    cvReleaseImage(&Y);
-    cvReleaseImage(&U);
-    cvReleaseImage(&V);
-    cvReleaseImage(&dct);
-    cvReleaseImage(&pred);
-    cvReleaseImage(&reverse);
-
-    return EXIT_SUCCESS;
-}

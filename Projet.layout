@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="DCT.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="809" topLine="12" />
+	<File name="DCT.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="33" topLine="0" />
 	</File>
 	<File name="DCT.h" open="0" top="0" tabpos="4">
-		<Cursor position="1110" topLine="18" />
+		<Cursor position="434" topLine="0" />
 	</File>
 	<File name="MyImage.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="7081" topLine="280" />
@@ -13,32 +13,19 @@
 	<File name="MyImage.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="2784" topLine="84" />
 	</File>
-<<<<<<< .mine
 	<File name="lib.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="14070" topLine="435" />
-=======
-	<File name="lib.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="14090" topLine="423" />
->>>>>>> .r39
+		<Cursor position="16124" topLine="496" />
 	</File>
 	<File name="lib.h" open="1" top="0" tabpos="3">
-		<Cursor position="1575" topLine="42" />
+		<Cursor position="3105" topLine="28" />
 	</File>
-<<<<<<< .mine
 	<File name="main.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="4017" topLine="139" />
-=======
-	<File name="libXML.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="0" topLine="269" />
+		<Cursor position="4804" topLine="52" />
 	</File>
-	<File name="libXML.h" open="1" top="0" tabpos="5">
-		<Cursor position="537" topLine="0" />
+	<File name="tinystr.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1134" topLine="72" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="832" topLine="28" />
->>>>>>> .r39
-	</File>
-	<File name="tinyxml.h" open="1" top="0" tabpos="6">
-		<Cursor position="35489" topLine="980" />
+	<File name="tinyxml.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1253" topLine="30" />
 	</File>
 </CodeBlocks_layout_file>

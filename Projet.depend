@@ -5,13 +5,14 @@
 	<opencv/highgui.h>
 	"lib.h"
 
-1304427531 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
+1304433121 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"lib.h"
+	"libXML.h"
 
-1304427461 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
+1304432853 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<iostream>
@@ -24,11 +25,11 @@
 	"DCT.h"
 	"MyImage.hpp"
 
-1304426400 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+1304432689 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
 	"lib.h"
 	"math.h"
 
-1304427454 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
+1304432853 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
 	"DCT.h"
 
 1302682886 source:c:\users\nicolas\documents\projetmultimedia\projet\myimage.cpp
@@ -269,8 +270,25 @@
 	"tinyxml.h"
 	<windows.h>
 
-1304409048 source:c:\users\nicolas\documents\projetmultimedia\projet\codage.cpp
+1304429297 source:c:\users\nicolas\documents\projetmultimedia\projet\codage.cpp
 	"codage.h"
 
-1304409060 c:\users\nicolas\documents\projetmultimedia\projet\codage.h
+1304429349 c:\users\nicolas\documents\projetmultimedia\projet\codage.h
+	<iostream>
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	"lib.h"
+
+1304428028 source:c:\users\nicolas\documents\projetmultimedia\projet\libxml.cpp
+	"libXML.h"
+	"tinystr.h"
+	"tinyxml.h"
+	<vector>
+
+1304428028 c:\users\nicolas\documents\projetmultimedia\projet\libxml.h
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	<vector>
+	"MyImage.hpp"
+	"tinyxml.h"
 
