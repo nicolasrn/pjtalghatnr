@@ -3,17 +3,20 @@
 
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
+#include <vector>
 
 #include "MyImage.hpp"
+#include "tinyxml.h"
 
 /**
- *@param Original_Y: image de référence pour la Y
- *@param Original_U: image de référence pour la
- *@param Original_V : image de référence pour la
- *@param Ipred : l'image sur laquelle se portera la prédiction
- *@param taille : taille des zones des prédictions
- *@param strategie : tableau à deux dimensions représentant la stratégie à adapter
+ *@param name: Nom du Fichier qu'on enregistre
+ *@param Y: image quantifié pour Y
+ *@param U: image quantifié pour U
+ *@param V : image quantifié pour V
+ *@param stratY : stratégie pour Y
+ *@param stratU : stratégie pour U
+ *@param stratV : stratégie pour V
  */
-void saveXMLOriginal(IplImage *&Y, IplImage *&U, IplImage *&V , int **&stratY, int **&stratU, int **&stratV);
+void saveXML(const char * name, std::vector<IplImage *> Y, std::vector<IplImage *> U, std::vector<IplImage *> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV);
 
 #endif // LIBXML_H_INCLUDED
