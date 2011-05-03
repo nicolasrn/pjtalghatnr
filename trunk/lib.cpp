@@ -443,11 +443,11 @@ void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int ta
     //On recherche la meilleur stratégie pour le pixel
     if((pxI.val[0] - pxITop.val[0] <= pxI.val[0] - pxILeft.val[0] && choixTop) || !choixLeft){
         pxBest.val[0] = pxITop.val[0];
-        strategie[ligne][colonne] = 1;
+        strategie[colonne][ligne] = 1;
     }
     else if ((pxI.val[0] - pxITop.val[0] > pxI.val[0] - pxILeft.val[0] && choixLeft) || !choixTop){
         pxBest.val[0] = pxILeft.val[0];
-        strategie[ligne][colonne] = 2;
+        strategie[colonne][ligne] = 2;
     }
 
     pxIpred.val[0] = pxI.val[0] - pxBest.val[0];
@@ -513,10 +513,10 @@ void ReversepredictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred,
         pxILeft = cvGet2D( Ipred, ligne, colonne - taille);
 
     //On applique la meilleur stratégie pour le pixel
-    if ( strategie[ligne][colonne] == 1){
+    if ( strategie[colonne][ligne] == 1){
         pxIpred.val[0] = pxI.val[0] + pxITop.val[0];
     }
-    else if (strategie[ligne][colonne] == 2)
+    else if (strategie[colonne][ligne] == 2)
     {
         pxIpred.val[0] = pxI.val[0] + pxILeft.val[0];
     }
