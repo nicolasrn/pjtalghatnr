@@ -30,8 +30,15 @@ IplImage* InverseDCT(IplImage *I, int taille);
  *@param taille : la taille du bloc sur lequel on veut appliquer la DCT
  *@return IplImage* l'image qui a subit la DCT par bloc
  */
-IplImage* DCTDC (IplImage *I,int taille);
+IplImage* ExplodeDCT(IplImage *I,int taille);
 
-
+/**
+ *Réunion le bloc contenant les DC avec le reste de l'image
+ *@param LowDC : image contenant pas les DC
+ *@param BestDC : image contenant les DC de l'image d'origne
+ *@param taille : taille des bloc à traiter
+ *@return IplImage : image qui réunis les 2.
+ */
+IplImage * MergeDCT(IplImage * LowDC, IplImage * BestDC,int taille);
 
 #endif // DCT_H_INCLUDED
