@@ -13,19 +13,22 @@
 	<File name="MyImage.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="2784" topLine="84" />
 	</File>
-	<File name="lib.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="9256" topLine="358" />
+	<File name="lib.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="14090" topLine="423" />
 	</File>
 	<File name="lib.h" open="1" top="0" tabpos="3">
 		<Cursor position="149" topLine="0" />
 	</File>
+	<File name="libXML.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="0" topLine="269" />
+	</File>
+	<File name="libXML.h" open="1" top="0" tabpos="5">
+		<Cursor position="537" topLine="0" />
+	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="1656" topLine="46" />
+		<Cursor position="832" topLine="28" />
 	</File>
-	<File name="tinystr.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1134" topLine="72" />
-	</File>
-	<File name="tinyxml.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1253" topLine="30" />
+	<File name="tinyxml.h" open="1" top="0" tabpos="6">
+		<Cursor position="35489" topLine="980" />
 	</File>
 </CodeBlocks_layout_file>
