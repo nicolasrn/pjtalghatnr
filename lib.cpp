@@ -396,70 +396,73 @@ IplImage * predictImage(IplImage * I, int taille, int **&strategie)
 
 void predictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int **&strategie)
 {
+	if (!(ligne == 0 && colonne == 0))
+	{
+		//prediction du pixel DC de l'image
+		predictPixel(ligne, colonne, I, Ipred, taille, strategie);
 
-    //prediction du pixel DC de l'image
-    predictPixel(ligne, colonne, I, Ipred, taille, strategie);
+		//On fait la prédiction sur la ligne haute des AD
+		for(int k = 1; k < taille; k++)
+		{
+			predictPixel(ligne, colonne + k, I, Ipred, taille, strategie);
+		}
 
-    //On fait la prédiction sur la ligne haute des AD
-    for(int k = 1; k < taille; k++)
-    {
-        predictPixel(ligne, colonne + k, I, Ipred, taille, strategie);
-    }
-
-    //On fait la prédiction sur la ligne gauche des AD
-    for(int k = 1; k < taille; k++)
-    {
-        predictPixel(ligne + k, colonne, I, Ipred, taille, strategie);
-    }
+		//On fait la prédiction sur la ligne gauche des AD
+		for(int k = 1; k < taille; k++)
+		{
+			predictPixel(ligne + k, colonne, I, Ipred, taille, strategie);
+		}
+	}
 }
 
 void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int **&strategie)
 {
     //Pixel pour l'image a prédire, et pour l'image prédite
     CvScalar pxITop, pxILeft, pxI, pxIpred, pxBest;
-    //bool choixTop = true, choixLeft = true;
+    bool choixTop = true, choixLeft = true;
 
     //On récupère la valeur du pixel à prédire
     pxI = cvGet2D( I, ligne, colonne );
 
     //On vérifie qu'on n'est pas sur une zone de bord haut
-    if(ligne - taille <= 0){
+    if(ligne - taille < 0){
         pxITop.val[0] = pxI.val[0];
+		choixTop = false;
     }
     else
         pxITop = cvGet2D( I, ligne - taille, colonne);
 
     //On vérifie qu'on n'est pas sur une zone de bord gauche
-    if(colonne - taille <= 0){
+    if(colonne - taille < 0){
         pxILeft.val[0] = pxI.val[0];
+		choixLeft = false;
     }
     else
         pxILeft = cvGet2D( I, ligne, colonne - taille);
 
     //On recherche la meilleur stratégie pour le pixel
-    if(pxI.val[0] - pxITop.val[0] < pxI.val[0] - pxILeft.val[0]){
-        pxBest.val[0] = pxI.val[0] - pxITop.val[0];
+    if((pxI.val[0] - pxITop.val[0] <= pxI.val[0] - pxILeft.val[0] && choixTop) || !choixLeft){
+        pxBest.val[0] = pxITop.val[0];
         strategie[ligne][colonne] = 1;
     }
-    else if (pxI.val[0] - pxITop.val[0] > pxI.val[0] - pxILeft.val[0]){
-        pxBest.val[0] = pxI.val[0] - pxILeft.val[0];
+    else if ((pxI.val[0] - pxITop.val[0] > pxI.val[0] - pxILeft.val[0] && choixLeft) || !choixTop){
+        pxBest.val[0] = pxILeft.val[0];
         strategie[ligne][colonne] = 2;
     }
 
     pxIpred.val[0] = pxI.val[0] - pxBest.val[0];
     cvSet2D( Ipred, ligne, colonne, pxIpred);
 }
- IplImage * ReversepredictImage(IplImage * I, int taille, int** &strategie)
- {
 
+IplImage * ReversepredictImage(IplImage * I, int taille, int** &strategie)
+{
     IplImage * Ipred = cvCreateImage(cvSize(I->width, I->height), IPL_DEPTH_64F, 1);
     cvCopy(I, Ipred);
 
-
     //On parcourt les zones de 4x4
-    for(int i = taille; i < Ipred->height; i += taille)
+    for(int i = 0; i < Ipred->height; i += taille)
     {
-        for(int j = taille; j < Ipred->width; j += taille)
+        for(int j = 0; j < Ipred->width; j += taille)
         {
             ReversepredictZone(i, j, I, Ipred, taille, strategie);
         }
@@ -468,11 +471,10 @@ void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int ta
     return Ipred;
  }
 
-
 void ReversepredictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int** &strategie)
 {
      //prediction du pixel DC de l'image
-    predictPixel(ligne, colonne, I, Ipred, taille, strategie);
+    ReversepredictPixel(ligne, colonne, I, Ipred, taille, strategie);
 
     //On fait la prédiction sur la ligne haute des AD
     for(int k = 1; k < taille; k++)
@@ -485,43 +487,41 @@ void ReversepredictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, 
     {
         ReversepredictPixel(ligne + k, colonne, I, Ipred, taille, strategie);
     }
-
 }
 
-void ReversepredictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int** &strategie){
-//Pixel pour l'image a déprédire, et pour l'image déprédite
-    CvScalar pxITop, pxILeft, pxI, pxIpred, pxBest;
+void ReversepredictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int** &strategie)
+{
+	//Pixel pour l'image a déprédire, et pour l'image déprédite
+    CvScalar pxITop, pxILeft, pxI, pxIpred;
     //bool choixTop = true, choixLeft = true;
 
     //On récupère la valeur du pixel à déprédire
     pxI = cvGet2D( I, ligne, colonne );
 
     //On vérifie qu'on n'est pas sur une zone de bord haut
-    if(ligne - taille <= 0){
+    if(ligne - taille < 0){
         pxITop.val[0] = pxI.val[0];
     }
     else
-        pxITop = cvGet2D( I, ligne - taille, colonne);
+        pxITop = cvGet2D( Ipred, ligne - taille, colonne);
 
     //On vérifie qu'on n'est pas sur une zone de bord gauche
-    if(colonne - taille <= 0){
+    if(colonne - taille < 0){
         pxILeft.val[0] = pxI.val[0];
     }
     else
-        pxILeft = cvGet2D( I, ligne, colonne - taille);
+        pxILeft = cvGet2D( Ipred, ligne, colonne - taille);
 
     //On applique la meilleur stratégie pour le pixel
     if ( strategie[ligne][colonne] == 1){
-        pxBest.val[0] =  pxI.val[0] + pxITop.val[0];
-         pxIpred.val[0] = pxI.val[0] + pxBest.val[0];
+        pxIpred.val[0] = pxI.val[0] + pxITop.val[0];
     }
     else if (strategie[ligne][colonne] == 2)
     {
-       pxBest.val[0] = pxI.val[0] + pxILeft.val[0];
-        pxIpred.val[0] = pxI.val[0] + pxBest.val[0];
+        pxIpred.val[0] = pxI.val[0] + pxILeft.val[0];
     }
     else
-         pxIpred.val[0] = pxI.val[0] ;
+		pxIpred.val[0] = pxI.val[0] ;
     /*if(pxI.val[0] - pxITop.val[0] < pxI.val[0] - pxILeft.val[0]){
         pxBest.val[0] = pxI.val[0] - pxITop.val[0];
         strategie[ligne][colonne] = 1;

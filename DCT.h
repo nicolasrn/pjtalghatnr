@@ -14,7 +14,7 @@
  *@param taille : la taille du bloc sur lequel on veut appliquer la DCT
  *@return IplImage* l'image qui a subit la DCT par bloc
  */
-IplImage* DCT3(IplImage *I, int taille);
+IplImage* DCT(IplImage *I, int taille);
 
 /**
  *execute la dect inverse
