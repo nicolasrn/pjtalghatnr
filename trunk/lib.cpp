@@ -364,6 +364,10 @@ void ReverseQuantification (IplImage * I, int QP, int* R, int i, int ** q, int x
 
 void intializeStrategie(int **&strategie, int width, int height)
 {
+    strategie = new int*[width];
+    for(int i = 0; i < width; i++)
+        strategie[i] = new int[height];
+
     for(int i = 0; i < height; i++)
         for(int j = 0; j < width; j++)
             strategie[j][i] = 0;
@@ -371,7 +375,6 @@ void intializeStrategie(int **&strategie, int width, int height)
 
 IplImage * predictImage(IplImage * I, int taille, int **&strategie)
 {
-
     //On copie l'image à prédire dans l'image prédite
     IplImage * Ipred = cvCreateImage(cvSize(I->width, I->height), IPL_DEPTH_64F, 1);
     cvCopy(I, Ipred);
