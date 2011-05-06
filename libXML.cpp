@@ -6,15 +6,141 @@
 using namespace std;
 
 /**
- *@param name: Nom du Fichier qu'on lit
- *@param Y: image quantifié pour Y
- *@param U: image quantifié pour U
- *@param V : image quantifié pour V
+ *@param name: Nom du Fichier qu'on enregistre
+ *@param Y: quantification pour Y
+ *@param U: quantification pour U
+ *@param V : quantification pour V
  *@param stratY : stratégie pour Y
  *@param stratU : stratégie pour U
  *@param stratV : stratégie pour V
+ *@param heightVector : hauteur pour chaque partie enregistrée
+ *@param widthVector : largeur pour chaque partie enregistrée
  */
-void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<IplImage *> &U, std::vector<IplImage *> &V , std::vector<int **> &stratY, std::vector<int **> &stratU, std::vector<int **> &stratV){
+void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, std::vector<int **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV, std::vector<int> heightVector, std::vector<int> widthVector){
+
+    TiXmlDocument doc;
+    TiXmlElement * Ligne;
+    TiXmlElement * Colonne;
+
+    //Root du fichier XML pour la balise <OriginalImage>
+    TiXmlElement * OriginalImage = new TiXmlElement("OriginalImage");
+    doc.LinkEndChild(OriginalImage);
+
+    //Balise BigOne pour l'image normal <BigOne width=XX height=XX>
+    TiXmlElement * BigOneOriginal = new TiXmlElement("BigOne");
+    OriginalImage->LinkEndChild(BigOneOriginal);
+    BigOneOriginal->SetAttribute("width", widthVector[0]);
+    BigOneOriginal->SetAttribute("height", heightVector[0]);
+
+    for(int h = 0; h < heightVector[0]; h++){
+        //On ajoute une ligne à l'image <Ligne>
+        Ligne = new TiXmlElement("Ligne");
+        BigOneOriginal->LinkEndChild(Ligne);
+
+        for(int w = 0; w < widthVector[0]; w++){
+            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
+            Colonne = new TiXmlElement("Colonne");
+            Ligne->LinkEndChild(Colonne);
+            Colonne->SetAttribute("Y", Y[0][w][h]);
+            Colonne->SetAttribute("U", U[0][w][h]);
+            Colonne->SetAttribute("V", V[0][w][h]);
+            Colonne->SetAttribute("StratY", stratY[0][w][h]);
+            Colonne->SetAttribute("StratU", stratU[0][w][h]);
+            Colonne->SetAttribute("StratV", stratV[0][w][h]);
+        }
+    }
+
+    //Balise LittleOne pour l'image normal <LittleOne width=XX height=XX>
+    TiXmlElement * LittleOneOriginal = new TiXmlElement("LittleOne");
+    OriginalImage->LinkEndChild(LittleOneOriginal);
+    LittleOneOriginal->SetAttribute("width", widthVector[1]);
+    LittleOneOriginal->SetAttribute("height", heightVector[1]);
+
+    for(int h = 0; h < heightVector[1]; h++){
+        //On ajoute une ligne à l'image <Ligne>
+        Ligne = new TiXmlElement("Ligne");
+        LittleOneOriginal->LinkEndChild(Ligne);
+
+        for(int w = 0; w < widthVector[1]; w++){
+            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
+            Colonne = new TiXmlElement("Colonne");
+            Ligne->LinkEndChild(Colonne);
+            Colonne->SetAttribute("Y", Y[1][w][h]);
+            Colonne->SetAttribute("U", U[1][w][h]);
+            Colonne->SetAttribute("V", V[1][w][h]);
+            Colonne->SetAttribute("StratY", stratY[1][w][h]);
+            Colonne->SetAttribute("StratU", stratU[1][w][h]);
+            Colonne->SetAttribute("StratV", stratV[1][w][h]);
+        }
+    }
+
+    //Root du fichier XML pour la balise <RecoveryImage>
+    TiXmlElement * RecoveryImage = new TiXmlElement("RecoveryImage");
+    doc.LinkEndChild(RecoveryImage);
+
+    //Balise BigOne pour l'image de recouvrement <BigOne width=XX height=XX>
+    TiXmlElement * BigOneRecovery = new TiXmlElement("BigOne");
+    RecoveryImage->LinkEndChild(BigOneRecovery);
+    BigOneRecovery->SetAttribute("width", widthVector[2]);
+    BigOneRecovery->SetAttribute("height", heightVector[2]);
+
+    for(int h = 0; h < heightVector[2]; h++){
+        //On ajoute une ligne à l'image <Ligne>
+        Ligne = new TiXmlElement("Ligne");
+        BigOneRecovery->LinkEndChild(Ligne);
+
+        for(int w = 0; w < widthVector[2]; w++){
+            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
+            Colonne = new TiXmlElement("Colonne");
+            Ligne->LinkEndChild(Colonne);
+            Colonne->SetAttribute("Y", Y[2][w][h]);
+            Colonne->SetAttribute("U", U[2][w][h]);
+            Colonne->SetAttribute("V", V[2][w][h]);
+            Colonne->SetAttribute("StratY", stratY[2][w][h]);
+            Colonne->SetAttribute("StratU", stratU[2][w][h]);
+            Colonne->SetAttribute("StratV", stratV[2][w][h]);
+        }
+    }
+
+    //Balise LittleOne pour l'image de recouvrement <LittleOne width=XX height=XX>
+    TiXmlElement * LittleOneRecovery = new TiXmlElement("LittleOne");
+    RecoveryImage->LinkEndChild(LittleOneRecovery);
+    LittleOneRecovery->SetAttribute("width", widthVector[3]);
+    LittleOneRecovery->SetAttribute("height", heightVector[3]);
+
+    for(int h = 0; h < heightVector[3]; h++){
+        //On ajoute une ligne à l'image <Ligne>
+        Ligne = new TiXmlElement("Ligne");
+        LittleOneRecovery->LinkEndChild(Ligne);
+
+        for(int w = 0; w < widthVector[3]; w++){
+            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
+            Colonne = new TiXmlElement("Colonne");
+            Ligne->LinkEndChild(Colonne);
+            Colonne->SetAttribute("Y", Y[3][w][h]);
+            Colonne->SetAttribute("U", U[3][w][h]);
+            Colonne->SetAttribute("V", V[3][w][h]);
+            Colonne->SetAttribute("StratY", stratY[3][w][h]);
+            Colonne->SetAttribute("StratU", stratU[3][w][h]);
+            Colonne->SetAttribute("StratV", stratV[3][w][h]);
+        }
+    }
+
+    doc.SaveFile(name);
+}
+
+/**
+ *@param name: Nom du Fichier qu'on charge
+ *@param Y: quantification pour Y
+ *@param U: quantification pour U
+ *@param V : quantification pour V
+ *@param stratY : stratégie pour Y
+ *@param stratU : stratégie pour U
+ *@param stratV : stratégie pour V
+ *@param heightVector : hauteur pour chaque partie enregistrée
+ *@param widthVector : largeur pour chaque partie enregistrée
+ */
+void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, std::vector<int **> &V , std::vector<int **> &stratY, std::vector<int **> &stratU, std::vector<int **> &stratV, std::vector<int> &heightVector, std::vector<int> &widthVector){
 
     //On ouvrir le fichier "name"
     TiXmlDocument doc(name);
@@ -32,15 +158,16 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
     int attrStratY;
     int attrStratU;
     int attrStratV;
-    CvScalar attrY;
-    CvScalar attrU;
-    CvScalar attrV;
+    int attrY;
+    int attrU;
+    int attrV;
 
     bool loadOkay = doc.LoadFile();
     //Si on a pas réussi à charger le fichier
     if (!loadOkay)
     {
          printf("Failed to load file \"%s\"\n", name);
+         std::cout << "Error #" << doc.ErrorId() << ": " << doc.ErrorDesc() << endl;
          exit(1);
     }
     //Si on a réussi à charger le fichier
@@ -67,26 +194,39 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
         printf("Failed to read file. Can't reach '<BigOne>' \n");
         exit(1);
     }
-    bigOne->QueryIntAttribute("width", &width);
-    bigOne->QueryIntAttribute("height", &height);
 
-    //On crée les images Y, U, V pour BigOne
-    IplImage *iplY0 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
-    IplImage *iplU0 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
-    IplImage *iplV0 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
+    bigOne->QueryIntAttribute("height", &height);
+    bigOne->QueryIntAttribute("width", &width);
+    heightVector.push_back(height);
+    widthVector.push_back(width);
+
+    //On crée les tableau de quantification Y, U, V pour BigOne
+    int **Y0 = new int*[width];
+        for(int i = 0; i < width; i++)
+            Y0[i] = new int[height];
+
+    int **U0 = new int*[width];
+        for(int i = 0; i < width; i++)
+            U0[i] = new int[height];
+
+    int **V0 = new int*[width];
+        for(int i = 0; i < width; i++)
+            V0[i] = new int[height];
 
     //On associe aux vecteurs les images correspondantes
-    Y.push_back(iplY0);
-    U.push_back(iplU0);
-    V.push_back(iplV0);
+    Y.push_back(Y0);
+    U.push_back(U0);
+    V.push_back(V0);
 
     //On crée les stratégies strategieY, strategieU, strategieV pour BigOne
     int **strategieY0 = new int*[width];
         for(int i = 0; i < width; i++)
             strategieY0[i] = new int[height];
+
     int **strategieU0 = new int*[width];
         for(int i = 0; i < width; i++)
             strategieU0[i] = new int[height];
+
     int **strategieV0 = new int*[width];
         for(int i = 0; i < width; i++)
             strategieV0[i] = new int[height];
@@ -101,23 +241,25 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
     while(ligne){
         colonne = ligne->FirstChildElement("Colonne");
         nbColonne = 0;
+
         while(colonne){
-            colonne->QueryDoubleAttribute("Y", &attrY.val[0]);
-            colonne->QueryDoubleAttribute("U", &attrU.val[0]);
-            colonne->QueryDoubleAttribute("V", &attrV.val[0]);
-            colonne->QueryIntAttribute("stratY", &attrStratY);
-            colonne->QueryIntAttribute("stratU", &attrStratU);
-            colonne->QueryIntAttribute("stratV", &attrStratV);
+
+            colonne->QueryIntAttribute("Y", &attrY);
+            colonne->QueryIntAttribute("U", &attrU);
+            colonne->QueryIntAttribute("V", &attrV);
+            colonne->QueryIntAttribute("StratY", &attrStratY);
+            colonne->QueryIntAttribute("StratU", &attrStratU);
+            colonne->QueryIntAttribute("StratV", &attrStratV);
 
             //On affecte aux images les valeurs de pixel
-            cvSet2D( Y[0], nbLigne, nbColonne, attrY);
-            cvSet2D( U[0], nbLigne, nbColonne, attrU);
-            cvSet2D( V[0], nbLigne, nbColonne, attrV);
+            Y[0][nbColonne][nbLigne] = attrY;
+            U[0][nbColonne][nbLigne] = attrU;
+            V[0][nbColonne][nbLigne] = attrV;
 
             //On affect aux stratégies les valeurs des stratégies
-            stratY[0][nbLigne][nbColonne]=attrStratY;
-            stratU[0][nbLigne][nbColonne]=attrStratU;
-            stratV[0][nbLigne][nbColonne]=attrStratV;
+            stratY[0][nbColonne][nbLigne] = attrStratY;
+            stratU[0][nbColonne][nbLigne] = attrStratU;
+            stratV[0][nbColonne][nbLigne] = attrStratV;
 
             colonne = colonne->NextSiblingElement();
             nbColonne++;
@@ -136,20 +278,31 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
         printf("Failed to read file. Can't reach '<littleOne>' \n");
         exit(1);
     }
-    littleOne->QueryIntAttribute("width", &width);
-    littleOne->QueryIntAttribute("height", &height);
 
-    //On crée les images Y, U, V pour BigOne
-    IplImage *iplY1 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
-    IplImage *iplU1 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
-    IplImage *iplV1 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
+    littleOne ->QueryIntAttribute("height", &height);
+    littleOne ->QueryIntAttribute("width", &width);
+    heightVector.push_back(height);
+    widthVector.push_back(width);
+
+    //On crée les tableau de quantification Y, U, V pour LittleOne
+    int **Y1 = new int*[width];
+        for(int i = 0; i < width; i++)
+            Y1[i] = new int[height];
+
+    int **U1 = new int*[width];
+        for(int i = 0; i < width; i++)
+            U1[i] = new int[height];
+
+    int **V1 = new int*[width];
+        for(int i = 0; i < width; i++)
+            V1[i] = new int[height];
 
     //On associe aux vecteurs les images correspondantes
-    Y.push_back(iplY1);
-    U.push_back(iplU1);
-    V.push_back(iplV1);
+    Y.push_back(Y1);
+    U.push_back(U1);
+    V.push_back(V1);
 
-    //On crée les stratégies strategieY, strategieU, strategieV pour BigOne
+    //On crée les stratégies strategieY, strategieU, strategieV pour LittleOne
     int **strategieY1 = new int*[width];
         for(int i = 0; i < width; i++)
             strategieY1[i] = new int[height];
@@ -171,22 +324,22 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
         colonne = ligne->FirstChildElement("Colonne");
         nbColonne = 0;
         while(colonne){
-            colonne->QueryDoubleAttribute("Y", &attrY.val[0]);
-            colonne->QueryDoubleAttribute("U", &attrU.val[0]);
-            colonne->QueryDoubleAttribute("V", &attrV.val[0]);
-            colonne->QueryIntAttribute("stratY", &attrStratY);
-            colonne->QueryIntAttribute("stratU", &attrStratU);
-            colonne->QueryIntAttribute("stratV", &attrStratV);
+            colonne->QueryIntAttribute("Y", &attrY);
+            colonne->QueryIntAttribute("U", &attrU);
+            colonne->QueryIntAttribute("V", &attrV);
+            colonne->QueryIntAttribute("StratY", &attrStratY);
+            colonne->QueryIntAttribute("StratU", &attrStratU);
+            colonne->QueryIntAttribute("StratV", &attrStratV);
 
             //On affecte aux images les valeurs de pixel
-            cvSet2D( Y[1], nbLigne, nbColonne, attrY);
-            cvSet2D( U[1], nbLigne, nbColonne, attrU);
-            cvSet2D( V[1], nbLigne, nbColonne, attrV);
+            Y[1][nbColonne][nbLigne] = attrY;
+            U[1][nbColonne][nbLigne] = attrU;
+            V[1][nbColonne][nbLigne] = attrV;
 
             //On affect aux stratégies les valeurs des stratégies
-            stratY[1][nbLigne][nbColonne]=attrStratY;
-            stratU[1][nbLigne][nbColonne]=attrStratU;
-            stratV[1][nbLigne][nbColonne]=attrStratV;
+            stratY[1][nbColonne][nbLigne] = attrStratY;
+            stratU[1][nbColonne][nbLigne] = attrStratU;
+            stratV[1][nbColonne][nbLigne] = attrStratV;
 
             colonne = colonne->NextSiblingElement();
             nbColonne++;
@@ -214,18 +367,29 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
         printf("Failed to read file. Can't reach '<BigOne>' \n");
         exit(1);
     }
-    bigOne->QueryIntAttribute("width", &width);
-    bigOne->QueryIntAttribute("height", &height);
 
-    //On crée les images Y, U, V pour BigOne
-    IplImage *iplY2 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
-    IplImage *iplU2 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
-    IplImage *iplV2 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
+    bigOne->QueryIntAttribute("height", &height);
+    bigOne->QueryIntAttribute("width", &width);
+    heightVector.push_back(height);
+    widthVector.push_back(width);
+
+    //On crée les tableau de quantification Y, U, V pour BigOne
+    int **Y2 = new int*[width];
+        for(int i = 0; i < width; i++)
+            Y2[i] = new int[height];
+
+    int **U2 = new int*[width];
+        for(int i = 0; i < width; i++)
+            U2[i] = new int[height];
+
+    int **V2 = new int*[width];
+        for(int i = 0; i < width; i++)
+            V2[i] = new int[height];
 
     //On associe aux vecteurs les images correspondantes
-    Y.push_back(iplY2);
-    U.push_back(iplU2);
-    V.push_back(iplV2);
+    Y.push_back(Y2);
+    U.push_back(U2);
+    V.push_back(V2);
 
     //On crée les stratégies strategieY, strategieU, strategieV pour BigOne
     int **strategieY2 = new int*[width];
@@ -249,22 +413,22 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
         colonne = ligne->FirstChildElement("Colonne");
         nbColonne = 0;
         while(colonne){
-            colonne->QueryDoubleAttribute("Y", &attrY.val[0]);
-            colonne->QueryDoubleAttribute("U", &attrU.val[0]);
-            colonne->QueryDoubleAttribute("V", &attrV.val[0]);
-            colonne->QueryIntAttribute("stratY", &attrStratY);
-            colonne->QueryIntAttribute("stratU", &attrStratU);
-            colonne->QueryIntAttribute("stratV", &attrStratV);
+            colonne->QueryIntAttribute("Y", &attrY);
+            colonne->QueryIntAttribute("U", &attrU);
+            colonne->QueryIntAttribute("V", &attrV);
+            colonne->QueryIntAttribute("StratY", &attrStratY);
+            colonne->QueryIntAttribute("StratU", &attrStratU);
+            colonne->QueryIntAttribute("StratV", &attrStratV);
 
             //On affecte aux images les valeurs de pixel
-            cvSet2D( Y[2], nbLigne, nbColonne, attrY);
-            cvSet2D( U[2], nbLigne, nbColonne, attrU);
-            cvSet2D( V[2], nbLigne, nbColonne, attrV);
+            Y[2][nbColonne][nbLigne] = attrY;
+            U[2][nbColonne][nbLigne] = attrU;
+            V[2][nbColonne][nbLigne] = attrV;
 
             //On affect aux stratégies les valeurs des stratégies
-            stratY[2][nbLigne][nbColonne]=attrStratY;
-            stratU[2][nbLigne][nbColonne]=attrStratU;
-            stratV[2][nbLigne][nbColonne]=attrStratV;
+            stratY[2][nbColonne][nbLigne] = attrStratY;
+            stratU[2][nbColonne][nbLigne] = attrStratU;
+            stratV[2][nbColonne][nbLigne] = attrStratV;
 
             colonne = colonne->NextSiblingElement();
             nbColonne++;
@@ -284,18 +448,29 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
         printf("Failed to read file. Can't reach '<littleOne>' \n");
         exit(1);
     }
-    littleOne->QueryIntAttribute("width", &width);
-    littleOne->QueryIntAttribute("height", &height);
 
-    //On crée les images Y, U, V pour BigOne
-    IplImage *iplY3 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
-    IplImage *iplU3 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
-    IplImage *iplV3 = cvCreateImage(cvSize(width, height), IPL_DEPTH_64F, 1);
+    littleOne ->QueryIntAttribute("height", &height);
+    littleOne ->QueryIntAttribute("width", &width);
+    heightVector.push_back(height);
+    widthVector.push_back(width);
+
+   //On crée les tableau de quantification Y, U, V pour LittleOne
+    int **Y3 = new int*[width];
+        for(int i = 0; i < width; i++)
+            Y3[i] = new int[height];
+
+    int **U3 = new int*[width];
+        for(int i = 0; i < width; i++)
+            U3[i] = new int[height];
+
+    int **V3 = new int*[width];
+        for(int i = 0; i < width; i++)
+            V3[i] = new int[height];
 
     //On associe aux vecteurs les images correspondantes
-    Y.push_back(iplY3);
-    U.push_back(iplU3);
-    V.push_back(iplV3);
+    Y.push_back(Y3);
+    U.push_back(U3);
+    V.push_back(V3);
 
     //On crée les stratégies strategieY, strategieU, strategieV pour BigOne
     int **strategieY3 = new int*[width];
@@ -319,22 +494,22 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
         colonne = ligne->FirstChildElement("Colonne");
         nbColonne = 0;
         while(colonne){
-            colonne->QueryDoubleAttribute("Y", &attrY.val[0]);
-            colonne->QueryDoubleAttribute("U", &attrU.val[0]);
-            colonne->QueryDoubleAttribute("V", &attrV.val[0]);
-            colonne->QueryIntAttribute("stratY", &attrStratY);
-            colonne->QueryIntAttribute("stratU", &attrStratU);
-            colonne->QueryIntAttribute("stratV", &attrStratV);
+            colonne->QueryIntAttribute("Y", &attrY);
+            colonne->QueryIntAttribute("U", &attrU);
+            colonne->QueryIntAttribute("V", &attrV);
+            colonne->QueryIntAttribute("Strat", &attrStratY);
+            colonne->QueryIntAttribute("Strat", &attrStratU);
+            colonne->QueryIntAttribute("Strat", &attrStratV);
 
             //On affecte aux images les valeurs de pixel
-            cvSet2D( Y[3], nbLigne, nbColonne, attrY);
-            cvSet2D( U[3], nbLigne, nbColonne, attrU);
-            cvSet2D( V[3], nbLigne, nbColonne, attrV);
+            Y[3][nbColonne][nbLigne] = attrY;
+            U[3][nbColonne][nbLigne] = attrU;
+            V[3][nbColonne][nbLigne] = attrV;
 
             //On affect aux stratégies les valeurs des stratégies
-            stratY[3][nbLigne][nbColonne]=attrStratY;
-            stratU[3][nbLigne][nbColonne]=attrStratU;
-            stratV[3][nbLigne][nbColonne]=attrStratV;
+            stratY[3][nbColonne][nbLigne] = attrStratY;
+            stratU[3][nbColonne][nbLigne] = attrStratU;
+            stratV[3][nbColonne][nbLigne] = attrStratV;
 
             colonne = colonne->NextSiblingElement();
             nbColonne++;
@@ -343,119 +518,3 @@ void loadXMLOriginal(const char* name, std::vector<IplImage *> &Y, std::vector<I
         nbLigne++;
     }
 }
-
-
-
-void saveXML(const char * name, std::vector<IplImage *> Y, std::vector<IplImage *> U, std::vector<IplImage *> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV){
-
-    TiXmlDocument doc;
-    TiXmlElement * Ligne;
-    TiXmlElement * Colonne;
-
-    //Root du fichier XML pour la balise <OriginalImage>
-    TiXmlElement * OriginalImage = new TiXmlElement("OriginalImage");
-    doc.LinkEndChild(OriginalImage);
-
-    //Balise BigOne pour l'image normal <BigOne width=XX height=XX>
-    TiXmlElement * BigOneOriginal = new TiXmlElement("BigOne");
-    OriginalImage->LinkEndChild(BigOneOriginal);
-    BigOneOriginal->SetAttribute("width", Y[0]->width);
-    BigOneOriginal->SetAttribute("height", Y[0]->height);
-
-    for(int h = 0; h < Y[0]->height; h++){
-        //On ajoute une ligne à l'image <Ligne>
-        Ligne = new TiXmlElement("Ligne");
-        BigOneOriginal->LinkEndChild(Ligne);
-
-        for(int w = 0; w < Y[0]->width; w++){
-            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
-            Colonne = new TiXmlElement("Colonne");
-            Ligne->LinkEndChild(Colonne);
-            Colonne->SetAttribute("Y", cvGet2D( Y[0], h, w ).val[0]);
-            Colonne->SetAttribute("U", cvGet2D( U[0], h, w ).val[0]);
-            Colonne->SetAttribute("V", cvGet2D( V[0], h, w ).val[0]);
-            Colonne->SetAttribute("StratY", stratY[0][h][w]);
-            Colonne->SetAttribute("StratU", stratU[0][h][w]);
-            Colonne->SetAttribute("StratV", stratV[0][h][w]);
-        }
-    }
-
-    //Balise LittleOne pour l'image normal <LittleOne width=XX height=XX>
-    TiXmlElement * LittleOneOriginal = new TiXmlElement("LittleOne");
-    OriginalImage->LinkEndChild(LittleOneOriginal);
-    LittleOneOriginal->SetAttribute("width", Y[1]->width);
-    LittleOneOriginal->SetAttribute("height", Y[1]->height);
-
-    for(int h = 0; h < Y[1]->height; h++){
-        //On ajoute une ligne à l'image <Ligne>
-        Ligne = new TiXmlElement("Ligne");
-        LittleOneOriginal->LinkEndChild(Ligne);
-
-        for(int w = 0; w < Y[1]->width; w++){
-            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
-            Colonne = new TiXmlElement("Colonne");
-            Ligne->LinkEndChild(Colonne);
-            Colonne->SetAttribute("Y", cvGet2D( Y[1], h, w ).val[0]);
-            Colonne->SetAttribute("U", cvGet2D( U[1], h, w ).val[0]);
-            Colonne->SetAttribute("V", cvGet2D( V[1], h, w ).val[0]);
-            Colonne->SetAttribute("StratY", stratY[1][h][w]);
-            Colonne->SetAttribute("StratU", stratU[1][h][w]);
-            Colonne->SetAttribute("StratV", stratV[1][h][w]);
-        }
-    }
-
-    //Root du fichier XML pour la balise <RecoveryImage>
-    TiXmlElement * RecoveryImage = new TiXmlElement("RecoveryImage");
-    doc.LinkEndChild(RecoveryImage);
-
-    //Balise BigOne pour l'image de recouvrement <BigOne width=XX height=XX>
-    TiXmlElement * BigOneRecovery = new TiXmlElement("BigOne");
-    RecoveryImage->LinkEndChild(BigOneRecovery);
-    BigOneRecovery->SetAttribute("width", Y[2]->width);
-    BigOneRecovery->SetAttribute("height", Y[2]->height);
-
-    for(int h = 0; h < Y[2]->height; h++){
-        //On ajoute une ligne à l'image <Ligne>
-        Ligne = new TiXmlElement("Ligne");
-        BigOneRecovery->LinkEndChild(Ligne);
-
-        for(int w = 0; w < Y[2]->width; w++){
-            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
-            Colonne = new TiXmlElement("Colonne");
-            Ligne->LinkEndChild(Colonne);
-            Colonne->SetAttribute("Y", cvGet2D( Y[2], h, w ).val[0]);
-            Colonne->SetAttribute("U", cvGet2D( U[2], h, w ).val[0]);
-            Colonne->SetAttribute("V", cvGet2D( V[2], h, w ).val[0]);
-            Colonne->SetAttribute("StratY", stratY[2][h][w]);
-            Colonne->SetAttribute("StratU", stratU[2][h][w]);
-            Colonne->SetAttribute("StratV", stratV[2][h][w]);
-        }
-    }
-
-    //Balise LittleOne pour l'image de recouvrement <LittleOne width=XX height=XX>
-    TiXmlElement * LittleOneRecovery = new TiXmlElement("LittleOne");
-    RecoveryImage->LinkEndChild(LittleOneRecovery);
-    LittleOneRecovery->SetAttribute("width", Y[3]->width);
-    LittleOneRecovery->SetAttribute("height", Y[3]->height);
-
-    for(int h = 0; h < Y[3]->height; h++){
-        //On ajoute une ligne à l'image <Ligne>
-        Ligne = new TiXmlElement("Ligne");
-        LittleOneRecovery->LinkEndChild(Ligne);
-
-        for(int w = 0; w < Y[3]->width; w++){
-            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
-            Colonne = new TiXmlElement("Colonne");
-            Ligne->LinkEndChild(Colonne);
-            Colonne->SetAttribute("Y", cvGet2D( Y[3], h, w ).val[0]);
-            Colonne->SetAttribute("U", cvGet2D( U[3], h, w ).val[0]);
-            Colonne->SetAttribute("V", cvGet2D( V[3], h, w ).val[0]);
-            Colonne->SetAttribute("StratY", stratY[3][h][w]);
-            Colonne->SetAttribute("StratU", stratU[3][h][w]);
-            Colonne->SetAttribute("StratV", stratV[3][h][w]);
-        }
-    }
-
-    doc.SaveFile(name);
-}
-
