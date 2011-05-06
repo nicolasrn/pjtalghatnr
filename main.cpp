@@ -9,6 +9,7 @@
 using namespace std;
 
 static int R[2] = {2, 0};
+static int taille = 4;
 
 struct valQP
 {
@@ -22,13 +23,15 @@ struct valR
 
 void codage(const std::string &filename, int QP);
 
-void codageComposante(IplImage *Y, int QP);
+void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int **&sM);
 
-void decodage();
+void decodage(int **qI, int **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h);
+
+void sample();
 
 int main()
 {
-    codage("fraise.jpg", valQP::eleve);
+    codage("mandril.jpg", valQP::eleve);
     return EXIT_SUCCESS;
 }
 
@@ -39,36 +42,63 @@ void codage(const std::string &filename, int QP)
     BGR = ajustementImage(image);
     //conversion en YUV
     IplImage * YUV = cvBGR2YUV( BGR );
+    cvShowAnyImageYUV("BGR", BGR);
 
     //separation des composantes
     IplImage *Y, *U, *V;
     separateComponents(YUV, Y, U, V);
 
-    codageComposante(Y, QP);
-    //codageComposante(U, QP);
-    //codageComposante(V, QP);
+    int **qyI, **quI, **qvI, **syI, **suI, **svI;
+    int **qyM, **quM, **qvM, **syM, **suM, **svM;
+
+    codageComposante(Y, QP, qyI, qyM, syI, syM);
+    codageComposante(U, QP, quI, quM, suI, suM);
+    codageComposante(V, QP, qvI, qvM, svI, svM);
+
+    //sauvegarde
+    //ici la sauvegarde
+
+    //chargement
+    IplImage *yi, *ym, *ui, *um, *vi, *vm;
+    decodage(qyI, qyM, syI, syM, QP, yi, ym, Y->width, Y->height);
+    decodage(quI, quM, suI, suM, QP, ui, um, Y->width, Y->height);
+    decodage(qvI, qvM, svI, svM, QP, vi, vm, Y->width, Y->height);
+
+    IplImage *yuvI, *yuvM;
+    yuvM = unifiateComponents(ym, um, vm);
+    yuvI = unifiateComponents(yi, ui, vi);
+    IplImage *bgrM = cvYUV2BGR(yuvM);
+    IplImage *bgrI = cvYUV2BGR(yuvI);
+    cvShowAnyImageYUV("miniature", bgrM);
+    cvShowAnyImageYUV("image", bgrI);
 }
 
-void codageComposante(IplImage *Y, int QP)
+void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int **&sM)
 {
     IplImage *image, *miniature;
 
-    image = DCT(Y, 4);
-    miniature = ExplodeDCT(image, 4);
-    miniature = DCT(miniature, 4);
+    image = DCT(Y, taille);
+    miniature = ExplodeDCT(image, taille);
+    miniature = DCT(miniature, taille);
 
-    int **stratImage, **stratMiniature;
-    image = predictImage(image, 4, stratImage);
-    miniature = predictImage(miniature, 4, stratMiniature);
+    image = predictImage(image, taille, sI);
+    miniature = predictImage(miniature, taille, sM);
 
-    int **qImage, **qMiniature;
-    qImage = applyQuantification(image, QP, R, valR::grandeImage);
-    qMiniature = applyQuantification(miniature, QP, R, valR::petiteImage);
+    qI = applyQuantification(image, QP, R, valR::grandeImage);
+    qM = applyQuantification(miniature, QP, R, valR::petiteImage);
 }
 
-void decodage()
+void decodage(int **qI, int **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h)
 {
+    M = ReverseApplyQuantification(qM, QP, R, valR::petiteImage, w/taille, h/taille);
+    I = ReverseApplyQuantification(qI, QP, R, valR::grandeImage, w, h);
 
+    M = ReversepredictImage(M, taille, sM);
+    I = ReversepredictImage(I, taille, sI);
+
+    M = InverseDCT(M, taille);
+    I = MergeDCT(I, M, taille);
+    I = InverseDCT(I, taille);
 }
 
 void sample()
@@ -176,7 +206,7 @@ void sample()
         {
             a = cvGet2D(reverse, i, j);
             //cout << "res : (" << i << ", " << j << ") : " << a.val[0] << endl;// << " ? " << b.val[0] << " strategie : " << strategie[j][i] << endl;
-            cout << strategie[i][j] << " ";
+            cout << strategie[j][i] << " ";
         }
         cout << endl;
     }
