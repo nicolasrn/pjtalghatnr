@@ -81,6 +81,15 @@ IplImage* ajustementImage(IplImage *image);
 IplImage* recouvrement(IplImage *image, int taille);
 
 /**
+ *fusionne l'image avec le recouvrement
+ *@param i : l'image d'origine
+ *@param r : l'image de recouvrement
+ *@param taile : represente la taille de recouvrement des blocs
+ *@return IplImage : le resultat de la fusion
+ */
+IplImage* mergedRecouvrement(IplImage *i, IplImage *r, int taille)
+
+/**
  *Applique la quatification sur l'image
  *@param I : L'image
  *@param QB : parametre de qualité
