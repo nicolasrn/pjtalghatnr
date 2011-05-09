@@ -2,6 +2,7 @@
 
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
+#include <vector>
 
 #include "lib.h"
 #include "libXML.h"
@@ -23,15 +24,18 @@ struct valR
 
 void codage(const std::string &filename, int QP);
 
+void decodage(const std::string &filename);
+
 void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int **&sM);
 
-void decodage(int **qI, int **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h);
+void decodageComposante(int **qI, int **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h);
 
 void sample();
 
 int main()
 {
     codage("mandril.jpg", valQP::eleve);
+    decodage("saveTest.xml");
     return EXIT_SUCCESS;
 }
 
@@ -68,19 +72,78 @@ void codage(const std::string &filename, int QP)
     codageComposante(rv, QP, rqvI, rqvM, rsvI, rsvM);
 
     //sauvegarde
-    //ici la sauvegarde
 
+    std::vector<int **> vecY;
+    vecY.push_back(qyI);
+    vecY.push_back(qyM);
+    vecY.push_back(rqyI);
+    vecY.push_back(rqyM);
+    std::vector<int **> vecU;
+    vecU.push_back(quI);
+    vecU.push_back(quM);
+    vecU.push_back(rquI);
+    vecU.push_back(rquM);
+    std::vector<int **> vecV;
+    vecV.push_back(qvI);
+    vecV.push_back(qvM);
+    vecV.push_back(rqvI);
+    vecV.push_back(rqvM);
+    std::vector<int **> stratY;
+    stratY.push_back(syI);
+    stratY.push_back(syM);
+    stratY.push_back(rsyI);
+    stratY.push_back(rsyM);
+    std::vector<int **> stratU;
+    stratU.push_back(suI);
+    stratU.push_back(suM);
+    stratU.push_back(rsuI);
+    stratU.push_back(rsuM);
+    std::vector<int **> stratV;
+    stratV.push_back(qvI);
+    stratV.push_back(qvM);
+    stratV.push_back(rqvI);
+    stratV.push_back(rqvI);
+    std::vector<int> h;
+    h.push_back(Y->height);
+    h.push_back(Y->height/taille);
+    h.push_back(ry->height - taille);
+    h.push_back(recouv->height/taille);
+    std::vector<int> w;
+    w.push_back(Y->width);
+    w.push_back(Y->width/taille);
+    w.push_back(ry->width - taille);
+    w.push_back(recouv->width/taille);
+
+    printf("%d/%d, %d/%d, %d/%d, %d/%d", h[0], w[0], h[1], w[1], h[2], w[2], h[3], w[3]);
+
+    //saveXML("saveTest.xml", vecY, vecU, vecV , stratY, stratU, stratV, h, w, QP);
+
+}
+
+void decodage(const std::string &filename){
     //chargement
+
     IplImage *yi, *ym, *ui, *um, *vi, *vm,
     *ryi, *rym, *rui, *rum, *rvi, *rvm;
+    std::vector<int **> vecY;
+    std::vector<int **> vecU;
+    std::vector<int **> vecV;
+    std::vector<int **> stratY;
+    std::vector<int **> stratU;
+    std::vector<int **> stratV;
+    std::vector<int> h;
+    std::vector<int> w;
+    int QP;
 
-    decodage(qyI, qyM, syI, syM, QP, yi, ym, Y->width, Y->height);
-    decodage(quI, quM, suI, suM, QP, ui, um, Y->width, Y->height);
-    decodage(qvI, qvM, svI, svM, QP, vi, vm, Y->width, Y->height);
+    loadXML(filename.c_str(), vecY, vecU, vecV , stratY, stratU, stratV, h, w, QP);
 
-    decodage(rqyI, rqyM, rsyI, rsyM, QP, ryi, rym, recouv->width, recouv->height);
-    decodage(rquI, rquM, rsuI, rsuM, QP, rui, rum, recouv->width, recouv->height);
-    decodage(rqvI, rqvM, rsvI, rsvM, QP, rvi, rvm, recouv->width, recouv->height);
+    decodageComposante(vecY[0], vecY[1], stratY[0], stratY[1], QP, yi, ym, w[0], h[0]);
+    decodageComposante(vecU[0], vecU[1], stratU[0], stratU[1], QP, ui, um, w[0], h[0]);
+    decodageComposante(vecV[0], vecV[1], stratV[0], stratV[1], QP, vi, vm, w[0], h[0]);
+
+    decodageComposante(vecY[2], vecY[3], stratY[2], stratY[3], QP, ryi, rym, w[2], h[2]);
+    decodageComposante(vecU[2], vecU[3], stratU[2], stratU[3], QP, rui, rum, w[2], h[2]);
+    decodageComposante(vecV[2], vecV[3], stratV[2], stratV[3], QP, rvi, rvm, w[2], h[2]);
 
     IplImage *yuvI, *yuvM,
     *ryuvI, *ryuvM;
@@ -123,7 +186,7 @@ void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int 
     qM = applyQuantification(miniature, QP, R, valR::petiteImage);
 }
 
-void decodage(int **qI, int **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h)
+void decodageComposante(int **qI, int **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h)
 {
     M = ReverseApplyQuantification(qM, QP, R, valR::petiteImage, w/taille, h/taille);
     I = ReverseApplyQuantification(qI, QP, R, valR::grandeImage, w, h);

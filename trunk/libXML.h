@@ -21,7 +21,7 @@ using namespace std;
  *@param heightVector : hauteur pour chaque partie enregistrée
  *@param widthVector : largeur pour chaque partie enregistrée
  */
-void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, std::vector<int **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV, std::vector<int> heightVector, std::vector<int> widthVector);
+void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, std::vector<int **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV, std::vector<int> heightVector, std::vector<int> widthVector, int QP);
 
 /**
  *@param name: Nom du Fichier qu'on charge
@@ -34,6 +34,6 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
  *@param heightVector : hauteur pour chaque partie enregistrée
  *@param widthVector : largeur pour chaque partie enregistrée
  */
-void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, std::vector<int **> &V , std::vector<int **> &stratY, std::vector<int **> &stratU, std::vector<int **> &stratV, std::vector<int> &heightVector, std::vector<int> &widthVector);
+void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, std::vector<int **> &V , std::vector<int **> &stratY, std::vector<int **> &stratU, std::vector<int **> &stratV, std::vector<int> &heightVector, std::vector<int> &widthVector, int &QP);
 
 #endif // LIBXML_H_INCLUDED

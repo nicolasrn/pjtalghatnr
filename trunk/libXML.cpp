@@ -16,21 +16,22 @@ using namespace std;
  *@param heightVector : hauteur pour chaque partie enregistrée
  *@param widthVector : largeur pour chaque partie enregistrée
  */
-void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, std::vector<int **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV, std::vector<int> heightVector, std::vector<int> widthVector){
+void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, std::vector<int **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV, std::vector<int> heightVector, std::vector<int> widthVector, int QP){
 
     TiXmlDocument doc;
     TiXmlElement * Ligne;
     TiXmlElement * Colonne;
 
     //Root du fichier XML pour la balise <Recouvrement>
-    TiXmlElement * Recouvrement = new TiXmlElement("Recouvrement");
+    TiXmlElement * Parametre = new TiXmlElement("Parametre");
+    Parametre->SetAttribute("QP", QP);
 
     if(Y.size() == 2)
-        Recouvrement->SetAttribute("recouvert", "0");
+        Parametre->SetAttribute("recouvrement", "0");
     else
-        Recouvrement->SetAttribute("recouvert", "1");
+        Parametre->SetAttribute("recouvrement", "1");
 
-    doc.LinkEndChild(Recouvrement);
+    doc.LinkEndChild(Parametre);
 
     //Root du fichier XML pour la balise <OriginalImage>
     TiXmlElement * OriginalImage = new TiXmlElement("OriginalImage");
@@ -152,12 +153,12 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
  *@param heightVector : hauteur pour chaque partie enregistrée
  *@param widthVector : largeur pour chaque partie enregistrée
  */
-void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, std::vector<int **> &V , std::vector<int **> &stratY, std::vector<int **> &stratU, std::vector<int **> &stratV, std::vector<int> &heightVector, std::vector<int> &widthVector){
+void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, std::vector<int **> &V , std::vector<int **> &stratY, std::vector<int **> &stratU, std::vector<int **> &stratV, std::vector<int> &heightVector, std::vector<int> &widthVector, int &QP){
 
     //On ouvrir le fichier "name"
     TiXmlDocument doc(name);
 
-    TiXmlElement * recouvrement;
+    TiXmlElement * parametre;
     TiXmlElement * originalImage;
     TiXmlElement * bigOne;
     TiXmlElement * ligne;
@@ -168,6 +169,7 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
     int height;
     int nbLigne;
     int nbColonne;
+    int attrQP;
     int attrRecouvert;
     int attrStratY;
     int attrStratU;
@@ -190,15 +192,16 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
     TiXmlHandle docHandle( &doc );
 
     //On accède au premier élément, cad la première balise appelée "Recouvrement"
-    recouvrement = docHandle.FirstChildElement().Element();
-    if(!recouvrement){
-        printf("Failed to read file. Can't reach '<Recouvrement>' \n");
+    parametre = docHandle.FirstChildElement().Element();
+    if(!parametre){
+        printf("Failed to read file. Can't reach '<Parametre>' \n");
         exit(1);
     }
-    recouvrement->QueryIntAttribute("recouvert",&attrRecouvert);
+    parametre->QueryIntAttribute("QP",&attrQP);
+    parametre->QueryIntAttribute("recouvert",&attrRecouvert);
 
     //On accède au premier élément, cad la première balise appelée "OriginalImage"
-    originalImage = recouvrement->NextSiblingElement();
+    originalImage =  parametre->NextSiblingElement();
     //On test la valeur de originalImage
     if(!originalImage){
         printf("Failed to read file. Can't reach '<OriginalImage>' \n");
