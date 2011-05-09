@@ -40,37 +40,72 @@ void codage(const std::string &filename, int QP)
     IplImage * BGR, *image = cvLoadImage(filename.c_str());
     //ajustement de l'image
     BGR = ajustementImage(image);
+    IplImage *recouv = recouvrement(BGR, taille);
+    recouv = ajustementImage(recouv);
+
     //conversion en YUV
     IplImage * YUV = cvBGR2YUV( BGR );
+    IplImage * YUVrecouv = cvBGR2YUV( recouv );
     cvShowAnyImageYUV("BGR", BGR);
 
     //separation des composantes
-    IplImage *Y, *U, *V;
+    IplImage *Y, *U, *V, *ry, *ru, *rv;
     separateComponents(YUV, Y, U, V);
+    separateComponents(YUVrecouv, ry, ru, rv);
 
     int **qyI, **quI, **qvI, **syI, **suI, **svI;
     int **qyM, **quM, **qvM, **syM, **suM, **svM;
+
+    int **rqyI, **rquI, **rqvI, **rsyI, **rsuI, **rsvI;
+    int **rqyM, **rquM, **rqvM, **rsyM, **rsuM, **rsvM;
 
     codageComposante(Y, QP, qyI, qyM, syI, syM);
     codageComposante(U, QP, quI, quM, suI, suM);
     codageComposante(V, QP, qvI, qvM, svI, svM);
 
+    codageComposante(ry, QP, rqyI, rqyM, rsyI, rsyM);
+    codageComposante(ru, QP, rquI, rquM, rsuI, rsuM);
+    codageComposante(rv, QP, rqvI, rqvM, rsvI, rsvM);
+
     //sauvegarde
     //ici la sauvegarde
 
     //chargement
-    IplImage *yi, *ym, *ui, *um, *vi, *vm;
+    IplImage *yi, *ym, *ui, *um, *vi, *vm,
+    *ryi, *rym, *rui, *rum, *rvi, *rvm;
+
     decodage(qyI, qyM, syI, syM, QP, yi, ym, Y->width, Y->height);
     decodage(quI, quM, suI, suM, QP, ui, um, Y->width, Y->height);
     decodage(qvI, qvM, svI, svM, QP, vi, vm, Y->width, Y->height);
 
-    IplImage *yuvI, *yuvM;
+    decodage(rqyI, rqyM, rsyI, rsyM, QP, ryi, rym, recouv->width, recouv->height);
+    decodage(rquI, rquM, rsuI, rsuM, QP, rui, rum, recouv->width, recouv->height);
+    decodage(rqvI, rqvM, rsvI, rsvM, QP, rvi, rvm, recouv->width, recouv->height);
+
+    IplImage *yuvI, *yuvM,
+    *ryuvI, *ryuvM;
     yuvM = unifiateComponents(ym, um, vm);
     yuvI = unifiateComponents(yi, ui, vi);
+
+    ryuvM = unifiateComponents(rym, rum, rvm);
+    ryuvI = unifiateComponents(ryi, rui, rvi);
+
     IplImage *bgrM = cvYUV2BGR(yuvM);
     IplImage *bgrI = cvYUV2BGR(yuvI);
+
+    IplImage *rbgrM = cvYUV2BGR(ryuvM);
+    IplImage *rbgrI = cvYUV2BGR(ryuvI);
+
     cvShowAnyImageYUV("miniature", bgrM);
     cvShowAnyImageYUV("image", bgrI);
+
+    cvShowAnyImageYUV("miniature R", rbgrM);
+    cvShowAnyImageYUV("image R", rbgrI);
+
+    bgrI = mergedRecouvrement(bgrI, rbgrI, taille);
+    bgrM = mergedRecouvrement(bgrM, rbgrM, taille);
+    cvShowAnyImageYUV("miniature RO", rbgrM);
+    cvShowAnyImageYUV("image RO", rbgrI);
 }
 
 void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int **&sM)
@@ -78,7 +113,9 @@ void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int 
     IplImage *image, *miniature;
 
     image = DCT(Y, taille);
+    //cout << "image : " << Y->width << ", " << Y->height << endl;
     miniature = ExplodeDCT(image, taille);
+    //cout << "miniature : " << miniature->width << ", " << miniature->height << endl;
     miniature = DCT(miniature, taille);
 
     image = predictImage(image, taille, sI);

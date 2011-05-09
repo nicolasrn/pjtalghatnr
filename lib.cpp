@@ -127,6 +127,9 @@ IplImage* ajustementImage(IplImage *image)
     IplImage *A = cvCreateImage(cvSize(widthAjuste, heightAjuste), IPL_DEPTH_64F, image->nChannels);
     CvScalar px;
 
+    //cout << "taille origine : " << A->width << ", " << A->height << endl;
+    //cout << "taille ajuste : " << A->width << ", " << A->height << endl;
+
     //remplissage avec du noir de l'image
     for(int i = 0; i < image->height; i++)
     {
@@ -144,6 +147,8 @@ IplImage* recouvrement(IplImage *image, int taille)
 {
     IplImage *A = cvCreateImage(cvSize(image->width - taille, image->height - taille), IPL_DEPTH_64F, image->nChannels);
     CvScalar px;
+
+    //cout << "recouvrement : " << A->width << ", " << A->height << endl;
 
     for(int i = taille/2; i < image->height - taille/2; i++)
     {
@@ -171,6 +176,8 @@ IplImage* mergedRecouvrement(IplImage *im, IplImage *r, int taille)
 					ia = cvGet2D(im, y+i+taille/2, x+j+taille/2);
 					ra = cvGet2D(r, y+i, x+j);
 					ia.val[0] = (ia.val[0] + ra.val[0])/2;
+					ia.val[1] = (ia.val[1] + ra.val[1])/2;
+					ia.val[2] = (ia.val[2] + ra.val[2])/2;
 					cvSet2D(im, y+i+taille/2, x+j+taille/2, ia);
 				}
 			}
