@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1304400392 source:c:\users\alex\desktop\projet\main.cpp
+1304919034 source:c:\users\alex\desktop\projet\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"lib.h"
+	"libXML.h"
 
 1304433121 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
@@ -132,7 +133,7 @@
 
 1302677233 ghgui.h>
 
-1303901755 source:c:\users\alex\desktop\projet\myimage.cpp
+1304919034 source:c:\users\alex\desktop\projet\myimage.cpp
 	<cstdio>
 	<iostream>
 	<sstream>
@@ -141,30 +142,31 @@
 	<OpenCV/highgui.h>
 	"MyImage.hpp"
 
-1303901755 c:\users\alex\desktop\projet\myimage.hpp
+1304919034 c:\users\alex\desktop\projet\myimage.hpp
 	<iostream>
 	<sstream>
 	<string>
 	<OpenCV/cv.h>
 	<OpenCV/highgui.h>
 
-1302676852 source:c:\users\alex\desktop\projet\lib.cpp
+1304921810 source:c:\users\alex\desktop\projet\lib.cpp
 	"lib.h"
+	"math.h"
 
-1304400392 c:\users\alex\desktop\projet\lib.h
+1304920692 c:\users\alex\desktop\projet\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
 	"MyImage.hpp"
 
-1303936008 c:\users\alex\desktop\projet\dct.h
+1304919034 c:\users\alex\desktop\projet\dct.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<iostream>
 	"lib.h"
 	"MyImage.hpp"
 
-1304400392 source:c:\users\alex\desktop\projet\dct.cpp
+1304919034 source:c:\users\alex\desktop\projet\dct.cpp
 	"DCT.h"
 
 1302685818 8
@@ -237,20 +239,20 @@
 	"tinyxml.h"
 	<windows.h>
 
-1303901754 source:c:\users\alex\desktop\projet\tinystr.cpp
+1304919033 source:c:\users\alex\desktop\projet\tinystr.cpp
 	"tinystr.h"
 
-1303901755 c:\users\alex\desktop\projet\tinystr.h
+1304919034 c:\users\alex\desktop\projet\tinystr.h
 	<assert.h>
 	<string.h>
 
-1303901754 source:c:\users\alex\desktop\projet\tinyxml.cpp
+1304919034 source:c:\users\alex\desktop\projet\tinyxml.cpp
 	<ctype.h>
 	<sstream>
 	<iostream>
 	"tinyxml.h"
 
-1303901754 c:\users\alex\desktop\projet\tinyxml.h
+1304919033 c:\users\alex\desktop\projet\tinyxml.h
 	<ctype.h>
 	<stdio.h>
 	<stdlib.h>
@@ -261,10 +263,10 @@
 	<sstream>
 	"tinystr.h"
 
-1303901754 source:c:\users\alex\desktop\projet\tinyxmlerror.cpp
+1304919033 source:c:\users\alex\desktop\projet\tinyxmlerror.cpp
 	"tinyxml.h"
 
-1303901755 source:c:\users\alex\desktop\projet\tinyxmlparser.cpp
+1304919034 source:c:\users\alex\desktop\projet\tinyxmlparser.cpp
 	<ctype.h>
 	<stddef.h>
 	"tinyxml.h"
@@ -286,6 +288,19 @@
 	<vector>
 
 1304428028 c:\users\nicolas\documents\projetmultimedia\projet\libxml.h
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	<vector>
+	"MyImage.hpp"
+	"tinyxml.h"
+
+1304919034 source:c:\users\alex\desktop\projet\libxml.cpp
+	"libXML.h"
+	"tinystr.h"
+	"tinyxml.h"
+	<vector>
+
+1304919034 c:\users\alex\desktop\projet\libxml.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<vector>

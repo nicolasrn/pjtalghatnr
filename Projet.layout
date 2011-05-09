@@ -14,13 +14,13 @@
 		<Cursor position="2784" topLine="84" />
 	</File>
 	<File name="lib.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="16124" topLine="496" />
+		<Cursor position="16124" topLine="409" />
 	</File>
-	<File name="lib.h" open="1" top="0" tabpos="3">
-		<Cursor position="3105" topLine="28" />
+	<File name="lib.h" open="1" top="1" tabpos="3">
+		<Cursor position="5622" topLine="142" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="4804" topLine="52" />
+	<File name="main.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="4804" topLine="9" />
 	</File>
 	<File name="tinystr.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1134" topLine="72" />
