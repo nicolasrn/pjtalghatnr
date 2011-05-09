@@ -157,7 +157,7 @@ IplImage* recouvrement(IplImage *image, int taille)
     return A;
 }
 
-IplImage* mergedRecouvrement(IplImage *i, IplImage *r, int taille)
+IplImage* mergedRecouvrement(IplImage *im, IplImage *r, int taille)
 {
 	CvScalar ia, ra;
 	for(int y = 0; y < r->height; y+=taille)
@@ -168,14 +168,15 @@ IplImage* mergedRecouvrement(IplImage *i, IplImage *r, int taille)
 			{
 				for(int j = 0; j < taille; j++)
 				{
-					ia = cvGet2D(i, y+i+taille/2, x+j+taille/2);
+					ia = cvGet2D(im, y+i+taille/2, x+j+taille/2);
 					ra = cvGet2D(r, y+i, x+j);
 					ia.val[0] = (ia.val[0] + ra.val[0])/2;
+					cvSet2D(im, y+i+taille/2, x+j+taille/2, ia);
 				}
 			}
 		}
 	}
-	return i;
+	return im;
 }
 
 void quantification(IplImage * I, int QP, int* R, int i, int ** q, int x, int y) //y = l
