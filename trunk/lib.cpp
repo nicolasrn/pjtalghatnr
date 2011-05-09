@@ -426,13 +426,13 @@ void predictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int tai
 		//On fait la prédiction sur la ligne haute des AD
 		for(int k = 1; k < taille; k++)
 		{
-			predictPixelAD(ligne, colonne + k, I, Ipred, taille, strategie);
+			predictPixelAD(ligne, colonne + k, I, Ipred, taille, strategie,strategie[colonne][ligne]);
 		}
 
 		//On fait la prédiction sur la ligne gauche des AD
 		for(int k = 1; k < taille; k++)
 		{
-			predictPixelAD(ligne + k, colonne, I, Ipred, taille, strategie);
+			predictPixelAD(ligne + k, colonne, I, Ipred, taille, strategie,strategie[colonne][ligne]);
 		}
 	}
 }
