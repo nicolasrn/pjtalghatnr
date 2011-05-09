@@ -112,7 +112,14 @@ void codage(const std::string &filename, int QP)
     w.push_back(Y->width/taille);
     w.push_back(ry->width);
     w.push_back(recouv->width/taille);
-
+/*
+    for(int ha = 0; ha < h[0]; ha++)
+        for(int wa = 0; wa < w[0]; wa++)
+        {
+            cout << wa << ", " << ha << endl;
+            cvGet2D(Y, ha, wa);
+        }
+*/
     saveXML("saveTest.xml", vecY, vecU, vecV , stratY, stratU, stratV, h, w, QP);
 }
 
