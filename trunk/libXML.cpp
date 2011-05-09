@@ -52,14 +52,16 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
             //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
             Colonne = new TiXmlElement("Colonne");
             Ligne->LinkEndChild(Colonne);
-            Colonne->SetAttribute("Y", Y[0][w][h]);
-            Colonne->SetAttribute("U", U[0][w][h]);
-            Colonne->SetAttribute("V", V[0][w][h]);
+            //cout << "(" << w << ", " << h << ")" << endl;
+            Colonne->SetAttribute("Y", Y[0][h][w]);
+            Colonne->SetAttribute("U", U[0][h][w]);
+            Colonne->SetAttribute("V", V[0][h][w]);
             Colonne->SetAttribute("StratY", stratY[0][w][h]);
             Colonne->SetAttribute("StratU", stratU[0][w][h]);
             Colonne->SetAttribute("StratV", stratV[0][w][h]);
         }
     }
+    //exit(-1);
 
     //Balise LittleOne pour l'image normal <LittleOne width=XX height=XX>
     TiXmlElement * LittleOneOriginal = new TiXmlElement("LittleOne");
@@ -76,9 +78,9 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
             //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
             Colonne = new TiXmlElement("Colonne");
             Ligne->LinkEndChild(Colonne);
-            Colonne->SetAttribute("Y", Y[1][w][h]);
-            Colonne->SetAttribute("U", U[1][w][h]);
-            Colonne->SetAttribute("V", V[1][w][h]);
+            Colonne->SetAttribute("Y", Y[1][h][w]);
+            Colonne->SetAttribute("U", U[1][h][w]);
+            Colonne->SetAttribute("V", V[1][h][w]);
             Colonne->SetAttribute("StratY", stratY[1][w][h]);
             Colonne->SetAttribute("StratU", stratU[1][w][h]);
             Colonne->SetAttribute("StratV", stratV[1][w][h]);
@@ -106,9 +108,9 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
                 //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
                 Colonne = new TiXmlElement("Colonne");
                 Ligne->LinkEndChild(Colonne);
-                Colonne->SetAttribute("Y", Y[2][w][h]);
-                Colonne->SetAttribute("U", U[2][w][h]);
-                Colonne->SetAttribute("V", V[2][w][h]);
+                Colonne->SetAttribute("Y", Y[2][h][w]);
+                Colonne->SetAttribute("U", U[2][h][w]);
+                Colonne->SetAttribute("V", V[2][h][w]);
                 Colonne->SetAttribute("StratY", stratY[2][w][h]);
                 Colonne->SetAttribute("StratU", stratU[2][w][h]);
                 Colonne->SetAttribute("StratV", stratV[2][w][h]);
@@ -130,9 +132,9 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
                 //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
                 Colonne = new TiXmlElement("Colonne");
                 Ligne->LinkEndChild(Colonne);
-                Colonne->SetAttribute("Y", Y[3][w][h]);
-                Colonne->SetAttribute("U", U[3][w][h]);
-                Colonne->SetAttribute("V", V[3][w][h]);
+                Colonne->SetAttribute("Y", Y[3][h][w]);
+                Colonne->SetAttribute("U", U[3][h][w]);
+                Colonne->SetAttribute("V", V[3][h][w]);
                 Colonne->SetAttribute("StratY", stratY[3][w][h]);
                 Colonne->SetAttribute("StratU", stratU[3][w][h]);
                 Colonne->SetAttribute("StratV", stratV[3][w][h]);
@@ -227,17 +229,17 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
     widthVector.push_back(width);
 
     //On crée les tableau de quantification Y, U, V pour BigOne
-    int **Y0 = new int*[width];
-        for(int i = 0; i < width; i++)
-            Y0[i] = new int[height];
+    int **Y0 = new int*[height];
+        for(int i = 0; i < height; i++)
+            Y0[i] = new int[width];
 
-    int **U0 = new int*[width];
-        for(int i = 0; i < width; i++)
-            U0[i] = new int[height];
+    int **U0 = new int*[height];
+        for(int i = 0; i < height; i++)
+            U0[i] = new int[width];
 
-    int **V0 = new int*[width];
-        for(int i = 0; i < width; i++)
-            V0[i] = new int[height];
+    int **V0 = new int*[height];
+        for(int i = 0; i < height; i++)
+            V0[i] = new int[width];
 
     //On associe aux vecteurs les images correspondantes
     Y.push_back(Y0);
@@ -278,9 +280,9 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
             colonne->QueryIntAttribute("StratV", &attrStratV);
 
             //On affecte aux images les valeurs de pixel
-            Y[0][nbColonne][nbLigne] = attrY;
-            U[0][nbColonne][nbLigne] = attrU;
-            V[0][nbColonne][nbLigne] = attrV;
+            Y[0][nbLigne][nbColonne] = attrY;
+            U[0][nbLigne][nbColonne] = attrU;
+            V[0][nbLigne][nbColonne] = attrV;
 
             //On affect aux stratégies les valeurs des stratégies
             stratY[0][nbColonne][nbLigne] = attrStratY;
@@ -311,17 +313,17 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
     widthVector.push_back(width);
 
     //On crée les tableau de quantification Y, U, V pour LittleOne
-    int **Y1 = new int*[width];
-        for(int i = 0; i < width; i++)
-            Y1[i] = new int[height];
+    int **Y1 = new int*[height];
+        for(int i = 0; i < height; i++)
+            Y1[i] = new int[width];
 
-    int **U1 = new int*[width];
-        for(int i = 0; i < width; i++)
-            U1[i] = new int[height];
+    int **U1 = new int*[height];
+        for(int i = 0; i < height; i++)
+            U1[i] = new int[width];
 
-    int **V1 = new int*[width];
-        for(int i = 0; i < width; i++)
-            V1[i] = new int[height];
+    int **V1 = new int*[height];
+        for(int i = 0; i < height; i++)
+            V1[i] = new int[width];
 
     //On associe aux vecteurs les images correspondantes
     Y.push_back(Y1);
@@ -358,9 +360,9 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
             colonne->QueryIntAttribute("StratV", &attrStratV);
 
             //On affecte aux images les valeurs de pixel
-            Y[1][nbColonne][nbLigne] = attrY;
-            U[1][nbColonne][nbLigne] = attrU;
-            V[1][nbColonne][nbLigne] = attrV;
+            Y[1][nbLigne][nbColonne] = attrY;
+            U[1][nbLigne][nbColonne] = attrU;
+            V[1][nbLigne][nbColonne] = attrV;
 
             //On affect aux stratégies les valeurs des stratégies
             stratY[1][nbColonne][nbLigne] = attrStratY;
@@ -401,17 +403,17 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
         widthVector.push_back(width);
 
         //On crée les tableau de quantification Y, U, V pour BigOne
-        int **Y2 = new int*[width];
-            for(int i = 0; i < width; i++)
-                Y2[i] = new int[height];
+        int **Y2 = new int*[height];
+            for(int i = 0; i < height; i++)
+                Y2[i] = new int[width];
 
-        int **U2 = new int*[width];
-            for(int i = 0; i < width; i++)
-                U2[i] = new int[height];
+        int **U2 = new int*[height];
+            for(int i = 0; i < height; i++)
+                U2[i] = new int[width];
 
-        int **V2 = new int*[width];
-            for(int i = 0; i < width; i++)
-                V2[i] = new int[height];
+        int **V2 = new int*[height];
+            for(int i = 0; i < height; i++)
+                V2[i] = new int[width];
 
         //On associe aux vecteurs les images correspondantes
         Y.push_back(Y2);
@@ -448,9 +450,9 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
                 colonne->QueryIntAttribute("StratV", &attrStratV);
 
                 //On affecte aux images les valeurs de pixel
-                Y[2][nbColonne][nbLigne] = attrY;
-                U[2][nbColonne][nbLigne] = attrU;
-                V[2][nbColonne][nbLigne] = attrV;
+                Y[2][nbLigne][nbColonne] = attrY;
+                U[2][nbLigne][nbColonne] = attrU;
+                V[2][nbLigne][nbColonne] = attrV;
 
                 //On affect aux stratégies les valeurs des stratégies
                 stratY[2][nbColonne][nbLigne] = attrStratY;
@@ -482,17 +484,17 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
         widthVector.push_back(width);
 
        //On crée les tableau de quantification Y, U, V pour LittleOne
-        int **Y3 = new int*[width];
-            for(int i = 0; i < width; i++)
-                Y3[i] = new int[height];
+        int **Y3 = new int*[height];
+            for(int i = 0; i < height; i++)
+                Y3[i] = new int[width];
 
-        int **U3 = new int*[width];
-            for(int i = 0; i < width; i++)
-                U3[i] = new int[height];
+        int **U3 = new int*[height];
+            for(int i = 0; i < height; i++)
+                U3[i] = new int[width];
 
-        int **V3 = new int*[width];
-            for(int i = 0; i < width; i++)
-                V3[i] = new int[height];
+        int **V3 = new int*[height];
+            for(int i = 0; i < height; i++)
+                V3[i] = new int[width];
 
         //On associe aux vecteurs les images correspondantes
         Y.push_back(Y3);
@@ -529,9 +531,9 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
                 colonne->QueryIntAttribute("StratV", &attrStratV);
 
                 //On affecte aux images les valeurs de pixel
-                Y[3][nbColonne][nbLigne] = attrY;
-                U[3][nbColonne][nbLigne] = attrU;
-                V[3][nbColonne][nbLigne] = attrV;
+                Y[3][nbLigne][nbColonne] = attrY;
+                U[3][nbLigne][nbColonne] = attrU;
+                V[3][nbLigne][nbColonne] = attrV;
 
                 //On affect aux stratégies les valeurs des stratégies
                 stratY[3][nbColonne][nbLigne] = attrStratY;
