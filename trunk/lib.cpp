@@ -165,22 +165,16 @@ IplImage* recouvrement(IplImage *image, int taille)
 IplImage* mergedRecouvrement(IplImage *im, IplImage *r, int taille)
 {
 	CvScalar ia, ra;
-	for(int y = 0; y < r->height; y+=taille)
+	for(int y = taille/2; y < im->height - taille/2; y++)
 	{
-		for(int x = 0; x < r->width; x+=taille)
+		for(int x = taille/2; x < im->width - taille/2; x++)
 		{
-			for(int i = 0; i < taille; i++)
-			{
-				for(int j = 0; j < taille; j++)
-				{
-					ia = cvGet2D(im, y+i+taille/2, x+j+taille/2);
-					ra = cvGet2D(r, y+i, x+j);
-					ia.val[0] = (ia.val[0] + ra.val[0])/2;
-					ia.val[1] = (ia.val[1] + ra.val[1])/2;
-					ia.val[2] = (ia.val[2] + ra.val[2])/2;
-					cvSet2D(im, y+i+taille/2, x+j+taille/2, ia);
-				}
-			}
+            ia = cvGet2D(im, y, x);
+            ra = cvGet2D(r, y+taille/2, x+taille/2);
+            ra.val[0] = (ia.val[0] + ra.val[0])/2;
+            ra.val[1] = (ia.val[1] + ra.val[1])/2;
+            ra.val[2] = (ia.val[2] + ra.val[2])/2;
+            cvSet2D(im, y, x, ra);
 		}
 	}
 	return im;

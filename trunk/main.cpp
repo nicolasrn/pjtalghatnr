@@ -103,8 +103,6 @@ void codage(const std::string &filename, int QP)
     cvShowAnyImageYUV("image R", rbgrI);
 
     bgrI = mergedRecouvrement(bgrI, rbgrI, taille);
-    bgrM = mergedRecouvrement(bgrM, rbgrM, taille);
-    cvShowAnyImageYUV("miniature RO", rbgrM);
     cvShowAnyImageYUV("image RO", rbgrI);
 }
 
