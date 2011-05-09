@@ -127,6 +127,12 @@ IplImage* ajustementImage(IplImage *image)
     IplImage *A = cvCreateImage(cvSize(widthAjuste, heightAjuste), IPL_DEPTH_64F, image->nChannels);
     CvScalar px;
 
+    px.val[0] = 0;
+
+    for(int i = 0; i < A->height; i++)
+        for(int j = 0; j < A->width; j++)
+            cvSet2D(A,i,j, px);
+
     //cout << "taille origine : " << A->width << ", " << A->height << endl;
     //cout << "taille ajuste : " << A->width << ", " << A->height << endl;
 
@@ -147,8 +153,13 @@ IplImage* recouvrement(IplImage *image, int taille)
 {
     IplImage *A = cvCreateImage(cvSize(image->width - taille, image->height - taille), IPL_DEPTH_64F, image->nChannels);
     CvScalar px;
+    px.val[0] = 0;
 
     //cout << "recouvrement : " << A->width << ", " << A->height << endl;
+
+    for(int i = 0; i < A->height; i++)
+        for(int j = 0; j < A->width; j++)
+            cvSet2D(A,i,j, px);
 
     for(int i = taille/2; i < image->height - taille/2; i++)
     {

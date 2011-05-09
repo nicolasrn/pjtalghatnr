@@ -85,6 +85,7 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
         }
     }
 
+
     if(Y.size() == 4){
         //Root du fichier XML pour la balise <RecoveryImage>
         TiXmlElement * RecoveryImage = new TiXmlElement("RecoveryImage");
@@ -135,6 +136,7 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
                 Colonne->SetAttribute("StratY", stratY[3][w][h]);
                 Colonne->SetAttribute("StratU", stratU[3][w][h]);
                 Colonne->SetAttribute("StratV", stratV[3][w][h]);
+
             }
         }
     }
@@ -522,9 +524,9 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
                 colonne->QueryIntAttribute("Y", &attrY);
                 colonne->QueryIntAttribute("U", &attrU);
                 colonne->QueryIntAttribute("V", &attrV);
-                colonne->QueryIntAttribute("Strat", &attrStratY);
-                colonne->QueryIntAttribute("Strat", &attrStratU);
-                colonne->QueryIntAttribute("Strat", &attrStratV);
+                colonne->QueryIntAttribute("StratY", &attrStratY);
+                colonne->QueryIntAttribute("StratU", &attrStratU);
+                colonne->QueryIntAttribute("StratV", &attrStratV);
 
                 //On affecte aux images les valeurs de pixel
                 Y[3][nbColonne][nbLigne] = attrY;
