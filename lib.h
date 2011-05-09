@@ -87,7 +87,7 @@ IplImage* recouvrement(IplImage *image, int taille);
  *@param taile : represente la taille de recouvrement des blocs
  *@return IplImage : le resultat de la fusion
  */
-IplImage* mergedRecouvrement(IplImage *i, IplImage *r, int taille)
+IplImage* mergedRecouvrement(IplImage *i, IplImage *r, int taille);
 
 /**
  *Applique la quatification sur l'image
