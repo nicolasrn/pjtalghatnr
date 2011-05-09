@@ -22,6 +22,16 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
     TiXmlElement * Ligne;
     TiXmlElement * Colonne;
 
+    //Root du fichier XML pour la balise <Recouvrement>
+    TiXmlElement * Recouvrement = new TiXmlElement("Recouvrement");
+
+    if(Y.size() == 2)
+        Recouvrement->SetAttribute("recouvert", "0");
+    else
+        Recouvrement->SetAttribute("recouvert", "1");
+
+    doc.LinkEndChild(Recouvrement);
+
     //Root du fichier XML pour la balise <OriginalImage>
     TiXmlElement * OriginalImage = new TiXmlElement("OriginalImage");
     doc.LinkEndChild(OriginalImage);
@@ -74,55 +84,57 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
         }
     }
 
-    //Root du fichier XML pour la balise <RecoveryImage>
-    TiXmlElement * RecoveryImage = new TiXmlElement("RecoveryImage");
-    doc.LinkEndChild(RecoveryImage);
+    if(Y.size() == 4){
+        //Root du fichier XML pour la balise <RecoveryImage>
+        TiXmlElement * RecoveryImage = new TiXmlElement("RecoveryImage");
+        doc.LinkEndChild(RecoveryImage);
 
-    //Balise BigOne pour l'image de recouvrement <BigOne width=XX height=XX>
-    TiXmlElement * BigOneRecovery = new TiXmlElement("BigOne");
-    RecoveryImage->LinkEndChild(BigOneRecovery);
-    BigOneRecovery->SetAttribute("width", widthVector[2]);
-    BigOneRecovery->SetAttribute("height", heightVector[2]);
+        //Balise BigOne pour l'image de recouvrement <BigOne width=XX height=XX>
+        TiXmlElement * BigOneRecovery = new TiXmlElement("BigOne");
+        RecoveryImage->LinkEndChild(BigOneRecovery);
+        BigOneRecovery->SetAttribute("width", widthVector[2]);
+        BigOneRecovery->SetAttribute("height", heightVector[2]);
 
-    for(int h = 0; h < heightVector[2]; h++){
-        //On ajoute une ligne à l'image <Ligne>
-        Ligne = new TiXmlElement("Ligne");
-        BigOneRecovery->LinkEndChild(Ligne);
+        for(int h = 0; h < heightVector[2]; h++){
+            //On ajoute une ligne à l'image <Ligne>
+            Ligne = new TiXmlElement("Ligne");
+            BigOneRecovery->LinkEndChild(Ligne);
 
-        for(int w = 0; w < widthVector[2]; w++){
-            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
-            Colonne = new TiXmlElement("Colonne");
-            Ligne->LinkEndChild(Colonne);
-            Colonne->SetAttribute("Y", Y[2][w][h]);
-            Colonne->SetAttribute("U", U[2][w][h]);
-            Colonne->SetAttribute("V", V[2][w][h]);
-            Colonne->SetAttribute("StratY", stratY[2][w][h]);
-            Colonne->SetAttribute("StratU", stratU[2][w][h]);
-            Colonne->SetAttribute("StratV", stratV[2][w][h]);
+            for(int w = 0; w < widthVector[2]; w++){
+                //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
+                Colonne = new TiXmlElement("Colonne");
+                Ligne->LinkEndChild(Colonne);
+                Colonne->SetAttribute("Y", Y[2][w][h]);
+                Colonne->SetAttribute("U", U[2][w][h]);
+                Colonne->SetAttribute("V", V[2][w][h]);
+                Colonne->SetAttribute("StratY", stratY[2][w][h]);
+                Colonne->SetAttribute("StratU", stratU[2][w][h]);
+                Colonne->SetAttribute("StratV", stratV[2][w][h]);
+            }
         }
-    }
 
-    //Balise LittleOne pour l'image de recouvrement <LittleOne width=XX height=XX>
-    TiXmlElement * LittleOneRecovery = new TiXmlElement("LittleOne");
-    RecoveryImage->LinkEndChild(LittleOneRecovery);
-    LittleOneRecovery->SetAttribute("width", widthVector[3]);
-    LittleOneRecovery->SetAttribute("height", heightVector[3]);
+        //Balise LittleOne pour l'image de recouvrement <LittleOne width=XX height=XX>
+        TiXmlElement * LittleOneRecovery = new TiXmlElement("LittleOne");
+        RecoveryImage->LinkEndChild(LittleOneRecovery);
+        LittleOneRecovery->SetAttribute("width", widthVector[3]);
+        LittleOneRecovery->SetAttribute("height", heightVector[3]);
 
-    for(int h = 0; h < heightVector[3]; h++){
-        //On ajoute une ligne à l'image <Ligne>
-        Ligne = new TiXmlElement("Ligne");
-        LittleOneRecovery->LinkEndChild(Ligne);
+        for(int h = 0; h < heightVector[3]; h++){
+            //On ajoute une ligne à l'image <Ligne>
+            Ligne = new TiXmlElement("Ligne");
+            LittleOneRecovery->LinkEndChild(Ligne);
 
-        for(int w = 0; w < widthVector[3]; w++){
-            //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
-            Colonne = new TiXmlElement("Colonne");
-            Ligne->LinkEndChild(Colonne);
-            Colonne->SetAttribute("Y", Y[3][w][h]);
-            Colonne->SetAttribute("U", U[3][w][h]);
-            Colonne->SetAttribute("V", V[3][w][h]);
-            Colonne->SetAttribute("StratY", stratY[3][w][h]);
-            Colonne->SetAttribute("StratU", stratU[3][w][h]);
-            Colonne->SetAttribute("StratV", stratV[3][w][h]);
+            for(int w = 0; w < widthVector[3]; w++){
+                //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
+                Colonne = new TiXmlElement("Colonne");
+                Ligne->LinkEndChild(Colonne);
+                Colonne->SetAttribute("Y", Y[3][w][h]);
+                Colonne->SetAttribute("U", U[3][w][h]);
+                Colonne->SetAttribute("V", V[3][w][h]);
+                Colonne->SetAttribute("StratY", stratY[3][w][h]);
+                Colonne->SetAttribute("StratU", stratU[3][w][h]);
+                Colonne->SetAttribute("StratV", stratV[3][w][h]);
+            }
         }
     }
 
@@ -145,6 +157,7 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
     //On ouvrir le fichier "name"
     TiXmlDocument doc(name);
 
+    TiXmlElement * recouvrement;
     TiXmlElement * originalImage;
     TiXmlElement * bigOne;
     TiXmlElement * ligne;
@@ -155,6 +168,7 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
     int height;
     int nbLigne;
     int nbColonne;
+    int attrRecouvert;
     int attrStratY;
     int attrStratU;
     int attrStratV;
@@ -175,8 +189,16 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
     //On crée un Handle
     TiXmlHandle docHandle( &doc );
 
+    //On accède au premier élément, cad la première balise appelée "Recouvrement"
+    recouvrement = docHandle.FirstChildElement().Element();
+    if(!recouvrement){
+        printf("Failed to read file. Can't reach '<Recouvrement>' \n");
+        exit(1);
+    }
+    recouvrement->QueryIntAttribute("recouvert",&attrRecouvert);
+
     //On accède au premier élément, cad la première balise appelée "OriginalImage"
-    originalImage = docHandle.FirstChildElement().Element();//docHandle.FirstChildElement().FirstChildElement().Element();
+    originalImage = recouvrement->NextSiblingElement();
     //On test la valeur de originalImage
     if(!originalImage){
         printf("Failed to read file. Can't reach '<OriginalImage>' \n");
@@ -191,7 +213,7 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
     bigOne = originalImage->FirstChildElement("BigOne");
     //On test la valeur de bigOne
     if(!bigOne){
-        printf("Failed to read file. Can't reach '<BigOne>' \n");
+        printf("Failed to read file. Can't reach First '<BigOne>' \n");
         exit(1);
     }
 
@@ -348,173 +370,175 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
         nbLigne++;
     }
 
+    if(attrRecouvert == 1){
 
-     //On accède a la balise appelée "RecoveryImage"
-    recoveryImage = originalImage->NextSiblingElement();//docHandle.FirstChildElement("RecoveryImage").Element();
-    //On test la valeur de recoveryImage
-    if(!recoveryImage){
-        printf("Failed to read file. Can't reach '<RecoveryImage>' \n");
-        exit(1);
-    }
-
-    /*
-     * TROISIEME PARTIE : RecoveryImage -> BigOne
-     */
-
-    bigOne = recoveryImage->FirstChildElement("BigOne");
-    //On test la valeur de bigOne
-    if(!bigOne){
-        printf("Failed to read file. Can't reach '<BigOne>' \n");
-        exit(1);
-    }
-
-    bigOne->QueryIntAttribute("height", &height);
-    bigOne->QueryIntAttribute("width", &width);
-    heightVector.push_back(height);
-    widthVector.push_back(width);
-
-    //On crée les tableau de quantification Y, U, V pour BigOne
-    int **Y2 = new int*[width];
-        for(int i = 0; i < width; i++)
-            Y2[i] = new int[height];
-
-    int **U2 = new int*[width];
-        for(int i = 0; i < width; i++)
-            U2[i] = new int[height];
-
-    int **V2 = new int*[width];
-        for(int i = 0; i < width; i++)
-            V2[i] = new int[height];
-
-    //On associe aux vecteurs les images correspondantes
-    Y.push_back(Y2);
-    U.push_back(U2);
-    V.push_back(V2);
-
-    //On crée les stratégies strategieY, strategieU, strategieV pour BigOne
-    int **strategieY2 = new int*[width];
-        for(int i = 0; i < width; i++)
-            strategieY2[i] = new int[height];
-    int **strategieU2 = new int*[width];
-        for(int i = 0; i < width; i++)
-            strategieU2[i] = new int[height];
-    int **strategieV2 = new int*[width];
-        for(int i = 0; i < width; i++)
-            strategieV2[i] = new int[height];
-
-    //On associe aux vecteurs les stratégies correspondantes
-    stratY.push_back(strategieY2);
-    stratU.push_back(strategieU2);
-    stratV.push_back(strategieV2);
-
-    ligne = bigOne->FirstChildElement("Ligne");
-    nbLigne = 0;
-    while(ligne){
-        colonne = ligne->FirstChildElement("Colonne");
-        nbColonne = 0;
-        while(colonne){
-            colonne->QueryIntAttribute("Y", &attrY);
-            colonne->QueryIntAttribute("U", &attrU);
-            colonne->QueryIntAttribute("V", &attrV);
-            colonne->QueryIntAttribute("StratY", &attrStratY);
-            colonne->QueryIntAttribute("StratU", &attrStratU);
-            colonne->QueryIntAttribute("StratV", &attrStratV);
-
-            //On affecte aux images les valeurs de pixel
-            Y[2][nbColonne][nbLigne] = attrY;
-            U[2][nbColonne][nbLigne] = attrU;
-            V[2][nbColonne][nbLigne] = attrV;
-
-            //On affect aux stratégies les valeurs des stratégies
-            stratY[2][nbColonne][nbLigne] = attrStratY;
-            stratU[2][nbColonne][nbLigne] = attrStratU;
-            stratV[2][nbColonne][nbLigne] = attrStratV;
-
-            colonne = colonne->NextSiblingElement();
-            nbColonne++;
+         //On accède a la balise appelée "RecoveryImage"
+        recoveryImage = originalImage->NextSiblingElement();//docHandle.FirstChildElement("RecoveryImage").Element();
+        //On test la valeur de recoveryImage
+        if(!recoveryImage){
+            printf("Failed to read file. Can't reach '<RecoveryImage>' \n");
+            exit(1);
         }
-        ligne = ligne->NextSiblingElement();
-        nbLigne++;
-    }
 
+        /*
+         * TROISIEME PARTIE : RecoveryImage -> BigOne
+         */
 
-    /*
-     * QUATRIEME PARTIE : RecoveryImage -> LittleOne
-     */
-
-    littleOne = bigOne->NextSiblingElement();
-    //On test la valeur de bigOne
-    if(!littleOne){
-        printf("Failed to read file. Can't reach '<littleOne>' \n");
-        exit(1);
-    }
-
-    littleOne ->QueryIntAttribute("height", &height);
-    littleOne ->QueryIntAttribute("width", &width);
-    heightVector.push_back(height);
-    widthVector.push_back(width);
-
-   //On crée les tableau de quantification Y, U, V pour LittleOne
-    int **Y3 = new int*[width];
-        for(int i = 0; i < width; i++)
-            Y3[i] = new int[height];
-
-    int **U3 = new int*[width];
-        for(int i = 0; i < width; i++)
-            U3[i] = new int[height];
-
-    int **V3 = new int*[width];
-        for(int i = 0; i < width; i++)
-            V3[i] = new int[height];
-
-    //On associe aux vecteurs les images correspondantes
-    Y.push_back(Y3);
-    U.push_back(U3);
-    V.push_back(V3);
-
-    //On crée les stratégies strategieY, strategieU, strategieV pour BigOne
-    int **strategieY3 = new int*[width];
-        for(int i = 0; i < width; i++)
-            strategieY3[i] = new int[height];
-    int **strategieU3 = new int*[width];
-        for(int i = 0; i < width; i++)
-            strategieU3[i] = new int[height];
-    int **strategieV3 = new int*[width];
-        for(int i = 0; i < width; i++)
-            strategieV3[i] = new int[height];
-
-    //On associe aux vecteurs les stratégies correspondantes
-    stratY.push_back(strategieY3);
-    stratU.push_back(strategieU3);
-    stratV.push_back(strategieV3);
-
-    ligne = littleOne->FirstChildElement("Ligne");
-    nbLigne = 0;
-    while(ligne){
-        colonne = ligne->FirstChildElement("Colonne");
-        nbColonne = 0;
-        while(colonne){
-            colonne->QueryIntAttribute("Y", &attrY);
-            colonne->QueryIntAttribute("U", &attrU);
-            colonne->QueryIntAttribute("V", &attrV);
-            colonne->QueryIntAttribute("Strat", &attrStratY);
-            colonne->QueryIntAttribute("Strat", &attrStratU);
-            colonne->QueryIntAttribute("Strat", &attrStratV);
-
-            //On affecte aux images les valeurs de pixel
-            Y[3][nbColonne][nbLigne] = attrY;
-            U[3][nbColonne][nbLigne] = attrU;
-            V[3][nbColonne][nbLigne] = attrV;
-
-            //On affect aux stratégies les valeurs des stratégies
-            stratY[3][nbColonne][nbLigne] = attrStratY;
-            stratU[3][nbColonne][nbLigne] = attrStratU;
-            stratV[3][nbColonne][nbLigne] = attrStratV;
-
-            colonne = colonne->NextSiblingElement();
-            nbColonne++;
+        bigOne = recoveryImage->FirstChildElement("BigOne");
+        //On test la valeur de bigOne
+        if(!bigOne){
+            printf("Failed to read file. Can't reach Second '<BigOne>' \n");
+            exit(1);
         }
-        ligne = ligne->NextSiblingElement();
-        nbLigne++;
+
+        bigOne->QueryIntAttribute("height", &height);
+        bigOne->QueryIntAttribute("width", &width);
+        heightVector.push_back(height);
+        widthVector.push_back(width);
+
+        //On crée les tableau de quantification Y, U, V pour BigOne
+        int **Y2 = new int*[width];
+            for(int i = 0; i < width; i++)
+                Y2[i] = new int[height];
+
+        int **U2 = new int*[width];
+            for(int i = 0; i < width; i++)
+                U2[i] = new int[height];
+
+        int **V2 = new int*[width];
+            for(int i = 0; i < width; i++)
+                V2[i] = new int[height];
+
+        //On associe aux vecteurs les images correspondantes
+        Y.push_back(Y2);
+        U.push_back(U2);
+        V.push_back(V2);
+
+        //On crée les stratégies strategieY, strategieU, strategieV pour BigOne
+        int **strategieY2 = new int*[width];
+            for(int i = 0; i < width; i++)
+                strategieY2[i] = new int[height];
+        int **strategieU2 = new int*[width];
+            for(int i = 0; i < width; i++)
+                strategieU2[i] = new int[height];
+        int **strategieV2 = new int*[width];
+            for(int i = 0; i < width; i++)
+                strategieV2[i] = new int[height];
+
+        //On associe aux vecteurs les stratégies correspondantes
+        stratY.push_back(strategieY2);
+        stratU.push_back(strategieU2);
+        stratV.push_back(strategieV2);
+
+        ligne = bigOne->FirstChildElement("Ligne");
+        nbLigne = 0;
+        while(ligne){
+            colonne = ligne->FirstChildElement("Colonne");
+            nbColonne = 0;
+            while(colonne){
+                colonne->QueryIntAttribute("Y", &attrY);
+                colonne->QueryIntAttribute("U", &attrU);
+                colonne->QueryIntAttribute("V", &attrV);
+                colonne->QueryIntAttribute("StratY", &attrStratY);
+                colonne->QueryIntAttribute("StratU", &attrStratU);
+                colonne->QueryIntAttribute("StratV", &attrStratV);
+
+                //On affecte aux images les valeurs de pixel
+                Y[2][nbColonne][nbLigne] = attrY;
+                U[2][nbColonne][nbLigne] = attrU;
+                V[2][nbColonne][nbLigne] = attrV;
+
+                //On affect aux stratégies les valeurs des stratégies
+                stratY[2][nbColonne][nbLigne] = attrStratY;
+                stratU[2][nbColonne][nbLigne] = attrStratU;
+                stratV[2][nbColonne][nbLigne] = attrStratV;
+
+                colonne = colonne->NextSiblingElement();
+                nbColonne++;
+            }
+            ligne = ligne->NextSiblingElement();
+            nbLigne++;
+        }
+
+
+        /*
+         * QUATRIEME PARTIE : RecoveryImage -> LittleOne
+         */
+
+        littleOne = bigOne->NextSiblingElement();
+        //On test la valeur de bigOne
+        if(!littleOne){
+            printf("Failed to read file. Can't reach '<littleOne>' \n");
+            exit(1);
+        }
+
+        littleOne ->QueryIntAttribute("height", &height);
+        littleOne ->QueryIntAttribute("width", &width);
+        heightVector.push_back(height);
+        widthVector.push_back(width);
+
+       //On crée les tableau de quantification Y, U, V pour LittleOne
+        int **Y3 = new int*[width];
+            for(int i = 0; i < width; i++)
+                Y3[i] = new int[height];
+
+        int **U3 = new int*[width];
+            for(int i = 0; i < width; i++)
+                U3[i] = new int[height];
+
+        int **V3 = new int*[width];
+            for(int i = 0; i < width; i++)
+                V3[i] = new int[height];
+
+        //On associe aux vecteurs les images correspondantes
+        Y.push_back(Y3);
+        U.push_back(U3);
+        V.push_back(V3);
+
+        //On crée les stratégies strategieY, strategieU, strategieV pour BigOne
+        int **strategieY3 = new int*[width];
+            for(int i = 0; i < width; i++)
+                strategieY3[i] = new int[height];
+        int **strategieU3 = new int*[width];
+            for(int i = 0; i < width; i++)
+                strategieU3[i] = new int[height];
+        int **strategieV3 = new int*[width];
+            for(int i = 0; i < width; i++)
+                strategieV3[i] = new int[height];
+
+        //On associe aux vecteurs les stratégies correspondantes
+        stratY.push_back(strategieY3);
+        stratU.push_back(strategieU3);
+        stratV.push_back(strategieV3);
+
+        ligne = littleOne->FirstChildElement("Ligne");
+        nbLigne = 0;
+        while(ligne){
+            colonne = ligne->FirstChildElement("Colonne");
+            nbColonne = 0;
+            while(colonne){
+                colonne->QueryIntAttribute("Y", &attrY);
+                colonne->QueryIntAttribute("U", &attrU);
+                colonne->QueryIntAttribute("V", &attrV);
+                colonne->QueryIntAttribute("Strat", &attrStratY);
+                colonne->QueryIntAttribute("Strat", &attrStratU);
+                colonne->QueryIntAttribute("Strat", &attrStratV);
+
+                //On affecte aux images les valeurs de pixel
+                Y[3][nbColonne][nbLigne] = attrY;
+                U[3][nbColonne][nbLigne] = attrU;
+                V[3][nbColonne][nbLigne] = attrV;
+
+                //On affect aux stratégies les valeurs des stratégies
+                stratY[3][nbColonne][nbLigne] = attrStratY;
+                stratU[3][nbColonne][nbLigne] = attrStratU;
+                stratV[3][nbColonne][nbLigne] = attrStratV;
+
+                colonne = colonne->NextSiblingElement();
+                nbColonne++;
+            }
+            ligne = ligne->NextSiblingElement();
+            nbLigne++;
+        }
     }
 }
