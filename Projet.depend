@@ -49,7 +49,7 @@
 	<OpenCV/cv.h>
 	<OpenCV/highgui.h>
 
-1302677332 ne
+1303901755 ne
 
 1302614014 source:c:\users\lavahine\documents\projet_multimedia\myimage.cpp
 	<cstdio>
@@ -105,31 +105,33 @@
 	<OpenCV/cv.h>
 	<OpenCV/highgui.h>
 
-1303223234 source:c:\users\gabriel\documents\projet programmation\projet multimédia\lib.cpp
+1304932899 source:c:\users\gabriel\documents\projet programmation\projet multimédia\lib.cpp
 	"lib.h"
 	"math.h"
 
-1303910330 c:\users\gabriel\documents\projet programmation\projet multimédia\lib.h
+1304930393 c:\users\gabriel\documents\projet programmation\projet multimédia\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
 	"MyImage.hpp"
 
-1303223234 c:\users\gabriel\documents\projet programmation\projet multimédia\dct.h
+1304925473 c:\users\gabriel\documents\projet programmation\projet multimédia\dct.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<iostream>
 	"lib.h"
 	"MyImage.hpp"
 
-1303223234 source:c:\users\gabriel\documents\projet programmation\projet multimédia\dct.cpp
+1304925473 source:c:\users\gabriel\documents\projet programmation\projet multimédia\dct.cpp
 	"DCT.h"
 
-1303223234 source:c:\users\gabriel\documents\projet programmation\projet multimédia\main.cpp
+1304937547 source:c:\users\gabriel\documents\projet programmation\projet multimédia\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
+	<vector>
 	"lib.h"
+	"libXML.h"
 
 1302677233 ghgui.h>
 
@@ -171,7 +173,7 @@
 
 1302685818 8
 
-1302685818 9
+1304409060 9
 
 1269292596 source:c:\users\gabriel\documents\projet programmation\projet multimédia\tinystr.cpp
 	"tinystr.h"
@@ -205,6 +207,21 @@
 	<stddef.h>
 	"tinyxml.h"
 	<windows.h>
+
+1304936457 source:c:\users\gabriel\documents\projet programmation\projet multimédia\libxml.cpp
+	"libXML.h"
+	"tinystr.h"
+	"tinyxml.h"
+	<vector>
+
+1304936432 c:\users\gabriel\documents\projet programmation\projet multimédia\libxml.h
+	<opencv/cv.h>
+	<opencv/highgui.h>
+	<vector>
+	"MyImage.hpp"
+	"tinyxml.h"
+
+1303912001 "
 
 1303290193 source:c:\users\nicolas\documents\projetmultimedia\projet\tinystr.cpp
 	"tinystr.h"
@@ -272,7 +289,11 @@
 	"tinyxml.h"
 	<windows.h>
 
+1303901755 6
+
 1304429297 source:c:\users\nicolas\documents\projetmultimedia\projet\codage.cpp
+
+1304429297 5
 	"codage.h"
 
 1304429349 c:\users\nicolas\documents\projetmultimedia\projet\codage.h
