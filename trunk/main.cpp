@@ -34,7 +34,7 @@ void sample();
 
 int main()
 {
-    codage("mandril.jpg", valQP::eleve);
+    codage("H.jpg", valQP::eleve);
     decodage("saveTest.xml");
     return EXIT_SUCCESS;
 }
@@ -120,6 +120,8 @@ void codage(const std::string &filename, int QP)
             cvGet2D(Y, ha, wa);
         }
 */
+    cout << "w : " << Y->width << ", h : " << Y->height << endl;
+
     saveXML("saveTest.xml", vecY, vecU, vecV , stratY, stratU, stratV, h, w, QP);
 }
 
