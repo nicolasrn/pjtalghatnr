@@ -163,6 +163,17 @@ void predictZone(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int tai
 void predictPixel(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int** &strategie);
 
 /**
+ *@param ligne : indice de la ligne du pixel à prédire
+ *@param colonne : indice de la colonne du pixel à prédire
+ *@param I : image de référence pour la prédiction
+ *@param Ipred : l'image sur laquelle se portera la prédiction
+ *@param taille : taille des zones des prédictions
+ *@param strategie : tableau des stratégies
+ *@param stratDC : Stratégie utilisée pour le DC du bloc courant
+ */
+void predictPixelAD(int ligne, int colonne, IplImage * I, IplImage *&Ipred, int taille, int** &strategie, int stratDC);
+
+/**
  *@param I : l'image sur laquelle se portera la prédiction
  *@param taille : taille des zone des prédictions
  *@return IplImage : l'image en prédite
