@@ -169,7 +169,6 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
     int height;
     int nbLigne;
     int nbColonne;
-    int attrQP;
     int attrRecouvert;
     int attrStratY;
     int attrStratU;
@@ -197,8 +196,8 @@ void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, s
         printf("Failed to read file. Can't reach '<Parametre>' \n");
         exit(1);
     }
-    parametre->QueryIntAttribute("QP",&attrQP);
-    parametre->QueryIntAttribute("recouvert",&attrRecouvert);
+    parametre->QueryIntAttribute("QP",&QP);
+    parametre->QueryIntAttribute("recouvrement",&attrRecouvert);
 
     //On accède au premier élément, cad la première balise appelée "OriginalImage"
     originalImage =  parametre->NextSiblingElement();

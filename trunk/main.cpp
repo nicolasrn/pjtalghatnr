@@ -12,6 +12,8 @@ using namespace std;
 static int R[2] = {2, 0};
 static int taille = 4;
 
+int **QO, **QF;
+
 struct valQP
 {
     static const int faible = 4, moyen = 3, haut = 2, eleve = 1;
@@ -34,7 +36,7 @@ void sample();
 
 int main()
 {
-    codage("mandril.jpg", valQP::eleve);
+    codage("jpg.jpg", valQP::eleve);
     decodage("saveTest.xml");
     return EXIT_SUCCESS;
 }
@@ -71,8 +73,8 @@ void codage(const std::string &filename, int QP)
     codageComposante(ru, QP, rquI, rquM, rsuI, rsuM);
     codageComposante(rv, QP, rqvI, rqvM, rsvI, rsvM);
 
+    QO = syM;
     //sauvegarde
-
     std::vector<int **> vecY;
     vecY.push_back(qyI);
     vecY.push_back(qyM);
@@ -106,17 +108,18 @@ void codage(const std::string &filename, int QP)
     std::vector<int> h;
     h.push_back(Y->height);
     h.push_back(Y->height/taille);
-    h.push_back(ry->height - taille);
+    h.push_back(ry->height);
     h.push_back(recouv->height/taille);
     std::vector<int> w;
     w.push_back(Y->width);
     w.push_back(Y->width/taille);
-    w.push_back(ry->width - taille);
+    w.push_back(ry->width);
     w.push_back(recouv->width/taille);
 
+    cout << "img recouv" << recouv->width << "/" << recouv->height << endl;
     printf("%d/%d, %d/%d, %d/%d, %d/%d", h[0], w[0], h[1], w[1], h[2], w[2], h[3], w[3]);
 
-    //saveXML("saveTest.xml", vecY, vecU, vecV , stratY, stratU, stratV, h, w, QP);
+    saveXML("saveTest.xml", vecY, vecU, vecV , stratY, stratU, stratV, h, w, QP);
 
 }
 
@@ -136,14 +139,26 @@ void decodage(const std::string &filename){
     int QP;
 
     loadXML(filename.c_str(), vecY, vecU, vecV , stratY, stratU, stratV, h, w, QP);
-
     decodageComposante(vecY[0], vecY[1], stratY[0], stratY[1], QP, yi, ym, w[0], h[0]);
     decodageComposante(vecU[0], vecU[1], stratU[0], stratU[1], QP, ui, um, w[0], h[0]);
     decodageComposante(vecV[0], vecV[1], stratV[0], stratV[1], QP, vi, vm, w[0], h[0]);
 
+    //recouvrement
     decodageComposante(vecY[2], vecY[3], stratY[2], stratY[3], QP, ryi, rym, w[2], h[2]);
     decodageComposante(vecU[2], vecU[3], stratU[2], stratU[3], QP, rui, rum, w[2], h[2]);
     decodageComposante(vecV[2], vecV[3], stratV[2], stratV[3], QP, rvi, rvm, w[2], h[2]);
+
+    QF = stratY[3];
+
+    for(int i = 0; i < 16; i++)
+    {
+        for(int j = 0; j < 16; j++)
+        {
+            cout << QO[i][j] << " ? " << QF[i][j] << endl;
+            if (QO[i][j] != QF[i][j])
+                cout << "---> pb" << endl;
+        }
+    }
 
     IplImage *yuvI, *yuvM,
     *ryuvI, *ryuvM;
@@ -193,7 +208,7 @@ void decodageComposante(int **qI, int **qM, int **sI, int **sM, int QP, IplImage
 
     M = ReversepredictImage(M, taille, sM);
     I = ReversepredictImage(I, taille, sI);
-
+    //cout  << "pixel 5,1 dans I" << cvGet2D(I, 5, 1).val[0] << endl;
     M = InverseDCT(M, taille);
     I = MergeDCT(I, M, taille);
     I = InverseDCT(I, taille);
