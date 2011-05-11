@@ -22,7 +22,9 @@ struct valR
     static const int grandeImage = 1, petiteImage = 0;
 };
 
-void codage(const std::string &filename, int QP);
+void interface_utilisateur();
+
+void codage(const std::string &filename, int QP,char recouv);
 
 void decodage(const std::string &filename);
 
@@ -34,28 +36,49 @@ void sample();
 
 int main()
 {
-    codage("H.jpg", valQP::eleve);
-    decodage("saveTest.xml");
+    interface_utilisateur();
     return EXIT_SUCCESS;
 }
 
-void codage(const std::string &filename, int QP)
+void interface_utilisateur()
 {
-    IplImage * BGR, *image = cvLoadImage(filename.c_str());
+    std::string nom_fichier ;
+    int qp;
+    char recouv;
+    cout<<" Bienvenu sur le projet Multimédia "<<endl<< " Auteurs : Tauraatua Aurore / Huguin Gabriel / Lefumeur Alexandre / Reitz Nicolas"<<endl<<endl;
+    cout<<" Veuillez entrer le nom du fichier a traiter "<<endl;
+    cin>>nom_fichier;
+    cout<<" Veuillez entrer le paramètre de qualité QP "<<endl;
+    cout<<" de 1 = élevé à 4 = faible"<<endl;
+    cin>>qp;
+    cout<<"Voulez-vous utiliser le recouvrement ? ( o -> oui, n -> non ) "<<endl;
+    cin>>recouv;
+    codage(nom_fichier, qp,recouv);
+    decodage("saveTest.xml");
+
+}
+void codage(const std::string &filename, int QP,char recv)
+{
+    IplImage * BGR, *image = cvLoadImage(filename.c_str()), *YUVrecouv, *recouv;
     //ajustement de l'image
     BGR = ajustementImage(image);
-    IplImage *recouv = recouvrement(BGR, taille);
+    if ( recv == 'o'){
+    recouv = recouvrement(BGR, taille);
     recouv = ajustementImage(recouv);
+    }
 
     //conversion en YUV
     IplImage * YUV = cvBGR2YUV( BGR );
-    IplImage * YUVrecouv = cvBGR2YUV( recouv );
-    cvShowAnyImageYUV("BGR", BGR);
+    if(recv == 'o'){
+     YUVrecouv = cvBGR2YUV( recouv );
 
+    }
+     cvShowAnyImageYUV("BGR", BGR);
     //separation des composantes
     IplImage *Y, *U, *V, *ry, *ru, *rv;
     separateComponents(YUV, Y, U, V);
-    separateComponents(YUVrecouv, ry, ru, rv);
+    if(recv == 'o')
+        separateComponents(YUVrecouv, ry, ru, rv);
 
     int **qyI, **quI, **qvI, **syI, **suI, **svI;
     int **qyM, **quM, **qvM, **syM, **suM, **svM;
@@ -66,52 +89,70 @@ void codage(const std::string &filename, int QP)
     codageComposante(Y, QP, qyI, qyM, syI, syM);
     codageComposante(U, QP, quI, quM, suI, suM);
     codageComposante(V, QP, qvI, qvM, svI, svM);
-
+    if(recv == 'o'){
     codageComposante(ry, QP, rqyI, rqyM, rsyI, rsyM);
     codageComposante(ru, QP, rquI, rquM, rsuI, rsuM);
     codageComposante(rv, QP, rqvI, rqvM, rsvI, rsvM);
-
+    }
+    cout<<"Sauvegarde ... "<<endl;
     //sauvegarde
     std::vector<int **> vecY;
     vecY.push_back(qyI);
     vecY.push_back(qyM);
+    if(recv == 'o'){
     vecY.push_back(rqyI);
     vecY.push_back(rqyM);
+    }
+
     std::vector<int **> vecU;
     vecU.push_back(quI);
     vecU.push_back(quM);
+    if(recv == 'o'){
     vecU.push_back(rquI);
     vecU.push_back(rquM);
+    }
     std::vector<int **> vecV;
     vecV.push_back(qvI);
     vecV.push_back(qvM);
+    if(recv == 'o'){
     vecV.push_back(rqvI);
     vecV.push_back(rqvM);
+    }
     std::vector<int **> stratY;
     stratY.push_back(syI);
     stratY.push_back(syM);
+    if(recv == 'o'){
     stratY.push_back(rsyI);
     stratY.push_back(rsyM);
+    }
     std::vector<int **> stratU;
     stratU.push_back(suI);
     stratU.push_back(suM);
+    if(recv == 'o'){
     stratU.push_back(rsuI);
     stratU.push_back(rsuM);
+    }
     std::vector<int **> stratV;
     stratV.push_back(svI);
     stratV.push_back(svM);
+    if(recv == 'o'){
     stratV.push_back(rsvI);
     stratV.push_back(rsvM);
+    }
     std::vector<int> h;
     h.push_back(Y->height);
     h.push_back(Y->height/taille);
+    if(recv == 'o'){
     h.push_back(ry->height);
     h.push_back(recouv->height/taille);
+    }
     std::vector<int> w;
     w.push_back(Y->width);
     w.push_back(Y->width/taille);
+    if(recv == 'o'){
     w.push_back(ry->width);
     w.push_back(recouv->width/taille);
+    }
 /*
     for(int ha = 0; ha < h[0]; ha++)
         for(int wa = 0; wa < w[0]; wa++)
@@ -126,6 +167,7 @@ void codage(const std::string &filename, int QP)
 }
 
 void decodage(const std::string &filename){
+    cout<<"Chargement en cours ...."<<endl;
     //chargement
 
     IplImage *yi, *ym, *ui, *um, *vi, *vm,
@@ -141,38 +183,42 @@ void decodage(const std::string &filename){
     int QP;
 
     loadXML(filename.c_str(), vecY, vecU, vecV , stratY, stratU, stratV, h, w, QP);
-
+ cout<<"Chargement fini...."<<endl;
     decodageComposante(vecY[0], vecY[1], stratY[0], stratY[1], QP, yi, ym, w[0], h[0]);
     decodageComposante(vecU[0], vecU[1], stratU[0], stratU[1], QP, ui, um, w[0], h[0]);
     decodageComposante(vecV[0], vecV[1], stratV[0], stratV[1], QP, vi, vm, w[0], h[0]);
 
+    if(vecY.size() > 2){
     //recouvrement
     decodageComposante(vecY[2], vecY[3], stratY[2], stratY[3], QP, ryi, rym, w[2], h[2]);
     decodageComposante(vecU[2], vecU[3], stratU[2], stratU[3], QP, rui, rum, w[2], h[2]);
     decodageComposante(vecV[2], vecV[3], stratV[2], stratV[3], QP, rvi, rvm, w[2], h[2]);
-
-    IplImage *yuvI, *yuvM,
-    *ryuvI, *ryuvM;
+    }
+    IplImage *yuvI, *yuvM,*ryuvI, *ryuvM,*rbgrM,*rbgrI;
     yuvM = unifiateComponents(ym, um, vm);
     yuvI = unifiateComponents(yi, ui, vi);
-
-    ryuvM = unifiateComponents(rym, rum, rvm);
-    ryuvI = unifiateComponents(ryi, rui, rvi);
+    if(vecY.size() > 2){
+        ryuvM = unifiateComponents(rym, rum, rvm);
+        ryuvI = unifiateComponents(ryi, rui, rvi);
+    }
 
     IplImage *bgrM = cvYUV2BGR(yuvM);
     IplImage *bgrI = cvYUV2BGR(yuvI);
 
-    IplImage *rbgrM = cvYUV2BGR(ryuvM);
-    IplImage *rbgrI = cvYUV2BGR(ryuvI);
+    if(vecY.size() > 2){
+        rbgrM = cvYUV2BGR(ryuvM);
+        rbgrI = cvYUV2BGR(ryuvI);
+    }
 
     cvShowAnyImageYUV("miniature", bgrM);
     cvShowAnyImageYUV("image", bgrI);
-
+    if(vecY.size() > 2){
     cvShowAnyImageYUV("miniature R", rbgrM);
     cvShowAnyImageYUV("image R", rbgrI);
 
     bgrI = mergedRecouvrement(bgrI, rbgrI, taille);
     cvShowAnyImageYUV("image RO", rbgrI);
+    }
 }
 
 void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int **&sM)
