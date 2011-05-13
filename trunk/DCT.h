@@ -1,3 +1,8 @@
+/**
+ * \file dct.h
+ * \brief contient les fonctions de DCT
+ */
+
 #ifndef DCT_H_INCLUDED
 #define DCT_H_INCLUDED
 

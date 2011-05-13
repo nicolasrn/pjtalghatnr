@@ -1,3 +1,8 @@
+/**
+ * \file libXML.h
+ * \brief librairie des fonctions XML de sauvegarde et chargement
+ */
+
 #ifndef LIBXML_H_INCLUDED
 #define LIBXML_H_INCLUDED
 

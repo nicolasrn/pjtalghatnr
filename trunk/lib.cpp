@@ -181,7 +181,7 @@ IplImage* mergedRecouvrement(IplImage *im, IplImage *r, int taille)
 		for(int x = taille/2; x < im->width - taille/2; x++)
 		{
             ia = cvGet2D(im, y, x);
-            ra = cvGet2D(r, y+taille/2, x+taille/2);
+            ra = cvGet2D(r, y-taille/2, x-taille/2);
             ra.val[0] = (ia.val[0] + ra.val[0])/2;
             ra.val[1] = (ia.val[1] + ra.val[1])/2;
             ra.val[2] = (ia.val[2] + ra.val[2])/2;

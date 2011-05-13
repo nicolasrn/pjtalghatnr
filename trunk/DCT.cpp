@@ -1,4 +1,9 @@
-#include "DCT.h"
+/**
+ * \file dct.cpp
+ * \brief librairie de codage principale
+ */
+
+ #include "DCT.h"
 
 IplImage* DCT(IplImage *I, int taille)
 {
