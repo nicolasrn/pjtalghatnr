@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>ProjetMultimedia: Référence de la classe TiXmlBase</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ProjetMultimedia</div>
+   <div id="projectbrief">doxygen du projet de MultiMedia</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li><a href="classes.html"><span>Index&#160;des&#160;structures&#160;de&#160;données</span></a></li>
+      <li><a href="hierarchy.html"><span>Hiérarchie&#160;des&#160;classes</span></a></li>
+      <li><a href="functions.html"><span>Champs&#160;de&#160;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Structures de données</a> &#124;
+<a href="#pub-types">Types publics</a> &#124;
+<a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pub-static-methods">Fonctions membres publiques statiques</a> &#124;
+<a href="#pub-static-attribs">Attributs publics statiques</a> &#124;
+<a href="#pro-static-methods">Fonctions membres protégées statiques</a> &#124;
+<a href="#pro-attribs">Attributs protégés</a> &#124;
+<a href="#pro-static-attribs">Attributs protégés statiques</a> &#124;
+<a href="#friends">Amis</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la classe TiXmlBase</div>  </div>
+</div>
+<div class="contents">
+<!-- doxytag: class="TiXmlBase" -->
+<p><code>#include &lt;<a class="el" href="tinyxml_8h_source.html">tinyxml.h</a>&gt;</code></p>
+<div class="dynheader">
+Graphe d'héritage de TiXmlBase:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_ti_xml_base.png" usemap="#TiXmlBase_map" alt=""/>
+  <map id="TiXmlBase_map" name="TiXmlBase_map">
+<area href="class_ti_xml_attribute.html" alt="TiXmlAttribute" shape="rect" coords="0,56,108,80"/>
+<area href="class_ti_xml_node.html" alt="TiXmlNode" shape="rect" coords="295,56,403,80"/>
+<area href="class_ti_xml_comment.html" alt="TiXmlComment" shape="rect" coords="0,112,108,136"/>
+<area href="class_ti_xml_declaration.html" alt="TiXmlDeclaration" shape="rect" coords="118,112,226,136"/>
+<area href="class_ti_xml_document.html" alt="TiXmlDocument" shape="rect" coords="236,112,344,136"/>
+<area href="class_ti_xml_element.html" alt="TiXmlElement" shape="rect" coords="354,112,462,136"/>
+<area href="class_ti_xml_text.html" alt="TiXmlText" shape="rect" coords="472,112,580,136"/>
+<area href="class_ti_xml_unknown.html" alt="TiXmlUnknown" shape="rect" coords="590,112,698,136"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b></td></tr>
+<tr><td colspan="2"><h2><a name="pub-types"></a>
+Types publics</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br/>
+&#160;&#160;<b>TIXML_NO_ERROR</b> =  0, 
+<b>TIXML_ERROR</b>, 
+<b>TIXML_ERROR_OPENING_FILE</b>, 
+<b>TIXML_ERROR_PARSING_ELEMENT</b>, 
+<br/>
+&#160;&#160;<b>TIXML_ERROR_FAILED_TO_READ_ELEMENT_NAME</b>, 
+<b>TIXML_ERROR_READING_ELEMENT_VALUE</b>, 
+<b>TIXML_ERROR_READING_ATTRIBUTES</b>, 
+<b>TIXML_ERROR_PARSING_EMPTY</b>, 
+<br/>
+&#160;&#160;<b>TIXML_ERROR_READING_END_TAG</b>, 
+<b>TIXML_ERROR_PARSING_UNKNOWN</b>, 
+<b>TIXML_ERROR_PARSING_COMMENT</b>, 
+<b>TIXML_ERROR_PARSING_DECLARATION</b>, 
+<br/>
+&#160;&#160;<b>TIXML_ERROR_DOCUMENT_EMPTY</b>, 
+<b>TIXML_ERROR_EMBEDDED_NULL</b>, 
+<b>TIXML_ERROR_PARSING_CDATA</b>, 
+<b>TIXML_ERROR_DOCUMENT_TOP_ONLY</b>, 
+<br/>
+&#160;&#160;<b>TIXML_ERROR_STRING_COUNT</b>
+<br/>
+ }</td></tr>
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Fonctions membres publiques</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#a953033a3c8ccb7404e67b0be72562391">Print</a> (FILE *cfile, int depth) const =0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#a8b8f21430c62433a48c592277a3bd7a2">Row</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab01a75ed9853cd6e22f06a61d173f229"></a><!-- doxytag: member="TiXmlBase::Column" ref="ab01a75ed9853cd6e22f06a61d173f229" args="() const " -->
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#ab01a75ed9853cd6e22f06a61d173f229">Column</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="class_ti_xml_base.html#a8b8f21430c62433a48c592277a3bd7a2">Row()</a> <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52da991c3b0e2f0de483df38db787e4b"></a><!-- doxytag: member="TiXmlBase::SetUserData" ref="a52da991c3b0e2f0de483df38db787e4b" args="(void *user)" -->
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#a52da991c3b0e2f0de483df38db787e4b">SetUserData</a> (void *user)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a pointer to arbitrary user data. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab331e64cfdbe463ed51c2591d26f7564"></a><!-- doxytag: member="TiXmlBase::GetUserData" ref="ab331e64cfdbe463ed51c2591d26f7564" args="()" -->
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#ab331e64cfdbe463ed51c2591d26f7564">GetUserData</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to arbitrary user data. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a80e350527f576950f2bc9c2596d14e"></a><!-- doxytag: member="TiXmlBase::GetUserData" ref="a5a80e350527f576950f2bc9c2596d14e" args="() const " -->
+const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#a5a80e350527f576950f2bc9c2596d14e">GetUserData</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to arbitrary user data. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a4f9098be723a9fa542c6e648b46045"></a><!-- doxytag: member="TiXmlBase::Parse" ref="a1a4f9098be723a9fa542c6e648b46045" args="(const char *p, TiXmlParsingData *data, TiXmlEncoding encoding)=0" -->
+virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Parse</b> (const char *p, <a class="el" href="class_ti_xml_parsing_data.html">TiXmlParsingData</a> *data, TiXmlEncoding encoding)=0</td></tr>
+<tr><td colspan="2"><h2><a name="pub-static-methods"></a>
+Fonctions membres publiques statiques</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#af8f2207f82d9add8ab6f375f5a5b9667">SetCondenseWhiteSpace</a> (bool condense)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b5c220f2933287671e650679746c08f"></a><!-- doxytag: member="TiXmlBase::IsWhiteSpaceCondensed" ref="a3b5c220f2933287671e650679746c08f" args="()" -->
+static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#a3b5c220f2933287671e650679746c08f">IsWhiteSpaceCondensed</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current white space setting. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#a93e4296a350ec26472050bcc877af1cd">EncodeString</a> (const TIXML_STRING &amp;str, TIXML_STRING *out)</td></tr>
+<tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
+Attributs publics statiques</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><b>utf8ByteTable</b> [256]</td></tr>
+<tr><td colspan="2"><h2><a name="pro-static-methods"></a>
+Fonctions membres protégées statiques</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5dbfe38d8e0f4f5238da08c5485db69"></a><!-- doxytag: member="TiXmlBase::SkipWhiteSpace" ref="ad5dbfe38d8e0f4f5238da08c5485db69" args="(const char *, TiXmlEncoding encoding)" -->
+static const char *&#160;</td><td class="memItemRight" valign="bottom"><b>SkipWhiteSpace</b> (const char *, TiXmlEncoding encoding)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a424d2c7651f987b4b91d35e1af32bfac"></a><!-- doxytag: member="TiXmlBase::IsWhiteSpace" ref="a424d2c7651f987b4b91d35e1af32bfac" args="(char c)" -->
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsWhiteSpace</b> (char c)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71b632a1366f45b3353a7c0b0b18db0b"></a><!-- doxytag: member="TiXmlBase::IsWhiteSpace" ref="a71b632a1366f45b3353a7c0b0b18db0b" args="(int c)" -->
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsWhiteSpace</b> (int c)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acec25c695adccdc68a7430f559ce1c0f"></a><!-- doxytag: member="TiXmlBase::ReadName" ref="acec25c695adccdc68a7430f559ce1c0f" args="(const char *p, TIXML_STRING *name, TiXmlEncoding encoding)" -->
+static const char *&#160;</td><td class="memItemRight" valign="bottom"><b>ReadName</b> (const char *p, TIXML_STRING *name, TiXmlEncoding encoding)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f27f8ddcbf4cd5071ebd04e9f0ced77"></a><!-- doxytag: member="TiXmlBase::ReadText" ref="a1f27f8ddcbf4cd5071ebd04e9f0ced77" args="(const char *in, TIXML_STRING *text, bool ignoreWhiteSpace, const char *endTag, bool ignoreCase, TiXmlEncoding encoding)" -->
+static const char *&#160;</td><td class="memItemRight" valign="bottom"><b>ReadText</b> (const char *in, TIXML_STRING *text, bool ignoreWhiteSpace, const char *endTag, bool ignoreCase, TiXmlEncoding encoding)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d2b76a1ddb33cc23db6ce808c3c9415"></a><!-- doxytag: member="TiXmlBase::GetEntity" ref="a2d2b76a1ddb33cc23db6ce808c3c9415" args="(const char *in, char *value, int *length, TiXmlEncoding encoding)" -->
+static const char *&#160;</td><td class="memItemRight" valign="bottom"><b>GetEntity</b> (const char *in, char *value, int *length, TiXmlEncoding encoding)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa638ff772292abda05c03c0ae481bdcd"></a><!-- doxytag: member="TiXmlBase::GetChar" ref="aa638ff772292abda05c03c0ae481bdcd" args="(const char *p, char *_value, int *length, TiXmlEncoding encoding)" -->
+static const char *&#160;</td><td class="memItemRight" valign="bottom"><b>GetChar</b> (const char *p, char *_value, int *length, TiXmlEncoding encoding)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c9ce136bdc36e3da5716967f85103d7"></a><!-- doxytag: member="TiXmlBase::StringEqual" ref="a3c9ce136bdc36e3da5716967f85103d7" args="(const char *p, const char *endTag, bool ignoreCase, TiXmlEncoding encoding)" -->
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>StringEqual</b> (const char *p, const char *endTag, bool ignoreCase, TiXmlEncoding encoding)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98d43695cd1bdbbd20ef1979bebb2a1c"></a><!-- doxytag: member="TiXmlBase::IsAlpha" ref="a98d43695cd1bdbbd20ef1979bebb2a1c" args="(unsigned char anyByte, TiXmlEncoding encoding)" -->
+static int&#160;</td><td class="memItemRight" valign="bottom"><b>IsAlpha</b> (unsigned char anyByte, TiXmlEncoding encoding)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f4c11b3f1bb07fa736061092f0724d9"></a><!-- doxytag: member="TiXmlBase::IsAlphaNum" ref="a1f4c11b3f1bb07fa736061092f0724d9" args="(unsigned char anyByte, TiXmlEncoding encoding)" -->
+static int&#160;</td><td class="memItemRight" valign="bottom"><b>IsAlphaNum</b> (unsigned char anyByte, TiXmlEncoding encoding)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad98aa67c2bd17629da1681c714f91548"></a><!-- doxytag: member="TiXmlBase::ToLower" ref="ad98aa67c2bd17629da1681c714f91548" args="(int v, TiXmlEncoding encoding)" -->
+static int&#160;</td><td class="memItemRight" valign="bottom"><b>ToLower</b> (int v, TiXmlEncoding encoding)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4bd3c2d1b97e343b661944b4a8be526e"></a><!-- doxytag: member="TiXmlBase::ConvertUTF32ToUTF8" ref="a4bd3c2d1b97e343b661944b4a8be526e" args="(unsigned long input, char *output, int *length)" -->
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>ConvertUTF32ToUTF8</b> (unsigned long input, char *output, int *length)</td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Attributs protégés</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4dc7805c3510e31912915af681ec22f4"></a><!-- doxytag: member="TiXmlBase::location" ref="a4dc7805c3510e31912915af681ec22f4" args="" -->
+<a class="el" href="struct_ti_xml_cursor.html">TiXmlCursor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>location</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e294dd14122c554baa0665072b4ca7a"></a><!-- doxytag: member="TiXmlBase::userData" ref="a2e294dd14122c554baa0665072b4ca7a" args="" -->
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#a2e294dd14122c554baa0665072b4ca7a">userData</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Field containing a generic user pointer. <br/></td></tr>
+<tr><td colspan="2"><h2><a name="pro-static-attribs"></a>
+Attributs protégés statiques</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><b>errorString</b> [TIXML_ERROR_STRING_COUNT]</td></tr>
+<tr><td colspan="2"><h2><a name="friends"></a>
+Amis</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a218872a0d985ae30e78c55adc4bdb196"></a><!-- doxytag: member="TiXmlBase::TiXmlNode" ref="a218872a0d985ae30e78c55adc4bdb196" args="" -->
+class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#a218872a0d985ae30e78c55adc4bdb196">TiXmlNode</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6592e32cb9132be517cc12a70564c4b"></a><!-- doxytag: member="TiXmlBase::TiXmlElement" ref="ab6592e32cb9132be517cc12a70564c4b" args="" -->
+class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#ab6592e32cb9132be517cc12a70564c4b">TiXmlElement</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a173617f6dfe902cf484ce5552b950475"></a><!-- doxytag: member="TiXmlBase::TiXmlDocument" ref="a173617f6dfe902cf484ce5552b950475" args="" -->
+class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ti_xml_base.html#a173617f6dfe902cf484ce5552b950475">TiXmlDocument</a></td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description détaillée</h2>
+<div class="textblock"><p><a class="el" href="class_ti_xml_base.html">TiXmlBase</a> is a base class for every class in TinyXml. It does little except to establish that TinyXml classes can be printed and provide some utility functions.</p>
+<p>In XML, the document and elements can contain other elements and other types of nodes.</p>
+<div class="fragment"><pre class="fragment">
+	A Document can contain:	Element	(container or leaf)
+							Comment (leaf)
+							Unknown (leaf)
+							Declaration( leaf )
+
+	An Element can contain:	Element (container or leaf)
+							Text	(leaf)
+							Attributes (not on tree)
+							Comment (leaf)
+							Unknown (leaf)
+
+	A Decleration contains: Attributes (not on tree)
+	</pre></div> </div><hr/><h2>Documentation des fonctions membres</h2>
+<a class="anchor" id="a93e4296a350ec26472050bcc877af1cd"></a><!-- doxytag: member="TiXmlBase::EncodeString" ref="a93e4296a350ec26472050bcc877af1cd" args="(const TIXML_STRING &amp;str, TIXML_STRING *out)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EncodeString </td>
+          <td>(</td>
+          <td class="paramtype">const TIXML_STRING &amp;&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TIXML_STRING *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Expands entities in a string. Note this should not contian the tag's '&lt;', '&gt;', etc, or they will be transformed into entities! </p>
+
+</div>
+</div>
+<a class="anchor" id="a953033a3c8ccb7404e67b0be72562391"></a><!-- doxytag: member="TiXmlBase::Print" ref="a953033a3c8ccb7404e67b0be72562391" args="(FILE *cfile, int depth) const =0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Print </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>cfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>depth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const<code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>All TinyXml classes can print themselves to a filestream or the string class (<a class="el" href="class_ti_xml_string.html">TiXmlString</a> in non-STL mode, std::string in STL mode.) Either or both cfile and str can be null.</p>
+<p>This is a formatted print, and will insert tabs and newlines.</p>
+<p>(For an unformatted stream, use the &lt;&lt; operator.) </p>
+
+<p>Implémenté dans <a class="el" href="class_ti_xml_attribute.html#aa0c7ee41a4ae95253c321399cd995b9f">TiXmlAttribute</a>, <a class="el" href="class_ti_xml_element.html#a3e9015ae8c5e7eb0fa08bf170d1cc1ef">TiXmlElement</a>, <a class="el" href="class_ti_xml_comment.html#a3e9015ae8c5e7eb0fa08bf170d1cc1ef">TiXmlComment</a>, <a class="el" href="class_ti_xml_text.html#a3e9015ae8c5e7eb0fa08bf170d1cc1ef">TiXmlText</a>, <a class="el" href="class_ti_xml_declaration.html#aa0c7ee41a4ae95253c321399cd995b9f">TiXmlDeclaration</a>, <a class="el" href="class_ti_xml_unknown.html#a3e9015ae8c5e7eb0fa08bf170d1cc1ef">TiXmlUnknown</a>, et <a class="el" href="class_ti_xml_document.html#a5e59dfa942d88a4adec4056e5f8d7f0b">TiXmlDocument</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8b8f21430c62433a48c592277a3bd7a2"></a><!-- doxytag: member="TiXmlBase::Row" ref="a8b8f21430c62433a48c592277a3bd7a2" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Row </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Return the position, in the original source file, of this node or attribute. The row and column are 1-based. (That is the first row and first column is 1,1). If the returns values are 0 or less, then the parser does not have a row and column value.</p>
+<p>Generally, the row and column value will be set when the TiXmlDocument::Load(), <a class="el" href="class_ti_xml_document.html#a3853e4fa22d120447e98bcab934b2070">TiXmlDocument::LoadFile()</a>, or any TiXmlNode::Parse() is called. It will NOT be set when the DOM was created from operator&gt;&gt;.</p>
+<p>The values reflect the initial load. Once the DOM is modified programmatically (by adding or changing nodes and attributes) the new values will NOT update to reflect changes in the document.</p>
+<p>There is a minor performance cost to computing the row and column. Computation can be disabled if <a class="el" href="class_ti_xml_document.html#ae52c1e6d112677e7fce608a2de6201bd">TiXmlDocument::SetTabSize()</a> is called with 0 as the value.</p>
+<dl class="see"><dt><b>Voir également:</b></dt><dd><a class="el" href="class_ti_xml_document.html#ae52c1e6d112677e7fce608a2de6201bd">TiXmlDocument::SetTabSize()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af8f2207f82d9add8ab6f375f5a5b9667"></a><!-- doxytag: member="TiXmlBase::SetCondenseWhiteSpace" ref="af8f2207f82d9add8ab6f375f5a5b9667" args="(bool condense)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void SetCondenseWhiteSpace </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>condense</em></td><td>)</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>The world does not agree on whether white space should be kept or not. In order to make everyone happy, these global, static functions are provided to set whether or not TinyXml will condense all white space into a single space or not. The default is to condense. Note changing this value is not thread safe. </p>
+
+</div>
+</div>
+<hr/><h2>Documentation des champs</h2>
+<a class="anchor" id="ab7f44d8bc49d6e0d43c49c4177e8bb8a"></a><!-- doxytag: member="TiXmlBase::errorString" ref="ab7f44d8bc49d6e0d43c49c4177e8bb8a" args="[TIXML_ERROR_STRING_COUNT]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * errorString<code> [static, protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur initiale :</b><div class="fragment"><pre class="fragment">
+{
+        <span class="stringliteral">&quot;No error&quot;</span>,
+        <span class="stringliteral">&quot;Error&quot;</span>,
+        <span class="stringliteral">&quot;Failed to open file&quot;</span>,
+        <span class="stringliteral">&quot;Error parsing Element.&quot;</span>,
+        <span class="stringliteral">&quot;Failed to read Element name&quot;</span>,
+        <span class="stringliteral">&quot;Error reading Element value.&quot;</span>,
+        <span class="stringliteral">&quot;Error reading Attributes.&quot;</span>,
+        <span class="stringliteral">&quot;Error: empty tag.&quot;</span>,
+        <span class="stringliteral">&quot;Error reading end tag.&quot;</span>,
+        <span class="stringliteral">&quot;Error parsing Unknown.&quot;</span>,
+        <span class="stringliteral">&quot;Error parsing Comment.&quot;</span>,
+        <span class="stringliteral">&quot;Error parsing Declaration.&quot;</span>,
+        <span class="stringliteral">&quot;Error document empty.&quot;</span>,
+        <span class="stringliteral">&quot;Error null (0) or unexpected EOF found in input stream.&quot;</span>,
+        <span class="stringliteral">&quot;Error parsing CDATA.&quot;</span>,
+        <span class="stringliteral">&quot;Error when TiXmlDocument added to document, because TiXmlDocument can only be at the root.&quot;</span>,
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a5655c6aa49fd648508380a77406c2327"></a><!-- doxytag: member="TiXmlBase::utf8ByteTable" ref="a5655c6aa49fd648508380a77406c2327" args="[256]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int utf8ByteTable<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur initiale :</b><div class="fragment"><pre class="fragment"> 
+{
+        
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      
+                1,      1,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      
+                2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      2,      
+                3,      3,      3,      3,      3,      3,      3,      3,      3,      3,      3,      3,      3,      3,      3,      3,      
+                4,      4,      4,      4,      4,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1,      1       
+}
+</pre></div>
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<li>C:/Users/Nicolas/Documents/ProjetMultimedia/Projet/<a class="el" href="tinyxml_8h_source.html">tinyxml.h</a></li>
+<li>C:/Users/Nicolas/Documents/ProjetMultimedia/Projet/tinyxml.cpp</li>
+<li>C:/Users/Nicolas/Documents/ProjetMultimedia/Projet/tinyxmlerror.cpp</li>
+<li>C:/Users/Nicolas/Documents/ProjetMultimedia/Projet/tinyxmlparser.cpp</li>
+</ul>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Fri May 13 2011 15:10:07 pour ProjetMultimedia par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>
