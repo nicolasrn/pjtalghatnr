@@ -104,7 +104,7 @@ IplImage* mergedRecouvrement(IplImage *i, IplImage *r, int taille);
  *@param c : nombre de colonnes du tableau
  *@param l : nombre de lignes du tableau
  */
-void quantification(IplImage * I, int QP, int* R,int i,int ** q,int c,int l);
+void quantification(IplImage * I, int QP, int* R,int i,double ** q,int c,int l);
 
 /**
  *Applique la quatification sur l'image
@@ -113,7 +113,7 @@ void quantification(IplImage * I, int QP, int* R,int i,int ** q,int c,int l);
  *@param R : pas de quatification
  *@return int** : retourne un tableau des valeurs quatifiées
  */
-int **applyQuantification( IplImage *I, int QP, int* R, int i);
+double **applyQuantification( IplImage *I, int QP, int* R, int i);
 
 /**
  *Déquantifie les valeurs pour reconstruire l'image
@@ -123,7 +123,7 @@ int **applyQuantification( IplImage *I, int QP, int* R, int i);
  *@param width : largeur du tableau
  *@param heigh : hauteur du tableau
  */
- IplImage * ReverseApplyQuantification(int ** q, int QP, int* R, int i, int width, int heigh);
+ IplImage * ReverseApplyQuantification(double ** q, int QP, int* R, int i, int width, int heigh);
 
 /**
  *applique la quatification inverse sur une zone de l'image
@@ -134,7 +134,7 @@ int **applyQuantification( IplImage *I, int QP, int* R, int i);
  *@param col : numéro de la colone pour la zone de l'image à traiter
  *@param ligne : numéro de la ligne pour la zone de l'image à traiter
  */
-void ReverseQuantification (IplImage * I, int QB, int* R, int i, int ** q, int col, int ligne);
+void ReverseQuantification (IplImage * I, int QB, int* R, int i, double ** q, int col, int ligne);
 
 /**
  *@param strategie : tableau contenant les stratégies

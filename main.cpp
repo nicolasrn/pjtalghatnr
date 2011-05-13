@@ -56,7 +56,7 @@ void decodage(const std::string &filename);
  * @param sI : (out)tableau de strategie de l'image
  * @param sM : (out)tableau de strategie de la miniature
  */
-void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int **&sM);
+void codageComposante(IplImage *Y, int QP, double **&qI, double **&qM, int **&sI, int **&sM);
 
 /**
  * permet de faire le codage d'une composante de l'image
@@ -68,7 +68,7 @@ void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int 
  * @param I : (out)l'image resultant du decodage
  * @param M : (out)la miniature resultant du decodage
  */
-void decodageComposante(int **qI, int **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h);
+void decodageComposante(double **qI, double **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h);
 
 int main()
 {
@@ -117,11 +117,17 @@ void codage(const std::string &filename, int QP,char recv)
     if(recv == 'o')
         separateComponents(YUVrecouv, ry, ru, rv);
 
-    int **qyI, **quI, **qvI, **syI, **suI, **svI;
-    int **qyM, **quM, **qvM, **syM, **suM, **svM;
+    double **qyI, **quI, **qvI;
+    int **syI, **suI, **svI;
 
-    int **rqyI, **rquI, **rqvI, **rsyI, **rsuI, **rsvI;
-    int **rqyM, **rquM, **rqvM, **rsyM, **rsuM, **rsvM;
+    double **qyM, **quM, **qvM;
+    int **syM, **suM, **svM;
+
+    double **rqyI, **rquI, **rqvI;
+    int **rsyI, **rsuI, **rsvI;
+
+    double **rqyM, **rquM, **rqvM;
+    int **rsyM, **rsuM, **rsvM;
 
     codageComposante(Y, QP, qyI, qyM, syI, syM);
     codageComposante(U, QP, quI, quM, suI, suM);
@@ -134,7 +140,7 @@ void codage(const std::string &filename, int QP,char recv)
     }
     cout<<"Sauvegarde ... "<<endl;
     //sauvegarde
-    std::vector<int **> vecY;
+    std::vector<double **> vecY;
     vecY.push_back(qyI);
     vecY.push_back(qyM);
     if(recv == 'o')
@@ -143,7 +149,7 @@ void codage(const std::string &filename, int QP,char recv)
         vecY.push_back(rqyM);
     }
 
-    std::vector<int **> vecU;
+    std::vector<double **> vecU;
     vecU.push_back(quI);
     vecU.push_back(quM);
     if(recv == 'o')
@@ -151,7 +157,7 @@ void codage(const std::string &filename, int QP,char recv)
         vecU.push_back(rquI);
         vecU.push_back(rquM);
     }
-    std::vector<int **> vecV;
+    std::vector<double **> vecV;
     vecV.push_back(qvI);
     vecV.push_back(qvM);
     if(recv == 'o')
@@ -219,9 +225,9 @@ void decodage(const std::string &filename){
 
     IplImage *yi, *ym, *ui, *um, *vi, *vm,
     *ryi, *rym, *rui, *rum, *rvi, *rvm;
-    std::vector<int **> vecY;
-    std::vector<int **> vecU;
-    std::vector<int **> vecV;
+    std::vector<double **> vecY;
+    std::vector<double **> vecU;
+    std::vector<double **> vecV;
     std::vector<int **> stratY;
     std::vector<int **> stratU;
     std::vector<int **> stratV;
@@ -251,7 +257,7 @@ void decodage(const std::string &filename){
         ryuvI = unifiateComponents(ryi, rui, rvi);
     }
 
-    IplImage *bgrM = cvYUV2BGR(yuvM);
+    //IplImage *bgrM = cvYUV2BGR(yuvM);
     IplImage *bgrI = cvYUV2BGR(yuvI);
 
     if(vecY.size() > 2)
@@ -273,7 +279,7 @@ void decodage(const std::string &filename){
     cvShowAnyImageYUV("image decompresse", bgrI);
 }
 
-void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int **&sM)
+void codageComposante(IplImage *Y, int QP, double **&qI, double **&qM, int **&sI, int **&sM)
 {
     IplImage *image, *miniature;
 
@@ -291,7 +297,7 @@ void codageComposante(IplImage *Y, int QP, int **&qI, int **&qM, int **&sI, int 
 
 }
 
-void decodageComposante(int **qI, int **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h)
+void decodageComposante(double **qI, double **qM, int **sI, int **sM, int QP, IplImage *&I, IplImage *&M, int w, int h)
 {
     M = ReverseApplyQuantification(qM, QP, R, valR::petiteImage, w/taille, h/taille);
     I = ReverseApplyQuantification(qI, QP, R, valR::grandeImage, w, h);
