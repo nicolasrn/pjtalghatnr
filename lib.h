@@ -1,3 +1,8 @@
+/**
+ * \file lib.h
+ * \brief librairie de codage principale
+ */
+
 #ifndef LIB_H_INCLUDED
 #define LIB_H_INCLUDED
 
@@ -9,7 +14,8 @@
 #include "MyImage.hpp"
 
 /**
- *Affiche une image en YUV ( fonction de Mr Paris v2)
+ *\brief Affiche une image en YUV ( fonction de Mr Paris v2)
+ *@brief Affiche une image en YUV ( fonction de Mr Paris v2)
  *@param s : nom de la fênetre
  *@param I : Image a afficher
  *@param x : position d'affichage en x de la fenêtre

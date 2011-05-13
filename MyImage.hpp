@@ -1,3 +1,7 @@
+/**
+ * \file MyImage.hpp
+ * \brief librairie de monsieur Paris
+ */
 #ifndef _MyImage_
 #define _MyImage_
 
