@@ -7,34 +7,35 @@
 	"lib.h"
 	"libXML.h"
 
-1304433121 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
+1305278401 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
+	<vector>
 	"lib.h"
 	"libXML.h"
 
-1304432853 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
+1305277198 c:\users\nicolas\documents\projetmultimedia\projet\dct.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<iostream>
 	"lib.h"
 	"MyImage.hpp"
 
-1304416204 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
+1305277782 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
 	"MyImage.hpp"
 
-1304432689 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+1305278424 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
 	"lib.h"
 	"math.h"
 
-1304432853 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
+1305277947 source:c:\users\nicolas\documents\projetmultimedia\projet\dct.cpp
 	"DCT.h"
 
-1302682886 source:c:\users\nicolas\documents\projetmultimedia\projet\myimage.cpp
+1305278217 source:c:\users\nicolas\documents\projetmultimedia\projet\myimage.cpp
 	<cstdio>
 	<iostream>
 	<sstream>
@@ -43,7 +44,7 @@
 	<OpenCV/highgui.h>
 	"MyImage.hpp"
 
-1302681555 c:\users\nicolas\documents\projetmultimedia\projet\myimage.hpp
+1305277226 c:\users\nicolas\documents\projetmultimedia\projet\myimage.hpp
 	<iostream>
 	<sstream>
 	<string>
@@ -303,13 +304,13 @@
 	<opencv/highgui.h>
 	"lib.h"
 
-1304428028 source:c:\users\nicolas\documents\projetmultimedia\projet\libxml.cpp
+1305126012 source:c:\users\nicolas\documents\projetmultimedia\projet\libxml.cpp
 	"libXML.h"
 	"tinystr.h"
 	"tinyxml.h"
 	<vector>
 
-1304428028 c:\users\nicolas\documents\projetmultimedia\projet\libxml.h
+1305277251 c:\users\nicolas\documents\projetmultimedia\projet\libxml.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<vector>
