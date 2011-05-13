@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>ProjetMultimedia:  Fichier source de C:/Users/Nicolas/Documents/ProjetMultimedia/Projet/lib.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ProjetMultimedia</div>
+   <div id="projectbrief">doxygen du projet de MultiMedia</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&#160;globale</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">C:/Users/Nicolas/Documents/ProjetMultimedia/Projet/lib.h</div>  </div>
+</div>
+<div class="contents">
+<a href="lib_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00006"></a>00006 <span class="preprocessor">#ifndef LIB_H_INCLUDED</span>
+<a name="l00007"></a>00007 <span class="preprocessor"></span><span class="preprocessor">#define LIB_H_INCLUDED</span>
+<a name="l00008"></a>00008 <span class="preprocessor"></span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;opencv/cv.h&gt;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;opencv/highgui.h&gt;</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;<a class="code" href="_d_c_t_8h.html" title="contient les fonctions de DCT">DCT.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="_my_image_8hpp.html" title="librairie de monsieur Paris">MyImage.hpp</a>&quot;</span>
+<a name="l00015"></a>00015 
+<a name="l00024"></a>00024 <span class="keywordtype">void</span> cvShowAnyImageYUV(<span class="keywordtype">string</span> s, IplImage * I, <span class="keywordtype">int</span> x = 800, <span class="keywordtype">int</span> y = 200 );
+<a name="l00025"></a>00025 
+<a name="l00034"></a>00034 <span class="keywordtype">void</span> cvShowAnyImage(<span class="keywordtype">string</span> s, IplImage *I, <span class="keywordtype">int</span> x = 800, <span class="keywordtype">int</span> y = 200);
+<a name="l00035"></a>00035 
+<a name="l00041"></a>00041 IplImage * cvBGR2YUV( IplImage * BGR );
+<a name="l00042"></a>00042 
+<a name="l00050"></a>00050 <span class="keywordtype">void</span> separateComponents( IplImage * YUV, IplImage *&amp;Y, IplImage *&amp;U, IplImage *&amp;V );
+<a name="l00051"></a>00051 
+<a name="l00059"></a>00059  IplImage* unifiateComponents(IplImage *Y, IplImage *U, IplImage *V);
+<a name="l00060"></a>00060 
+<a name="l00066"></a>00066 IplImage * cvYUV2BGR( IplImage * YUV );
+<a name="l00067"></a>00067 
+<a name="l00072"></a>00072 <span class="keywordtype">int</span> getMultiple16(<span class="keywordtype">int</span> nb);
+<a name="l00073"></a>00073 
+<a name="l00079"></a>00079 IplImage* ajustementImage(IplImage *image);
+<a name="l00080"></a>00080 
+<a name="l00087"></a>00087 IplImage* recouvrement(IplImage *image, <span class="keywordtype">int</span> taille);
+<a name="l00088"></a>00088 
+<a name="l00096"></a>00096 IplImage* mergedRecouvrement(IplImage *i, IplImage *r, <span class="keywordtype">int</span> taille);
+<a name="l00097"></a>00097 
+<a name="l00107"></a>00107 <span class="keywordtype">void</span> quantification(IplImage * I, <span class="keywordtype">int</span> QP, <span class="keywordtype">int</span>* R,<span class="keywordtype">int</span> i,<span class="keywordtype">double</span> ** q,<span class="keywordtype">int</span> c,<span class="keywordtype">int</span> l);
+<a name="l00108"></a>00108 
+<a name="l00116"></a>00116 <span class="keywordtype">double</span> **applyQuantification( IplImage *I, <span class="keywordtype">int</span> QP, <span class="keywordtype">int</span>* R, <span class="keywordtype">int</span> i);
+<a name="l00117"></a>00117 
+<a name="l00126"></a>00126  IplImage * ReverseApplyQuantification(<span class="keywordtype">double</span> ** q, <span class="keywordtype">int</span> QP, <span class="keywordtype">int</span>* R, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> heigh);
+<a name="l00127"></a>00127 
+<a name="l00137"></a>00137 <span class="keywordtype">void</span> ReverseQuantification (IplImage * I, <span class="keywordtype">int</span> QB, <span class="keywordtype">int</span>* R, <span class="keywordtype">int</span> i, <span class="keywordtype">double</span> ** q, <span class="keywordtype">int</span> col, <span class="keywordtype">int</span> ligne);
+<a name="l00138"></a>00138 
+<a name="l00144"></a>00144 <span class="keywordtype">void</span> intializeStrategie(<span class="keywordtype">int</span>** &amp;strategie, <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height);
+<a name="l00145"></a>00145 
+<a name="l00151"></a>00151  IplImage * predictImage(IplImage * I, <span class="keywordtype">int</span> taille, <span class="keywordtype">int</span>** &amp;strategie);
+<a name="l00152"></a>00152 
+<a name="l00160"></a>00160 <span class="keywordtype">void</span> predictZone(<span class="keywordtype">int</span> ligne, <span class="keywordtype">int</span> colonne, IplImage * I, IplImage *&amp;Ipred, <span class="keywordtype">int</span> taille, <span class="keywordtype">int</span>** &amp;strategie);
+<a name="l00161"></a>00161 
+<a name="l00169"></a>00169 <span class="keywordtype">void</span> predictPixel(<span class="keywordtype">int</span> ligne, <span class="keywordtype">int</span> colonne, IplImage * I, IplImage *&amp;Ipred, <span class="keywordtype">int</span> taille, <span class="keywordtype">int</span>** &amp;strategie);
+<a name="l00170"></a>00170 
+<a name="l00180"></a>00180 <span class="keywordtype">void</span> predictPixelAD(<span class="keywordtype">int</span> ligne, <span class="keywordtype">int</span> colonne, IplImage * I, IplImage *&amp;Ipred, <span class="keywordtype">int</span> taille, <span class="keywordtype">int</span>** &amp;strategie, <span class="keywordtype">int</span> stratDC);
+<a name="l00181"></a>00181 
+<a name="l00187"></a>00187  IplImage * ReversepredictImage(IplImage * I, <span class="keywordtype">int</span> taille, <span class="keywordtype">int</span>** &amp;strategie);
+<a name="l00188"></a>00188 
+<a name="l00196"></a>00196 <span class="keywordtype">void</span> ReversepredictZone(<span class="keywordtype">int</span> ligne, <span class="keywordtype">int</span> colonne, IplImage * I, IplImage *&amp;Ipred, <span class="keywordtype">int</span> taille, <span class="keywordtype">int</span>** &amp;strategie);
+<a name="l00197"></a>00197 
+<a name="l00205"></a>00205 <span class="keywordtype">void</span> ReversepredictPixel(<span class="keywordtype">int</span> ligne, <span class="keywordtype">int</span> colonne, IplImage * I, IplImage *&amp;Ipred, <span class="keywordtype">int</span> taille, <span class="keywordtype">int</span>** &amp;strategie);
+<a name="l00206"></a>00206 <span class="preprocessor">#endif // LIB_H_INCLUDED</span>
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de données</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Généré le Fri May 13 2011 15:10:06 pour ProjetMultimedia par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

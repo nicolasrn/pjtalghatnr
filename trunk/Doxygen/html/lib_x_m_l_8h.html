@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>ProjetMultimedia: RÃ©fÃ©rence du fichier C:/Users/Nicolas/Documents/ProjetMultimedia/Projet/libXML.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ProjetMultimedia</div>
+   <div id="projectbrief">doxygen du projet de MultiMedia</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associÃ©es</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;donnÃ©es</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>PortÃ©e&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">RÃ©fÃ©rence du fichier C:/Users/Nicolas/Documents/ProjetMultimedia/Projet/libXML.h</div>  </div>
+</div>
+<div class="contents">
+
+<p>librairie des fonctions XML de sauvegarde et chargement  
+<a href="#details">Plus de dÃ©tails...</a></p>
+<div class="textblock"><code>#include &lt;opencv/cv.h&gt;</code><br/>
+<code>#include &lt;opencv/highgui.h&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
+<code>#include &quot;<a class="el" href="_my_image_8hpp_source.html">MyImage.hpp</a>&quot;</code><br/>
+<code>#include &quot;tinyxml.h&quot;</code><br/>
+</div>
+<p><a href="lib_x_m_l_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_x_m_l_8h.html#ad4d187d4018decd362b818cb7d5be620">saveTailleImage</a> (int index, <a class="el" href="class_ti_xml_element.html">TiXmlElement</a> *&amp;Balise, std::vector&lt; int &gt; heightVector, std::vector&lt; int &gt; widthVector)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_x_m_l_8h.html#aa425223d264c355913785050bedc3bee">saveImage</a> (int index, <a class="el" href="class_ti_xml_element.html">TiXmlElement</a> *&amp;Balise, std::vector&lt; double ** &gt; Y, std::vector&lt; double ** &gt; U, std::vector&lt; double ** &gt; V, std::vector&lt; int ** &gt; stratY, std::vector&lt; int ** &gt; stratU, std::vector&lt; int ** &gt; stratV, int height, int width)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_x_m_l_8h.html#a398917110dc6496f02eb127b30ac0055">saveXML</a> (const char *name, std::vector&lt; double ** &gt; Y, std::vector&lt; double ** &gt; U, std::vector&lt; double ** &gt; V, std::vector&lt; int ** &gt; stratY, std::vector&lt; int ** &gt; stratU, std::vector&lt; int ** &gt; stratV, std::vector&lt; int &gt; heightVector, std::vector&lt; int &gt; widthVector, int QP)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_x_m_l_8h.html#a47f9c1f58ca25932b35ee722979c34ca">instanciateTabQuantif</a> (int width, int height)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_x_m_l_8h.html#a521f70324d4725d63314b9e001262f81">instanciateTabStrat</a> (int width, int height)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_x_m_l_8h.html#a06c4ff6f7fd99fabbd3780ae37d60d7f">chargeImage</a> (int index, <a class="el" href="class_ti_xml_element.html">TiXmlElement</a> *&amp;Balise, std::vector&lt; double ** &gt; Y, std::vector&lt; double ** &gt; U, std::vector&lt; double ** &gt; V, std::vector&lt; int ** &gt; stratY, std::vector&lt; int ** &gt; stratU, std::vector&lt; int ** &gt; stratV)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lib_x_m_l_8h.html#a2af3a0ab0ffbd904e74d390ae6b0ed8b">loadXML</a> (const char *name, std::vector&lt; double ** &gt; &amp;Y, std::vector&lt; double ** &gt; &amp;U, std::vector&lt; double ** &gt; &amp;V, std::vector&lt; int ** &gt; &amp;stratY, std::vector&lt; int ** &gt; &amp;stratU, std::vector&lt; int ** &gt; &amp;stratV, std::vector&lt; int &gt; &amp;heightVector, std::vector&lt; int &gt; &amp;widthVector, int &amp;QP)</td></tr>
+</table>
+<hr/><a name="details" id="details"></a><h2>Description dÃ©taillÃ©e</h2>
+<div class="textblock"><p>librairie des fonctions XML de sauvegarde et chargement </p>
+</div><hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="a06c4ff6f7fd99fabbd3780ae37d60d7f"></a><!-- doxytag: member="libXML.h::chargeImage" ref="a06c4ff6f7fd99fabbd3780ae37d60d7f" args="(int index, TiXmlElement *&amp;Balise, std::vector&lt; double ** &gt; Y, std::vector&lt; double ** &gt; U, std::vector&lt; double ** &gt; V, std::vector&lt; int ** &gt; stratY, std::vector&lt; int ** &gt; stratU, std::vector&lt; int ** &gt; stratV)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void chargeImage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_ti_xml_element.html">TiXmlElement</a> *&amp;&#160;</td>
+          <td class="paramname"><em>Balise</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt;&#160;</td>
+          <td class="paramname"><em>Y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt;&#160;</td>
+          <td class="paramname"><em>U</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt;&#160;</td>
+          <td class="paramname"><em>V</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt;&#160;</td>
+          <td class="paramname"><em>stratY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt;&#160;</td>
+          <td class="paramname"><em>stratU</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt;&#160;</td>
+          <td class="paramname"><em>stratV</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index,:</td><td>index dans le vecteur pour charger l'image </td></tr>
+    <tr><td class="paramname">Balise,:</td><td>Balise mère de l'arborescence de l'image </td></tr>
+    <tr><td class="paramname">Y,:</td><td>quantification pour Y </td></tr>
+    <tr><td class="paramname">U,:</td><td>quantification pour U </td></tr>
+    <tr><td class="paramname">V</td><td>: quantification pour V </td></tr>
+    <tr><td class="paramname">stratY</td><td>: stratégie pour Y </td></tr>
+    <tr><td class="paramname">stratU</td><td>: stratégie pour U </td></tr>
+    <tr><td class="paramname">stratV</td><td>: stratégie pour V </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a47f9c1f58ca25932b35ee722979c34ca"></a><!-- doxytag: member="libXML.h::instanciateTabQuantif" ref="a47f9c1f58ca25932b35ee722979c34ca" args="(int width, int height)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double** instanciateTabQuantif </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width,:</td><td>largeur à instancier </td></tr>
+    <tr><td class="paramname">height,:</td><td>hauteur à instancier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a521f70324d4725d63314b9e001262f81"></a><!-- doxytag: member="libXML.h::instanciateTabStrat" ref="a521f70324d4725d63314b9e001262f81" args="(int width, int height)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int** instanciateTabStrat </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width,:</td><td>largeur à instancier </td></tr>
+    <tr><td class="paramname">height,:</td><td>hauteur à instancier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2af3a0ab0ffbd904e74d390ae6b0ed8b"></a><!-- doxytag: member="libXML.h::loadXML" ref="a2af3a0ab0ffbd904e74d390ae6b0ed8b" args="(const char *name, std::vector&lt; double ** &gt; &amp;Y, std::vector&lt; double ** &gt; &amp;U, std::vector&lt; double ** &gt; &amp;V, std::vector&lt; int ** &gt; &amp;stratY, std::vector&lt; int ** &gt; &amp;stratU, std::vector&lt; int ** &gt; &amp;stratV, std::vector&lt; int &gt; &amp;heightVector, std::vector&lt; int &gt; &amp;widthVector, int &amp;QP)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loadXML </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt; &amp;&#160;</td>
+          <td class="paramname"><em>U</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt; &amp;&#160;</td>
+          <td class="paramname"><em>V</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt; &amp;&#160;</td>
+          <td class="paramname"><em>stratY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt; &amp;&#160;</td>
+          <td class="paramname"><em>stratU</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt; &amp;&#160;</td>
+          <td class="paramname"><em>stratV</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>heightVector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>widthVector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>QP</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name,:</td><td>Nom du Fichier qu'on charge </td></tr>
+    <tr><td class="paramname">Y,:</td><td>quantification pour Y </td></tr>
+    <tr><td class="paramname">U,:</td><td>quantification pour U </td></tr>
+    <tr><td class="paramname">V</td><td>: quantification pour V </td></tr>
+    <tr><td class="paramname">stratY</td><td>: stratégie pour Y </td></tr>
+    <tr><td class="paramname">stratU</td><td>: stratégie pour U </td></tr>
+    <tr><td class="paramname">stratV</td><td>: stratégie pour V </td></tr>
+    <tr><td class="paramname">heightVector</td><td>: hauteur pour chaque partie enregistrée </td></tr>
+    <tr><td class="paramname">widthVector</td><td>: largeur pour chaque partie enregistrée </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa425223d264c355913785050bedc3bee"></a><!-- doxytag: member="libXML.h::saveImage" ref="aa425223d264c355913785050bedc3bee" args="(int index, TiXmlElement *&amp;Balise, std::vector&lt; double ** &gt; Y, std::vector&lt; double ** &gt; U, std::vector&lt; double ** &gt; V, std::vector&lt; int ** &gt; stratY, std::vector&lt; int ** &gt; stratU, std::vector&lt; int ** &gt; stratV, int height, int width)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void saveImage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_ti_xml_element.html">TiXmlElement</a> *&amp;&#160;</td>
+          <td class="paramname"><em>Balise</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt;&#160;</td>
+          <td class="paramname"><em>Y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt;&#160;</td>
+          <td class="paramname"><em>U</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt;&#160;</td>
+          <td class="paramname"><em>V</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt;&#160;</td>
+          <td class="paramname"><em>stratY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt;&#160;</td>
+          <td class="paramname"><em>stratU</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt;&#160;</td>
+          <td class="paramname"><em>stratV</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index,:</td><td>index dans le vecteur pour sauvegarder l'image </td></tr>
+    <tr><td class="paramname">Balise,:</td><td>Balise mère de l'arborescence de l'image </td></tr>
+    <tr><td class="paramname">Y,:</td><td>quantification pour Y </td></tr>
+    <tr><td class="paramname">U,:</td><td>quantification pour U </td></tr>
+    <tr><td class="paramname">V</td><td>: quantification pour V </td></tr>
+    <tr><td class="paramname">stratY</td><td>: stratégie pour Y </td></tr>
+    <tr><td class="paramname">stratU</td><td>: stratégie pour U </td></tr>
+    <tr><td class="paramname">stratV</td><td>: stratégie pour V </td></tr>
+    <tr><td class="paramname">height</td><td>: hauteur pour chaque partie enregistrée </td></tr>
+    <tr><td class="paramname">width</td><td>: largeur pour chaque partie enregistrée </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad4d187d4018decd362b818cb7d5be620"></a><!-- doxytag: member="libXML.h::saveTailleImage" ref="ad4d187d4018decd362b818cb7d5be620" args="(int index, TiXmlElement *&amp;Balise, std::vector&lt; int &gt; heightVector, std::vector&lt; int &gt; widthVector)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void saveTailleImage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_ti_xml_element.html">TiXmlElement</a> *&amp;&#160;</td>
+          <td class="paramname"><em>Balise</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>heightVector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>widthVector</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index,:</td><td>index dans le vecteur pour sauvegarder l'image </td></tr>
+    <tr><td class="paramname">Balise,:</td><td>Balise mère de l'arborescence de l'image </td></tr>
+    <tr><td class="paramname">heightVector</td><td>: hauteur pour chaque partie enregistrée </td></tr>
+    <tr><td class="paramname">widthVector</td><td>: largeur pour chaque partie enregistrée </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a398917110dc6496f02eb127b30ac0055"></a><!-- doxytag: member="libXML.h::saveXML" ref="a398917110dc6496f02eb127b30ac0055" args="(const char *name, std::vector&lt; double ** &gt; Y, std::vector&lt; double ** &gt; U, std::vector&lt; double ** &gt; V, std::vector&lt; int ** &gt; stratY, std::vector&lt; int ** &gt; stratU, std::vector&lt; int ** &gt; stratV, std::vector&lt; int &gt; heightVector, std::vector&lt; int &gt; widthVector, int QP)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void saveXML </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt;&#160;</td>
+          <td class="paramname"><em>Y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt;&#160;</td>
+          <td class="paramname"><em>U</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double ** &gt;&#160;</td>
+          <td class="paramname"><em>V</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt;&#160;</td>
+          <td class="paramname"><em>stratY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt;&#160;</td>
+          <td class="paramname"><em>stratU</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int ** &gt;&#160;</td>
+          <td class="paramname"><em>stratV</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>heightVector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>widthVector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>QP</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name,:</td><td>Nom du Fichier qu'on enregistre </td></tr>
+    <tr><td class="paramname">Y,:</td><td>quantification pour Y </td></tr>
+    <tr><td class="paramname">U,:</td><td>quantification pour U </td></tr>
+    <tr><td class="paramname">V</td><td>: quantification pour V </td></tr>
+    <tr><td class="paramname">stratY</td><td>: stratégie pour Y </td></tr>
+    <tr><td class="paramname">stratU</td><td>: stratégie pour U </td></tr>
+    <tr><td class="paramname">stratV</td><td>: stratégie pour V </td></tr>
+    <tr><td class="paramname">heightVector</td><td>: hauteur pour chaque partie enregistrée </td></tr>
+    <tr><td class="paramname">widthVector</td><td>: largeur pour chaque partie enregistrée </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Structures de donnÃ©es</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Ã‰numÃ©rations</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>GÃ©nÃ©rÃ© le Fri May 13 2011 15:10:07 pour ProjetMultimedia par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>
