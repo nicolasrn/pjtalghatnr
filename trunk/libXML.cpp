@@ -28,7 +28,7 @@ void saveTailleImage(int index, TiXmlElement * &Balise, std::vector<int> heightV
  *@param height : hauteur pour chaque partie enregistrée
  *@param width : largeur pour chaque partie enregistrée
  */
-void saveImage(int index, TiXmlElement * &Balise, std::vector<int **> Y, std::vector<int **> U, std::vector<int **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV, int height, int width){
+void saveImage(int index, TiXmlElement * &Balise, std::vector<double **> Y, std::vector<double **> U, std::vector<double **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV, int height, int width){
 
     TiXmlElement * Ligne;
     TiXmlElement * Colonne;
@@ -43,9 +43,11 @@ void saveImage(int index, TiXmlElement * &Balise, std::vector<int **> Y, std::ve
             //On ajoute une Colonne à la Ligne <Colonne Y=XX U=XX V=XX StratY=XX StratU=XX StratV=XX>
             Colonne = new TiXmlElement("Colonne");
             Ligne->LinkEndChild(Colonne);
-            Colonne->SetAttribute("Y", Y[index][h][w]);
-            Colonne->SetAttribute("U", U[index][h][w]);
-            Colonne->SetAttribute("V", V[index][h][w]);
+            Colonne->SetDoubleAttribute("Y", Y[index][h][w]);
+            Colonne->SetDoubleAttribute("U", U[index][h][w]);
+            Colonne->SetDoubleAttribute("V", V[index][h][w]);
+            //cout << "dans la sauvegarde : " << Y[index][h][w] << endl;
+
             Colonne->SetAttribute("StratY", stratY[index][w][h]);
             Colonne->SetAttribute("StratU", stratU[index][w][h]);
             Colonne->SetAttribute("StratV", stratV[index][w][h]);
@@ -64,7 +66,7 @@ void saveImage(int index, TiXmlElement * &Balise, std::vector<int **> Y, std::ve
  *@param heightVector : hauteur pour chaque partie enregistrée
  *@param widthVector : largeur pour chaque partie enregistrée
  */
-void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, std::vector<int **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV, std::vector<int> heightVector, std::vector<int> widthVector, int QP){
+void saveXML(const char * name, std::vector<double **> Y, std::vector<double **> U, std::vector<double **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV, std::vector<int> heightVector, std::vector<int> widthVector, int QP){
 
     TiXmlDocument doc;
 
@@ -128,10 +130,10 @@ void saveXML(const char * name, std::vector<int **> Y, std::vector<int **> U, st
  *@param width: largeur à instancier
  *@param height: hauteur à instancier
  */
-int ** instanciateTabQuantif(int width, int height){
-    int **tab = new int*[height];
+double ** instanciateTabQuantif(int width, int height){
+    double **tab = new double*[height];
         for(int i = 0; i < height; i++)
-            tab[i] = new int[width];
+            tab[i] = new double[width];
     return tab;
 }
 
@@ -156,10 +158,11 @@ int ** instanciateTabStrat(int width, int height){
  *@param stratU : stratégie pour U
  *@param stratV : stratégie pour V
  */
-void chargeImage(int index, TiXmlElement * &Balise, std::vector<int **> Y, std::vector<int **> U, std::vector<int **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV){
+void chargeImage(int index, TiXmlElement * &Balise, std::vector<double **> Y, std::vector<double **> U, std::vector<double **> V , std::vector<int **> stratY, std::vector<int **> stratU, std::vector<int **> stratV){
 
     TiXmlElement * ligne, * colonne;
-    int nbLigne, nbColonne, attrStratY, attrStratU, attrStratV, attrY, attrU, attrV;
+    int nbLigne, nbColonne, attrStratY, attrStratU, attrStratV;
+    double attrY, attrU, attrV;
 
     ligne = Balise->FirstChildElement("Ligne");
     nbLigne = 0;
@@ -169,9 +172,10 @@ void chargeImage(int index, TiXmlElement * &Balise, std::vector<int **> Y, std::
 
         while(colonne){
 
-            colonne->QueryIntAttribute("Y", &attrY);
-            colonne->QueryIntAttribute("U", &attrU);
-            colonne->QueryIntAttribute("V", &attrV);
+            colonne->QueryDoubleAttribute("Y", &attrY);
+            colonne->QueryDoubleAttribute("U", &attrU);
+            colonne->QueryDoubleAttribute("V", &attrV);
+
             colonne->QueryIntAttribute("StratY", &attrStratY);
             colonne->QueryIntAttribute("StratU", &attrStratU);
             colonne->QueryIntAttribute("StratV", &attrStratV);
@@ -180,6 +184,8 @@ void chargeImage(int index, TiXmlElement * &Balise, std::vector<int **> Y, std::
             Y[index][nbLigne][nbColonne] = attrY;
             U[index][nbLigne][nbColonne] = attrU;
             V[index][nbLigne][nbColonne] = attrV;
+
+            //cout << "dans le chargement : " << Y[index][nbLigne][nbColonne] << endl;
 
             //On affect aux stratégies les valeurs des stratégies
             stratY[index][nbColonne][nbLigne] = attrStratY;
@@ -205,7 +211,7 @@ void chargeImage(int index, TiXmlElement * &Balise, std::vector<int **> Y, std::
  *@param heightVector : hauteur pour chaque partie enregistrée
  *@param widthVector : largeur pour chaque partie enregistrée
  */
-void loadXML(const char* name, std::vector<int **> &Y, std::vector<int **> &U, std::vector<int **> &V , std::vector<int **> &stratY, std::vector<int **> &stratU, std::vector<int **> &stratV, std::vector<int> &heightVector, std::vector<int> &widthVector, int &QP){
+void loadXML(const char* name, std::vector<double **> &Y, std::vector<double **> &U, std::vector<double **> &V , std::vector<int **> &stratY, std::vector<int **> &stratU, std::vector<int **> &stratV, std::vector<int> &heightVector, std::vector<int> &widthVector, int &QP){
 
     //On ouvrir le fichier "name"
     TiXmlDocument doc(name);

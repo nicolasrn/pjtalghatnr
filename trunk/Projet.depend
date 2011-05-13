@@ -7,7 +7,7 @@
 	"lib.h"
 	"libXML.h"
 
-1305278401 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
+1305287672 source:c:\users\nicolas\documents\projetmultimedia\projet\main.cpp
 	<iostream>
 	<opencv/cv.h>
 	<opencv/highgui.h>
@@ -22,13 +22,13 @@
 	"lib.h"
 	"MyImage.hpp"
 
-1305277782 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
+1305287009 c:\users\nicolas\documents\projetmultimedia\projet\lib.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	"DCT.h"
 	"MyImage.hpp"
 
-1305278424 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
+1305288491 source:c:\users\nicolas\documents\projetmultimedia\projet\lib.cpp
 	"lib.h"
 	"math.h"
 
@@ -304,13 +304,13 @@
 	<opencv/highgui.h>
 	"lib.h"
 
-1305126012 source:c:\users\nicolas\documents\projetmultimedia\projet\libxml.cpp
+1305288898 source:c:\users\nicolas\documents\projetmultimedia\projet\libxml.cpp
 	"libXML.h"
 	"tinystr.h"
 	"tinyxml.h"
 	<vector>
 
-1305277251 c:\users\nicolas\documents\projetmultimedia\projet\libxml.h
+1305287640 c:\users\nicolas\documents\projetmultimedia\projet\libxml.h
 	<opencv/cv.h>
 	<opencv/highgui.h>
 	<vector>
